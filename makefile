@@ -37,15 +37,13 @@ check:
     done
 
 clean:
-	rm -f  *.gcda
-	rm -f  *.gcno
-	rm -f  *.gcov
-	rm -f  Collatz.log
-	rm -f  RunCollatz
-	rm -f  RunCollatz.out
-	rm -f  TestCollatz
-	rm -f  TestCollatz.out
-	rm -rf html
+	rm -f *.gcda
+	rm -f *.gcno
+	rm -f *.gcov
+	rm -f RunCollatz
+	rm -f RunCollatz.out
+	rm -f TestCollatz
+	rm -f TestCollatz.out
 
 config:
 	git config -l

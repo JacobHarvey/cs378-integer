@@ -35,7 +35,7 @@ script:
     - date
     - ls -al
     - mv gitignore.sample .gitignore
-    - touch Collatz.log
+    - make Collatz.log
     - make collatz-tests
     - ls -al
     - make html
