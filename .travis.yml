@@ -33,6 +33,7 @@ before_script:
 
 script:
     - date
+    - ls -al
     - mv gitignore.sample .gitignore
     - touch Collatz.log
     - make collatz-tests
@@ -40,4 +41,5 @@ script:
     - make test
     - make clean
     - make test CXX=clang++
+    - ls -al
     - make check
