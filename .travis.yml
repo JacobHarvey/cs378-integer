@@ -22,12 +22,12 @@ install:
 before_script:
     - uname -a
     - printenv
-    - clang++ -v 2>&1 | grep version
-    - g++-4.8 -v 2>&1 | grep version
+    - clang++ -v 2>&1 | grep "gcc version"
+    - g++-4.8 -v 2>&1 | grep "gcc version"
     - dpkg -l libgtest-dev | grep libgtest
-    - gcov-4.6 -version | grep version
-    - gcov-4.8 -version | grep version
-    - -valgrind --version
+    - gcov-4.6 -v | grep gcov
+    - gcov-4.8 -v | grep gcov
+    - valgrind --version
     - grep "#define BOOST_VERSION " /usr/include/boost/version.hpp
     - doxygen --version
 
