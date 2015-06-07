@@ -33,6 +33,7 @@ before_script:
 
 script:
     - date
+    - mv gitignore.sample .gitignore
     - make collatz-tests
     - make html
     - make Collatz.log
