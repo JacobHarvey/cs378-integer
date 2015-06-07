@@ -34,9 +34,9 @@ before_script:
 script:
     - date
     - mv gitignore.sample .gitignore
+    - touch Collatz.log
     - make collatz-tests
     - make html
-    - make Collatz.log
     - make test
     - make clean
     - make test CXX=clang++
