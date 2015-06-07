@@ -68,7 +68,9 @@ RunCollatz: Collatz.h Collatz.c++ RunCollatz.c++
 	$(CXX) $(CXXFLAGS) Collatz.c++ RunCollatz.c++ -o RunCollatz
 
 RunCollatz.out: RunCollatz
+	cat RunCollatz.in
 	./RunCollatz < RunCollatz.in > RunCollatz.out
+	cat RunCollatz.out
 
 TestCollatz: Collatz.h Collatz.c++ TestCollatz.c++
 	$(CXX) $(COVFLAGS) $(CXXFLAGS) Collatz.c++ TestCollatz.c++ -o TestCollatz $(LDFLAGS)
@@ -77,3 +79,4 @@ TestCollatz.out: TestCollatz
 	$(VALGRIND) ./TestCollatz  >  TestCollatz.out 2>&1
 	$(GCOV) -b Collatz.c++     >> TestCollatz.out
 	$(GCOV) -b TestCollatz.c++ >> TestCollatz.out
+	cat TestCollatz.out
