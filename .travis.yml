@@ -33,6 +33,7 @@ before_script:
 
 script:
     - date
+    - touch .gitignore
     - ls -al
     - make Collatz.log
     - make collatz-tests
