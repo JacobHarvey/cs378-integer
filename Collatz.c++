@@ -45,9 +45,9 @@ int collatz_eval (int i, int j) {
     if (i <= j/2 +1){
         i=j/2+1;
     }
-    int c;
+    
     int cycles=1;
-    for (c=i; c<=j, c++){
+    for (int c=i; c<=j; c++){
         cur=c;
         //loop for collatz
         while (cur!=1){
