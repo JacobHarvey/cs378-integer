@@ -34,6 +34,21 @@ TEST(CollatzFixture, read) {
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
+/*
+TEST(CollatzFixture, read_negs) {
+    string s("-1 -1\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ( -1, p.first);
+    ASSERT_EQ( -1, p.second);}
+
+TEST(CollatzFixture, read_max) {
+    string s("-2147483647 2147483647\n");
+    const pair<int, int> p = collatz_read(s);
+    ASSERT_EQ(-2147483647 , p.first);
+    ASSERT_EQ( 2147483647 , p.second);}
+*/
+
+
 
 // ----
 // eval
@@ -41,19 +56,29 @@ TEST(CollatzFixture, read) {
 
 TEST(CollatzFixture, eval_1) {
     const int v = collatz_eval(1, 10);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(20, v);}
 
 TEST(CollatzFixture, eval_2) {
     const int v = collatz_eval(100, 200);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(125, v);}
 
 TEST(CollatzFixture, eval_3) {
     const int v = collatz_eval(201, 210);
-    ASSERT_EQ(1, v);}
+    ASSERT_EQ(89, v);}
 
 TEST(CollatzFixture, eval_4) {
     const int v = collatz_eval(900, 1000);
+    ASSERT_EQ(174, v);}
+
+TEST(CollatzFixture, eval_5) {
+    const int v = collatz_eval(1000, 900);
+    ASSERT_EQ(174, v);}
+
+TEST(CollatzFixture, eval_6) {
+    const int v = collatz_eval(1, 1);
     ASSERT_EQ(1, v);}
+
+
 
 // -----
 // print
@@ -64,6 +89,13 @@ TEST(CollatzFixture, print) {
     collatz_print(w, 1, 10, 20);
     ASSERT_EQ("1 10 20\n", w.str());}
 
+TEST(CollatzFixture, print_2) {
+    ostringstream w;
+    collatz_print(w, 1, 1, 1);
+    ASSERT_EQ("1 1 1\n", w.str());}
+
+
+
 // -----
 // solve
 // -----
@@ -72,7 +104,14 @@ TEST(CollatzFixture, solve) {
     istringstream r("1 10\n100 200\n201 210\n900 1000\n");
     ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("1 10 1\n100 200 1\n201 210 1\n900 1000 1\n", w.str());}
+    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
+
+TEST(CollatzFixture, solve_2) {
+    istringstream r("1 10");
+    ostringstream w;
+    collatz_solve(r, w);
+    ASSERT_EQ("1 10 20", w.str());}
+
 
 /*
 % ls -al /usr/include/gtest/
