@@ -464,8 +464,8 @@ function _ZN7testing8internal15TestFactoryBaseC2Ev called 13 returned 100% block
         -:  451:template <class TestClass>
 function _ZN7testing8internal15TestFactoryImplI24CollatzFixture_read_TestED0Ev called 1 returned 100% blocks executed 100%
 function _ZN7testing8internal15TestFactoryImplI24CollatzFixture_read_TestED2Ev called 1 returned 100% blocks executed 75%
-function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_negs_TestED0Ev called 1 returned 100% blocks executed 100%
-function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_negs_TestED2Ev called 1 returned 100% blocks executed 75%
+function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_same_TestED0Ev called 1 returned 100% blocks executed 100%
+function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_same_TestED2Ev called 1 returned 100% blocks executed 75%
 function _ZN7testing8internal15TestFactoryImplI28CollatzFixture_read_max_TestED0Ev called 1 returned 100% blocks executed 100%
 function _ZN7testing8internal15TestFactoryImplI28CollatzFixture_read_max_TestED2Ev called 1 returned 100% blocks executed 75%
 function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_1_TestED0Ev called 1 returned 100% blocks executed 100%
@@ -499,7 +499,7 @@ function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_3_TestEC2Ev
 function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_2_TestEC2Ev called 1 returned 100% blocks executed 100%
 function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_1_TestEC2Ev called 1 returned 100% blocks executed 100%
 function _ZN7testing8internal15TestFactoryImplI28CollatzFixture_read_max_TestEC2Ev called 1 returned 100% blocks executed 100%
-function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_negs_TestEC2Ev called 1 returned 100% blocks executed 100%
+function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_same_TestEC2Ev called 1 returned 100% blocks executed 100%
 function _ZN7testing8internal15TestFactoryImplI24CollatzFixture_read_TestEC2Ev called 1 returned 100% blocks executed 100%
        39:  452:class TestFactoryImpl : public TestFactoryBase {
 call    0 returned 100%
@@ -595,7 +595,7 @@ call   89 returned 100%
 call   90 returned 100%
         -:  453: public:
 function _ZN7testing8internal15TestFactoryImplI24CollatzFixture_read_TestE10CreateTestEv called 1 returned 100% blocks executed 83%
-function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_negs_TestE10CreateTestEv called 1 returned 100% blocks executed 83%
+function _ZN7testing8internal15TestFactoryImplI29CollatzFixture_read_same_TestE10CreateTestEv called 1 returned 100% blocks executed 83%
 function _ZN7testing8internal15TestFactoryImplI28CollatzFixture_read_max_TestE10CreateTestEv called 1 returned 100% blocks executed 83%
 function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_1_TestE10CreateTestEv called 1 returned 100% blocks executed 83%
 function _ZN7testing8internal15TestFactoryImplI26CollatzFixture_eval_2_TestE10CreateTestEv called 1 returned 100% blocks executed 83%

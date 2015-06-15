@@ -35,16 +35,16 @@ TEST(CollatzFixture, read) {
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
-TEST(CollatzFixture, read_negs) {
-    string s("-1 -1\n");
+TEST(CollatzFixture, read_same) {
+    string s("1 1\n");
     const pair<int, int> p = collatz_read(s);
-    ASSERT_EQ( -1, p.first);
-    ASSERT_EQ( -1, p.second);}
+    ASSERT_EQ( 1, p.first);
+    ASSERT_EQ( 1, p.second);}
 
 TEST(CollatzFixture, read_max) {
-    string s("-2147483647 2147483647\n");
+    string s("1 2147483647\n");
     const pair<int, int> p = collatz_read(s);
-    ASSERT_EQ(-2147483647 , p.first);
+    ASSERT_EQ( 1 , p.first);
     ASSERT_EQ( 2147483647 , p.second);}
 
 
