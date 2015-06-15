@@ -34,7 +34,7 @@ TEST(CollatzFixture, read) {
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
-/*
+
 TEST(CollatzFixture, read_negs) {
     string s("-1 -1\n");
     const pair<int, int> p = collatz_read(s);
@@ -46,7 +46,7 @@ TEST(CollatzFixture, read_max) {
     const pair<int, int> p = collatz_read(s);
     ASSERT_EQ(-2147483647 , p.first);
     ASSERT_EQ( 2147483647 , p.second);}
-*/
+
 
 
 
@@ -110,7 +110,7 @@ TEST(CollatzFixture, solve_2) {
     istringstream r("1 10");
     ostringstream w;
     collatz_solve(r, w);
-    ASSERT_EQ("1 10 20", w.str());}
+    ASSERT_EQ("1 10 20\n", w.str());}
 
 
 /*
