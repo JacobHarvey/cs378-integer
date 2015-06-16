@@ -23,164 +23,223 @@
         -:   18:
         -:   19:using namespace std;
         -:   20:
-        -:   21:// ------------
-        -:   22:// collatz_read
-        -:   23:// ------------
-        -:   24:
-function _Z12collatz_readRKSs called 8 returned 100% blocks executed 71%
-        8:   25:pair<int, int> collatz_read (const string& s) {
-        8:   26:    istringstream sin(s);
+        -:   21:int CACHESIZE = 100000;
+        -:   22:#define CACHE true
+        -:   23:#ifdef CACHE
+        -:   24:int cache [100000];
+        -:   25:#endif
+        -:   26:
+        -:   27:// ------------
+        -:   28:// collatz_read
+        -:   29:// ------------
+        -:   30:int collatz_eval_simple (int i, int j);
+function _Z12collatz_readRKSs called 12 returned 100% blocks executed 71%
+       12:   31:pair<int, int> collatz_read (const string& s) {
+       12:   32:    istringstream sin(s);
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0% (throw)
-        -:   27:    int i;
-        -:   28:    int j;
-        8:   29:    sin >> i >> j;
+        -:   33:    int i;
+        -:   34:    int j;
+       12:   35:    sin >> i >> j;
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0% (throw)
 call    3 returned 100%
 branch  4 taken 100% (fallthrough)
 branch  5 taken 0% (throw)
-        8:   30:    assert (i > 0);
+       12:   36:    assert (i > 0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        8:   31:    assert (j > 0); 
+       12:   37:    assert (j > 0); 
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        8:   32:    return make_pair(i, j);}
+       12:   38:    return make_pair(i, j);}
 call    0 returned 100%
 call    1 returned 100%
 call    2 never executed
-        -:   33:
-        -:   34:// ------------
-        -:   35:// collatz_eval
-        -:   36:// ------------
-        -:   37:
-function _Z12collatz_evalii called 11 returned 100% blocks executed 83%
-       11:   38:int collatz_eval (int i, int j) {
-        -:   39:    //Set i as lower bound and j as uppper
-       11:   40:    int max =1;
-        -:   41:    int cur;
-       11:   42:    if (i>j){
-branch  0 taken 9% (fallthrough)
-branch  1 taken 91%
-        1:   43:        cur=j;
-        1:   44:        j=i;
-        1:   45:        i=cur;
-        -:   46:    }
-       11:   47:    assert (i>0);
+        -:   39:
+        -:   40:// ------------
+        -:   41:// collatz_eval
+        -:   42:// ------------
+        -:   43:
+function _Z12collatz_evalii called 15 returned 100% blocks executed 100%
+       15:   44:int collatz_eval (int i, int j) {
+        -:   45:    if (CACHE){
+       15:   46:        return collatz_eval_simple(i, j);
+call    0 returned 100%
+        -:   47:    }
+        -:   48:    //Set i as lower bound and j as uppper
+        -:   49:    int max =1;
+        -:   50:    int cur;
+        -:   51:    if (i>j){
+        -:   52:        cur=j;
+        -:   53:        j=i;
+        -:   54:        i=cur;
+        -:   55:    }
+        -:   56:    assert (i>0);
+        -:   57:    assert (j< 1000000);
+        -:   58:    assert (CACHESIZE > 0);
+        -:   59:    if (i <= j/2 +1){
+        -:   60:        i=j/2+1;
+        -:   61:    }
+        -:   62:    int cycles=1;
+        -:   63:    for (int c=i; c<=j; c++){
+        -:   64:        cycles=1;
+        -:   65:        cur=c; //cur is the current value/ mover for the func
+        -:   66:        //loop for collatz
+        -:   67:        while (cur!=1){
+        -:   68:            if (cur < CACHESIZE && cache[cur]!= 0){
+        -:   69:                cycles += cache[cur] -1;
+        -:   70:                break;
+        -:   71:            }
+        -:   72:            else if ((cur%2) == 0){
+        -:   73:                cur /= 2;
+        -:   74:                ++cycles;
+        -:   75:            }
+        -:   76:            else{
+        -:   77:                cur=cur+ (cur/2)+1; // (3n+1)/2
+        -:   78:                cycles+=2;
+        -:   79:            }
+        -:   80:        }
+        -:   81:        if (c < CACHESIZE){
+        -:   82:            cache[c] = cycles;
+        -:   83:        }
+        -:   84:        assert (cycles>0);
+        -:   85:        if (cycles>max)
+        -:   86:            max=cycles;
+        -:   87:    }
+        -:   88:    
+        -:   89:    // if x%2==0, >>1, else x=x+x/2+1
+        -:   90:    //
+        -:   91:    // <your code>
+        -:   92:    assert (max>0);
+        -:   93:    return max;}
+        -:   94:
+function _Z19collatz_eval_simpleii called 15 returned 100% blocks executed 83%
+       15:   95:int collatz_eval_simple (int i, int j){
+       15:   96:    int max =1;
+        -:   97:    int cur;
+       15:   98:    if (i>j){
+branch  0 taken 7% (fallthrough)
+branch  1 taken 93%
+        1:   99:        cur=j;
+        1:  100:        j=i;
+        1:  101:        i=cur;
+        -:  102:    }
+       15:  103:    assert (i>0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-       11:   48:    assert (j< 100000);
+       15:  104:    assert (j< 1000000);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        -:   49:    
-       11:   50:    if (i <= j/2 +1){
-branch  0 taken 55% (fallthrough)
-branch  1 taken 45%
-        6:   51:        i=j/2+1;
-        -:   52:    }
-       11:   53:    int cycles=1;
-      550:   54:    for (int c=i; c<=j; c++){
+        -:  105:    
+       15:  106:    if (i <= j/2 +1){
+branch  0 taken 53% (fallthrough)
+branch  1 taken 47%
+        8:  107:        i=j/2+1;
+        -:  108:    }
+       15:  109:    int cycles=1;
+      770:  110:    for (int c=i; c<=j; c++){
 branch  0 taken 98%
 branch  1 taken 2% (fallthrough)
-      539:   55:        cycles=1;
-      539:   56:        cur=c; //cur is the current value/ mover for the func
-        -:   57:        //loop for collatz
-    22464:   58:        while (cur!=1){
+      755:  111:        cycles=1;
+      755:  112:        cur=c; //cur is the current value/ mover for the func
+        -:  113:        //loop for collatz
+    31291:  114:        while (cur!=1){
 branch  0 taken 98%
 branch  1 taken 2% (fallthrough)
-    21386:   59:            if ((cur%2) == 0){
+    29781:  115:            if ((cur%2) == 0){
 branch  0 taken 51% (fallthrough)
 branch  1 taken 49%
-    10890:   60:                cur /= 2;
-    10890:   61:                ++cycles;
-        -:   62:            }
-        -:   63:            else{
-    10496:   64:                cur=cur+ (cur/2)+1; // (3n+1)/2
-    10496:   65:                cycles+=2;
-        -:   66:            }
-        -:   67:        }
-      539:   68:        assert (cycles>0);
+    15160:  116:                cur /= 2;
+    15160:  117:                ++cycles;
+        -:  118:            }
+        -:  119:            else{
+    14621:  120:                cur=cur+ (cur/2)+1; // (3n+1)/2
+    14621:  121:                cycles+=2;
+        -:  122:            }
+        -:  123:        }
+      755:  124:        assert (cycles>0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-      539:   69:        if (cycles>max)
+      755:  125:        if (cycles>max)
 branch  0 taken 8% (fallthrough)
 branch  1 taken 92%
-       41:   70:            max=cycles;
-        -:   71:    }
-        -:   72:    
-        -:   73:    // if x%2==0, >>1, else x=x+x/2+1
-        -:   74:    //
-        -:   75:    // <your code>
-       11:   76:    assert (max>0);
+       58:  126:            max=cycles;
+        -:  127:    }
+        -:  128:    
+        -:  129:    // if x%2==0, >>1, else x=x+x/2+1
+        -:  130:    //
+        -:  131:    // <your code>
+       15:  132:    assert (max>0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-       11:   77:    return max;}
-        -:   78:
-        -:   79:// -------------
-        -:   80:// collatz_print
-        -:   81:// -------------
-        -:   82:
-function _Z13collatz_printRSoiii called 7 returned 100% blocks executed 77%
-        7:   83:void collatz_print (ostream& w, int i, int j, int v) {
-        7:   84:    assert (i > 0);
+       15:  133:    return max;}
+        -:  134:// -------------
+        -:  135:// collatz_print
+        -:  136:// -------------
+        -:  137:
+function _Z13collatz_printRSoiii called 11 returned 100% blocks executed 77%
+       11:  138:void collatz_print (ostream& w, int i, int j, int v) {
+       11:  139:    assert (i > 0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        7:   85:    assert (j > 0);
+       11:  140:    assert (j > 0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        7:   86:    assert (v > 0);
+       11:  141:    assert (v > 0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-        7:   87:    w << i << " " << j << " " << v << endl;}
+       11:  142:    w << i << " " << j << " " << v << endl;}
 call    0 returned 100%
 call    1 returned 100%
 call    2 returned 100%
 call    3 returned 100%
 call    4 returned 100%
 call    5 returned 100%
-        -:   88:
-        -:   89:// -------------
-        -:   90:// collatz_solve
-        -:   91:// -------------
-        -:   92:
-function _Z13collatz_solveRSiRSo called 2 returned 100% blocks executed 80%
-        2:   93:void collatz_solve (istream& r, ostream& w) {
-        2:   94:    string s;
+        -:  143:
+        -:  144:// -------------
+        -:  145:// collatz_solve
+        -:  146:// -------------
+        -:  147:
+function _Z13collatz_solveRSiRSo called 3 returned 100% blocks executed 80%
+        3:  148:void collatz_solve (istream& r, ostream& w) {
+        3:  149:    string s;
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0% (throw)
-        9:   95:    while (getline(r, s)) {
+       15:  150:    while (getline(r, s)) {
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0% (throw)
 call    3 returned 100%
 branch  4 taken 100% (fallthrough)
 branch  5 taken 0% (throw)
-branch  6 taken 71%
-branch  7 taken 29% (fallthrough)
-        5:   96:        const pair<int, int> p = collatz_read(s);
+branch  6 taken 75%
+branch  7 taken 25% (fallthrough)
+        9:  151:        const pair<int, int> p = collatz_read(s);
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0% (throw)
-        5:   97:        const int            i = p.first;
-        5:   98:        const int            j = p.second;
-        5:   99:        const int            v = collatz_eval(i, j);
+        9:  152:        const int            i = p.first;
+        9:  153:        const int            j = p.second;
+        9:  154:        const int            v = collatz_eval(i, j);
 call    0 returned 100%
-function _GLOBAL__sub_I__Z12collatz_readRKSs called 1 returned 100% blocks executed 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+function _GLOBAL__sub_I_CACHESIZE called 1 returned 100% blocks executed 100%
 function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
-       10:  100:        collatz_print(w, i, j, v);}}
+       15:  155:        collatz_print(w, i, j, v);}}
 call    0 returned 100%
 branch  1 taken 100% (fallthrough)
 branch  2 taken 0%

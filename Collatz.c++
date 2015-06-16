@@ -19,12 +19,15 @@
 using namespace std;
 
 int CACHESIZE = 100000;
+#define CACHE true
+#ifdef CACHE
 int cache [100000];
+#endif
 
 // ------------
 // collatz_read
 // ------------
-
+int collatz_eval_simple (int i, int j);
 pair<int, int> collatz_read (const string& s) {
     istringstream sin(s);
     int i;
@@ -39,6 +42,9 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 int collatz_eval (int i, int j) {
+    if (CACHE){
+        return collatz_eval_simple(i, j);
+    }
     //Set i as lower bound and j as uppper
     int max =1;
     int cur;
@@ -50,7 +56,6 @@ int collatz_eval (int i, int j) {
     assert (i>0);
     assert (j< 1000000);
     assert (CACHESIZE > 0);
-
     if (i <= j/2 +1){
         i=j/2+1;
     }
