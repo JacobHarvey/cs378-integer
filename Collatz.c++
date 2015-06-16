@@ -42,7 +42,7 @@ pair<int, int> collatz_read (const string& s) {
 // ------------
 
 int collatz_eval (int i, int j) {
-    if (CACHE){
+    if (!CACHE){
         return collatz_eval_simple(i, j);
     }
     //Set i as lower bound and j as uppper

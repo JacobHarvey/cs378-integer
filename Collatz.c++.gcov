@@ -65,123 +65,155 @@ call    2 never executed
         -:   41:// collatz_eval
         -:   42:// ------------
         -:   43:
-function _Z12collatz_evalii called 15 returned 100% blocks executed 100%
+function _Z12collatz_evalii called 15 returned 100% blocks executed 84%
        15:   44:int collatz_eval (int i, int j) {
-        -:   45:    if (CACHE){
-       15:   46:        return collatz_eval_simple(i, j);
-call    0 returned 100%
+        -:   45:    if (!CACHE){
+        -:   46:        return collatz_eval_simple(i, j);
         -:   47:    }
         -:   48:    //Set i as lower bound and j as uppper
-        -:   49:    int max =1;
+       15:   49:    int max =1;
         -:   50:    int cur;
-        -:   51:    if (i>j){
-        -:   52:        cur=j;
-        -:   53:        j=i;
-        -:   54:        i=cur;
+       15:   51:    if (i>j){
+branch  0 taken 7% (fallthrough)
+branch  1 taken 93%
+        1:   52:        cur=j;
+        1:   53:        j=i;
+        1:   54:        i=cur;
         -:   55:    }
-        -:   56:    assert (i>0);
-        -:   57:    assert (j< 1000000);
-        -:   58:    assert (CACHESIZE > 0);
-        -:   59:    if (i <= j/2 +1){
-        -:   60:        i=j/2+1;
+       15:   56:    assert (i>0);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+       15:   57:    assert (j< 1000000);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+       15:   58:    assert (CACHESIZE > 0);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+       15:   59:    if (i <= j/2 +1){
+branch  0 taken 53% (fallthrough)
+branch  1 taken 47%
+        8:   60:        i=j/2+1;
         -:   61:    }
-        -:   62:    int cycles=1;
-        -:   63:    for (int c=i; c<=j; c++){
-        -:   64:        cycles=1;
-        -:   65:        cur=c; //cur is the current value/ mover for the func
+       15:   62:    int cycles=1;
+      770:   63:    for (int c=i; c<=j; c++){
+branch  0 taken 98%
+branch  1 taken 2% (fallthrough)
+      755:   64:        cycles=1;
+      755:   65:        cur=c; //cur is the current value/ mover for the func
         -:   66:        //loop for collatz
-        -:   67:        while (cur!=1){
-        -:   68:            if (cur < CACHESIZE && cache[cur]!= 0){
-        -:   69:                cycles += cache[cur] -1;
-        -:   70:                break;
+     3276:   67:        while (cur!=1){
+branch  0 taken 99%
+branch  1 taken 1% (fallthrough)
+     2517:   68:            if (cur < CACHESIZE && cache[cur]!= 0){
+branch  0 taken 99% (fallthrough)
+branch  1 taken 1%
+branch  2 taken 30% (fallthrough)
+branch  3 taken 70%
+      751:   69:                cycles += cache[cur] -1;
+      751:   70:                break;
         -:   71:            }
-        -:   72:            else if ((cur%2) == 0){
-        -:   73:                cur /= 2;
-        -:   74:                ++cycles;
+     1766:   72:            else if ((cur%2) == 0){
+branch  0 taken 51% (fallthrough)
+branch  1 taken 49%
+      902:   73:                cur /= 2;
+      902:   74:                ++cycles;
         -:   75:            }
         -:   76:            else{
-        -:   77:                cur=cur+ (cur/2)+1; // (3n+1)/2
-        -:   78:                cycles+=2;
+      864:   77:                cur=cur+ (cur/2)+1; // (3n+1)/2
+      864:   78:                cycles+=2;
         -:   79:            }
         -:   80:        }
-        -:   81:        if (c < CACHESIZE){
-        -:   82:            cache[c] = cycles;
+      755:   81:        if (c < CACHESIZE){
+branch  0 taken 100% (fallthrough)
+branch  1 taken 0%
+      755:   82:            cache[c] = cycles;
         -:   83:        }
-        -:   84:        assert (cycles>0);
-        -:   85:        if (cycles>max)
-        -:   86:            max=cycles;
+      755:   84:        assert (cycles>0);
+branch  0 taken 0% (fallthrough)
+branch  1 taken 100%
+call    2 never executed
+      755:   85:        if (cycles>max)
+branch  0 taken 8% (fallthrough)
+branch  1 taken 92%
+       58:   86:            max=cycles;
         -:   87:    }
         -:   88:    
         -:   89:    // if x%2==0, >>1, else x=x+x/2+1
         -:   90:    //
         -:   91:    // <your code>
-        -:   92:    assert (max>0);
-        -:   93:    return max;}
-        -:   94:
-function _Z19collatz_eval_simpleii called 15 returned 100% blocks executed 83%
-       15:   95:int collatz_eval_simple (int i, int j){
-       15:   96:    int max =1;
-        -:   97:    int cur;
-       15:   98:    if (i>j){
-branch  0 taken 7% (fallthrough)
-branch  1 taken 93%
-        1:   99:        cur=j;
-        1:  100:        j=i;
-        1:  101:        i=cur;
-        -:  102:    }
-       15:  103:    assert (i>0);
+       15:   92:    assert (max>0);
 branch  0 taken 0% (fallthrough)
 branch  1 taken 100%
 call    2 never executed
-       15:  104:    assert (j< 1000000);
-branch  0 taken 0% (fallthrough)
-branch  1 taken 100%
+       15:   93:    return max;}
+        -:   94:
+function _Z19collatz_eval_simpleii called 0 returned 0% blocks executed 0%
+    #####:   95:int collatz_eval_simple (int i, int j){
+    #####:   96:    int max =1;
+        -:   97:    int cur;
+    #####:   98:    if (i>j){
+branch  0 never executed
+branch  1 never executed
+    #####:   99:        cur=j;
+    #####:  100:        j=i;
+    #####:  101:        i=cur;
+        -:  102:    }
+    #####:  103:    assert (i>0);
+branch  0 never executed
+branch  1 never executed
+call    2 never executed
+    #####:  104:    assert (j< 1000000);
+branch  0 never executed
+branch  1 never executed
 call    2 never executed
         -:  105:    
-       15:  106:    if (i <= j/2 +1){
-branch  0 taken 53% (fallthrough)
-branch  1 taken 47%
-        8:  107:        i=j/2+1;
+    #####:  106:    if (i <= j/2 +1){
+branch  0 never executed
+branch  1 never executed
+    #####:  107:        i=j/2+1;
         -:  108:    }
-       15:  109:    int cycles=1;
-      770:  110:    for (int c=i; c<=j; c++){
-branch  0 taken 98%
-branch  1 taken 2% (fallthrough)
-      755:  111:        cycles=1;
-      755:  112:        cur=c; //cur is the current value/ mover for the func
+    #####:  109:    int cycles=1;
+    #####:  110:    for (int c=i; c<=j; c++){
+branch  0 never executed
+branch  1 never executed
+    #####:  111:        cycles=1;
+    #####:  112:        cur=c; //cur is the current value/ mover for the func
         -:  113:        //loop for collatz
-    31291:  114:        while (cur!=1){
-branch  0 taken 98%
-branch  1 taken 2% (fallthrough)
-    29781:  115:            if ((cur%2) == 0){
-branch  0 taken 51% (fallthrough)
-branch  1 taken 49%
-    15160:  116:                cur /= 2;
-    15160:  117:                ++cycles;
+    #####:  114:        while (cur!=1){
+branch  0 never executed
+branch  1 never executed
+    #####:  115:            if ((cur%2) == 0){
+branch  0 never executed
+branch  1 never executed
+    #####:  116:                cur /= 2;
+    #####:  117:                ++cycles;
         -:  118:            }
         -:  119:            else{
-    14621:  120:                cur=cur+ (cur/2)+1; // (3n+1)/2
-    14621:  121:                cycles+=2;
+    #####:  120:                cur=cur+ (cur/2)+1; // (3n+1)/2
+    #####:  121:                cycles+=2;
         -:  122:            }
         -:  123:        }
-      755:  124:        assert (cycles>0);
-branch  0 taken 0% (fallthrough)
-branch  1 taken 100%
+    #####:  124:        assert (cycles>0);
+branch  0 never executed
+branch  1 never executed
 call    2 never executed
-      755:  125:        if (cycles>max)
-branch  0 taken 8% (fallthrough)
-branch  1 taken 92%
-       58:  126:            max=cycles;
+    #####:  125:        if (cycles>max)
+branch  0 never executed
+branch  1 never executed
+    #####:  126:            max=cycles;
         -:  127:    }
         -:  128:    
         -:  129:    // if x%2==0, >>1, else x=x+x/2+1
         -:  130:    //
         -:  131:    // <your code>
-       15:  132:    assert (max>0);
-branch  0 taken 0% (fallthrough)
-branch  1 taken 100%
+    #####:  132:    assert (max>0);
+branch  0 never executed
+branch  1 never executed
 call    2 never executed
-       15:  133:    return max;}
+    #####:  133:    return max;}
         -:  134:// -------------
         -:  135:// collatz_print
         -:  136:// -------------
