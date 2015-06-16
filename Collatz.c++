@@ -18,6 +18,9 @@
 
 using namespace std;
 
+int CACHESIZE = 100000;
+int cache [100000];
+
 // ------------
 // collatz_read
 // ------------
@@ -45,7 +48,55 @@ int collatz_eval (int i, int j) {
         i=cur;
     }
     assert (i>0);
-    assert (j< 100000);
+    assert (j< 1000000);
+    assert (CACHESIZE > 0);
+
+    if (i <= j/2 +1){
+        i=j/2+1;
+    }
+    int cycles=1;
+    for (int c=i; c<=j; c++){
+        cycles=1;
+        cur=c; //cur is the current value/ mover for the func
+        //loop for collatz
+        while (cur!=1){
+            if (cur < CACHESIZE && cache[cur]!= 0){
+                cycles += cache[cur] -1;
+                break;
+            }
+            else if ((cur%2) == 0){
+                cur /= 2;
+                ++cycles;
+            }
+            else{
+                cur=cur+ (cur/2)+1; // (3n+1)/2
+                cycles+=2;
+            }
+        }
+        if (c < CACHESIZE){
+            cache[c] = cycles;
+        }
+        assert (cycles>0);
+        if (cycles>max)
+            max=cycles;
+    }
+    
+    // if x%2==0, >>1, else x=x+x/2+1
+    //
+    // <your code>
+    assert (max>0);
+    return max;}
+
+int collatz_eval_simple (int i, int j){
+    int max =1;
+    int cur;
+    if (i>j){
+        cur=j;
+        j=i;
+        i=cur;
+    }
+    assert (i>0);
+    assert (j< 1000000);
     
     if (i <= j/2 +1){
         i=j/2+1;
@@ -75,7 +126,6 @@ int collatz_eval (int i, int j) {
     // <your code>
     assert (max>0);
     return max;}
-
 // -------------
 // collatz_print
 // -------------
