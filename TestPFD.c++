@@ -30,24 +30,17 @@ using namespace std;
 // ----
 
 TEST(PFDFixture, read) {
-    string s("1 10\n");
+    string s("5 1\n3 2 1 5\n");
     const pair<int, int> p = PFD_read(s);
     ASSERT_EQ( 1, p.first);
     ASSERT_EQ(10, p.second);}
 
-TEST(PFDFixture, read_same) {
-    string s("1 1\n");
+
+TEST(PFDFixture, read) {
+    string s("5 4\n3 2 1 5\n2 2 25 3\n4 1 3\n 5 1 1\n");
     const pair<int, int> p = PFD_read(s);
     ASSERT_EQ( 1, p.first);
-    ASSERT_EQ( 1, p.second);}
-
-TEST(PFDFixture, read_max) {
-    string s("1 2147483647\n");
-    const pair<int, int> p = PFD_read(s);
-    ASSERT_EQ( 1 , p.first);
-    ASSERT_EQ( 2147483647 , p.second);}
-
-
+    ASSERT_EQ(10, p.second);}
 
 
 // ----

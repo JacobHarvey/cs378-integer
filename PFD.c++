@@ -42,9 +42,6 @@ pair<int, int> PFD_read (const string& s) {
 // ------------
 
 int PFD_eval (int i, int j) {
-    if (!CACHE){
-        return PFD_eval_simple(i, j);
-    }
     //Set i as lower bound and j as uppper
     int max =1;
     int cur;
