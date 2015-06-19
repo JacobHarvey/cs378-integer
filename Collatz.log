@@ -1,0 +1,155 @@
+commit 699013c6bba9f9c17e2b85e2308b6b3756338e78
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Wed Jun 17 18:22:39 2015 -0500
+
+    final test for travis
+
+commit 088c55d9068d39df638744b328bf4226431f9d6a
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 23:33:34 2015 -0500
+
+    cache wasn't running until now fixed #10 fixed #13 fixed #8 fixed #3
+
+commit 80feb832f3ebc9e0f35ab784c6bc8e46f04174e3
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 23:26:39 2015 -0500
+
+    fixed #1 fixed #3 fixed #5 fixed  #8  fixed #10  fixed #16 fixed #12 fixed 14
+
+commit 9f87681ead958f994f6550f7f8b86fc45abc7634
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 23:04:12 2015 -0500
+
+    fixed #16 got runcollatz to run i think
+
+commit 45499d5cee7a16e05cf5a3c3a964bab6eecce6d7
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 22:19:10 2015 -0500
+
+    fixed #1 wrote all of the tests. i think. maybe
+
+commit 3cd3fb88d404387a8408c9949fd9e31bb172d65e
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 21:14:48 2015 -0500
+
+    fixed #15 passed sphere tests with time of .01
+
+commit 9c18ba213f4b44bd3e9d266678c964f35a4468bc
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 14:32:03 2015 -0500
+
+    fixed #14 added asserts to functions in Collatz.c++. Might need to add more later for cache
+
+commit e0763162fc236d0b85b5bc4ede05d01fffb3a7fa
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 13:42:38 2015 -0500
+
+    finished simple implementation of collatzeval() and got everything to run fixed #2 #13
+
+commit 20ddcbf7002316c1e5fe894dbf878d12a79e1411
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 12:59:23 2015 -0500
+
+    failed locally when valgrind output to testcollatz.out #13
+
+commit 32ced975bfdb5e1e72a9e377f6ba663ebdc08aea
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 12:26:50 2015 -0500
+
+    Fixed #11 i think i travis CI will work now? Fixed bug in Collatz.eval()
+
+commit e5ab827c14adfbf1c892566d01b79e2699ad11e1
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 12:19:08 2015 -0500
+
+    fixed semicolon
+
+commit 47395c255723538a31716994886c222d3f5b6ab8
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 01:26:10 2015 -0500
+
+    worked on git eval
+
+commit 5712be9da229554a9d2383f305225beb91ec907f
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 15 00:34:56 2015 -0500
+
+    copied the files and set up the code. Ran first test, runs, haven't changed any output/ implemented collatz yet. Testing travis CI
+
+commit 6f6735b57c9209ed9b3161dcad92eb96d2079403
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Mon Jun 8 12:05:32 2015 -0500
+
+    another commit
+
+commit 4195144d61f7ab8665ba0217fdce4f28b8376086
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Mon Jun 8 11:38:21 2015 -0500
+
+    another commit
+
+commit 7193fd1c1549453c8b2adf534a54b872a5ba9ec9
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 23:55:19 2015 -0500
+
+    another commit
+
+commit ee2d278b3b44b788b07e06f97a983545177b2a8b
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:54:48 2015 -0500
+
+    another commit
+
+commit 256dfc1fafe42f8828be379216189a7cc8d5b9f2
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:47:05 2015 -0500
+
+    another commit
+
+commit 479f0854e6fa8a0fb4d33f7f4d5ae382860f4985
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:35:17 2015 -0500
+
+    another commit
+
+commit a621d9eaf0be09b3be83c9199e6f49953f6d4c1e
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:28:01 2015 -0500
+
+    another commit
+
+commit e36e9182ff226ab8ee2eda221fd6888743006c9b
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:21:34 2015 -0500
+
+    another commit
+
+commit 763a9e2f10a05c799ad72e5687c577ef4471a735
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:18:36 2015 -0500
+
+    another commit
+
+commit 7086f3c1d470eee3f2357117b4846458a14e4155
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 18:03:54 2015 -0500
+
+    another commit
+
+commit 34baabbddfab542f345ac90f4170827008d614db
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 17:54:54 2015 -0500
+
+    another commit
+
+commit 20de09012ca02774ceef156c88abd0c6ca19de19
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 16:37:07 2015 -0500
+
+    another commit
+
+commit 652257f9d72d47c53aace403f36f8b23603a4db1
+Author: Glenn Downing <downing@cs.utexas.edu>
+Date:   Sun Jun 7 09:50:08 2015 -0500
+
+    first commit
