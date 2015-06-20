@@ -71,13 +71,36 @@ bool Graph::PFD_read (istream& r) {
 int Graph::PFD_eval () {
     //Set i as lower bound and j as uppper
     //initializing the runq
+
+    
+    for (int c=0; c<tasks; c++){
+        cout << freevector[c] << " ";
+    }
+    cout << endl;
+
+
     for (int c=1; c<tasks; c++)
             if (!freevector[c])
                 runq.push(c);
-    while (!runq.empty() && !stageq.empty()){
+
+
+    if(!runq.empty())
+    cout << " runq: " << runq.top() << " " << runq.size() << endl;
+
+    PFD_print (cout);    
+
+
+
+
+
+
+    cout << "  -------------------START -------  " << endl;
+
+    while (!runq.empty() || !stageq.empty()){
        while(!runq.empty()){
             int cur = runq.top();
             runq.pop();
+            cout << "    cur:    " << cur  << endl; 
             for (int i=0; i<tasks; i++){
                 if (adjMatrix [i][cur]){
                     adjMatrix[i][cur]=false;
@@ -85,7 +108,10 @@ int Graph::PFD_eval () {
                 }
             }
         }
-        PFD_print (cout);
+        
+ if(!stageq.empty())
+    cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
+
         while (!stageq.empty()){
             int cur =stageq.top();
             stageq.pop();
@@ -99,6 +125,12 @@ int Graph::PFD_eval () {
             if (ready)
                 runq.push(cur);
         }
+    
+    if(!runq.empty())
+    cout << " runq: " << runq.top() << " " << runq.size() << endl;
+
+       PFD_print (cout);
+    cout << " ----------------------- END ------- " << endl;
 
     }
 return 1;}
@@ -113,14 +145,7 @@ void Graph::PFD_print (ostream& w) {
 	cout << " PFD_print " << endl;
     assert (tasks > 0);
     assert (rules > 0);
-    int idx = 0;
-    
-    
-    for (int c=0; c<tasks; c++){
-        cout << freevector[c] << " ";
-    }
-    cout << endl;
-    
+    int idx = 0; 
     
 
     cout << "  " ;
@@ -137,16 +162,6 @@ void Graph::PFD_print (ostream& w) {
        cout << endl;
    }
    
-    cout << " runq: ";
-    for(vector<int>::iterator i = runq.begin() ; i != runq.end(); i++){
-    w<< " " << *i;
-    }
-    w<< endl;
-
-    cout << " stageq: " << stageq.top() << " " 
-
-
-
 }
 
 
