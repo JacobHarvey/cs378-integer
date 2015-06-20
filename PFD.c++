@@ -41,7 +41,7 @@ Graph::Graph(){
 // PFD_read
 // ------------
 bool Graph::PFD_read (istream& r) {
-	cout << " PFD_read " << endl;
+	// cout << " PFD_read " << endl;
 
     string s;
     int key;
@@ -73,34 +73,38 @@ int Graph::PFD_eval () {
     //initializing the runq
 
     
-    for (int c=0; c<tasks; c++){
-        cout << freevector[c] << " ";
-    }
-    cout << endl;
+    // for (int c=0; c<tasks; c++){
+    //     cout << freevector[c] << " ";
+    // }
+    // cout << endl;
 
 
     for (int c=1; c<tasks; c++)
-            if (!freevector[c])
-                runq.push(c);
+    {
+        if (!freevector[c]){            
+            runq.push(c);
+        }else{
+            freevector[c]=false;
+        }
+   }
+
+    // if(!runq.empty())
+    // cout << " runq: " << runq.top() << " " << runq.size() << endl;
+
+    // PFD_print (cout);    
 
 
-    if(!runq.empty())
-    cout << " runq: " << runq.top() << " " << runq.size() << endl;
-
-    PFD_print (cout);    
 
 
 
 
-
-
-    cout << "  -------------------START -------  " << endl;
+    // cout << "  -------------------START -------  " << endl;
 
     while (!runq.empty() || !stageq.empty()){
        while(!runq.empty()){
             int cur = runq.top();
             runq.pop();
-            cout << "    cur:    " << cur  << endl; 
+            cout <<  cur  << " ";
             for (int i=0; i<tasks; i++){
                 if (adjMatrix [i][cur]){
                     adjMatrix[i][cur]=false;
@@ -110,7 +114,7 @@ int Graph::PFD_eval () {
         }
         
  if(!stageq.empty())
-    cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
+    // cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
 
         while (!stageq.empty()){
             int cur =stageq.top();
@@ -122,17 +126,20 @@ int Graph::PFD_eval () {
                     break;
                 }
             }
-            if (ready)
+            if (ready && freevector[cur]==false){
+                freevector[cur]=true;
                 runq.push(cur);
+            }
         }
     
-    if(!runq.empty())
-    cout << " runq: " << runq.top() << " " << runq.size() << endl;
+    // if(!runq.empty())
+    // cout << " runq: " << runq.top() << " " << runq.size() << endl;
 
-       PFD_print (cout);
-    cout << " ----------------------- END ------- " << endl;
+    //    PFD_print (cout);
+    // cout << " ----------------------- END ------- " << endl;
 
     }
+    cout<< endl;
 return 1;}
 
 
@@ -142,7 +149,7 @@ return 1;}
 // -------------
 
 void Graph::PFD_print (ostream& w) {
-	cout << " PFD_print " << endl;
+	// cout << " PFD_print " << endl;
     assert (tasks > 0);
     assert (rules > 0);
     int idx = 0; 
@@ -170,9 +177,9 @@ void Graph::PFD_print (ostream& w) {
 // -------------
 
 void PFD_solve (istream& r, ostream& w) {
-	cout << " PFD_solve " << endl;
+	// cout << " PFD_solve " << endl;
         Graph a(r);
         a.PFD_read(r);
         a.PFD_eval();
-        a.PFD_print(w);
+        // a.PFD_print(w);
 }

@@ -13,152 +13,270 @@
     #define NDEBUG
 #endif
 
+// --------------------------
+// projects/PFD/PFD.h
+// Copyright (C) 2015
+// Glenn P. Downing
+// --------------------------
+
 // --------
 // includes
 // --------
 
+
 #include <cassert>  // assert
-#include <iostream> // endl, istream, ostream
 #include <sstream>  // istringstream
-#include <string>   // getline, string
-#include <utility>  // make_pair, pair
-int CACHESIZE = 100000;
-#define CACHE true
-#ifdef CACHE
-int cache [100000];
-#endif
+#include <iostream> // istream, ostream
+#include <string>   // string
+#include <utility>  // pair
+#include "map"
+#include "list"
+#include "queue"
+#include "stack"
 
 using namespace std;
-pair<int, int> PFD_read (const string& s); 
-int PFD_eval (int i, int j);
-void PFD_print (ostream& w, int i, int j, int v);
-void PFD_solve (istream& r, ostream& w); 
 
 
-// ----
-// main
-// ----
 
-int main () {
-    using namespace std;
-    PFD_solve(cin, cout);
-    return 0;}
+struct Graph{
+int tasks;
+int rules;
 
-pair<int, int> PFD_read (const string& s) {
-    istringstream sin(s);
-    int i;
-    int j;
-    sin >> i >> j;
-    assert (i > 0);
-    assert (j > 0); 
-    return make_pair(i, j);}
+vector<vector<bool> > adjMatrix;
+priority_queue <int, vector<int>, greater<int> > runq;
+priority_queue <int, vector<int>, greater<int> > stageq;
+vector<bool> freevector;
+
+public:
+
+Graph();
+Graph(istream& r);
+
+// ------------
+// PFD_read
+// ------------
+
+/**
+ * read two ints
+ * @param s a string
+ * @return a pair of ints, representing the beginning and end of a range, [i, j]
+ */
+bool PFD_read (istream& r);
 
 // ------------
 // PFD_eval
 // ------------
 
-int PFD_eval (int i, int j) {
-    //Set i as lower bound and j as uppper
-    int max =1;
-    int cur;
-    if (i > j){
-        cur = j;
-        j = i;
-        i = cur;
-    }
-    assert (i > 0);
-    assert (j < 1000000);
-    assert (CACHESIZE > 0);
-    if (i <= j/2 +1){
-        i= j/2 + 1;
-    }
-    int cycles=1;
-    for (int c = i; c <= j; c++){
-        cycles = 1;
-        cur = c; //cur is the current value/ mover for the func
-        while (cur!=1){
-            //test to see if cache
-            if (cur < CACHESIZE && cache[cur]!= 0){
-                cycles += cache[cur] -1;
-                break;
-            }
-            else if ((cur%2) == 0){
-                cur /= 2;
-                ++cycles;
-            }
-            else{
-                cur= cur + (cur/2) + 1; // (3n+1)/2
-                cycles += 2;
-            }
-        }
-        //add to cache
-        if (c < CACHESIZE){
-            cache[c] = cycles;
-        }
-        assert (cycles > 0);
-        if (cycles > max)
-            max = cycles;
-    }
-
-    assert (max > 0);
-    return max;}
+/**
+ * @param i the beginning of the range, inclusive
+ * @param j the end       of the range, inclusive
+ * @return the max cycle length of the range [i, j]
+ */
+int PFD_eval ();
 
 // -------------
 // PFD_print
 // -------------
 
-void PFD_print (ostream& w, int i, int j, int v) {
-    assert (i > 0);
-    assert (j > 0);
-    assert (v > 0);
-    w << i << " " << j << " " << v << endl;}
+/**
+ * print three ints
+ * @param w an ostream
+ * @param i the beginning of the range, inclusive
+ * @param j the end       of the range, inclusive
+ * @param v the max cycle length
+ */
+void PFD_print (ostream& w);
+
+};
+
+// -------------
+// PFD_solve
+// -------------
+
+/**
+ * @param r an istream
+ * @param w an ostream
+ */
+void PFD_solve (istream& r, ostream& w);
+
+ 
+
+
+Graph::Graph(){
+  cout << "Initiated graph" <<endl;
+ }
+
+ Graph::Graph(istream& r){
+    r >> tasks >> rules;
+    ++tasks;
+    
+    freevector= vector<bool>(tasks, false);
+    adjMatrix = vector<vector<bool> >(tasks,vector<bool>(tasks,0));
+ }
+
+// ------------
+// PFD_read
+// ------------
+bool Graph::PFD_read (istream& r) {
+    // cout << " PFD_read " << endl;
+
+    string s;
+    int key;
+    int task;
+    int values=0;
+
+    for(int i=0; i< rules; i++){
+          getline(r,s);
+          istringstream sin(s);
+          sin >> key;
+          sin >> values;
+          int iter = 0;
+          while(sin >> task && iter < values){
+//            cout << "  < " << key << " " << values  << " " << task << endl;
+              adjMatrix[key][task]=true;
+              ++iter;
+          }
+          if (values!=0){
+            freevector[key]=true;
+          }
+    }
+    return true;
+}
+
+// ------------
+// PFD_eval
+// ------------
+
+int Graph::PFD_eval () {
+    //Set i as lower bound and j as uppper
+    //initializing the runq
+
+    
+    // for (int c=0; c<tasks; c++){
+    //     cout << freevector[c] << " ";
+    // }
+    // cout << endl;
+    queue<int> results;
+
+    for (int c=1; c<tasks; c++)
+    {
+        if (!freevector[c]){            
+            runq.push(c);
+        }else{
+            freevector[c]=false;
+        }
+   }
+
+    // if(!runq.empty())
+    // cout << " runq: " << runq.top() << " " << runq.size() << endl;
+
+    // PFD_print (cout);    
+
+
+
+
+
+
+    // cout << "  -------------------START -------  " << endl;
+
+    while (!runq.empty() || !stageq.empty()){
+       while(!runq.empty()){
+            int cur = runq.top();
+            runq.pop();
+            results.push(cur);
+            for (int i=0; i<tasks; i++){
+                if (adjMatrix [i][cur]){
+                    adjMatrix[i][cur]=false;
+                    stageq.push(i);
+                }
+            }
+        }
+        
+ if(!stageq.empty())
+    // cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
+
+        while (!stageq.empty()){
+            int cur =stageq.top();
+            stageq.pop();
+            bool ready=true;
+            for (int i=0; i<tasks; i++){
+                if (adjMatrix [cur][i]){
+                    ready=false;
+                    break;
+                }
+            }
+            if (ready && freevector[cur]==false){
+                freevector[cur]=true;
+                runq.push(cur);
+            }
+        }
+    
+    // if(!runq.empty())
+    // cout << " runq: " << runq.top() << " " << runq.size() << endl;
+
+    //    PFD_print (cout);
+    // cout << " ----------------------- END ------- " << endl;
+
+    }
+
+    while(!results.empty()){
+        cout << results.front();
+        results.pop();
+        if(!results.empty())
+            cout << " ";     
+    }
+    cout<< endl;
+
+
+
+return 1;}
+
+
+
+// -------------
+// PFD_print
+// -------------
+
+void Graph::PFD_print (ostream& w) {
+    // cout << " PFD_print " << endl;
+    assert (tasks > 0);
+    assert (rules > 0);
+    int idx = 0; 
+    
+
+    cout << "  " ;
+    for(int i =0; i< tasks;i++){
+        cout <<  i << " ";
+    }
+    cout << endl;
+
+    for(vector<vector<bool> >::iterator i = adjMatrix.begin(); i!=adjMatrix.end(); i++){
+        w << idx ++;
+
+       for(vector<bool>::iterator j = i->begin(); j!= i->end(); j++){
+          w << " " << *j;}
+       cout << endl;
+   }
+   
+}
+
 
 // -------------
 // PFD_solve
 // -------------
 
 void PFD_solve (istream& r, ostream& w) {
-    string s;
-    while (getline(r, s)) {
-        const pair<int, int> p = PFD_read(s);
-        const int            i = p.first;
-        const int            j = p.second;
-        const int            v = PFD_eval(i, j);
-        PFD_print(w, i, j, v);}}
-/*
-% g++-4.8 -pedantic -std=c++11 -Wall PFD.c++ RunPFD.c++ -o RunPFD
+    // cout << " PFD_solve " << endl;
+        Graph a(r);
+        a.PFD_read(r);
+        a.PFD_eval();
+        // a.PFD_print(w);
+}
 
 
 
-% cat RunPFD.in
-1 10
-100 200
-201 210
-900 1000
 
-
-
-% RunPFD < RunPFD.in > RunPFD.out
-
-
-
-% cat RunPFD.out
-1 10 1
-100 200 1
-201 210 1
-900 1000 1
-
-
-
-% doxygen -g
-// That creates the file Doxyfile.
-// Make the following edits to Doxyfile.
-// EXTRACT_ALL            = YES
-// EXTRACT_PRIVATE        = YES
-// EXTRACT_STATIC         = YES
-
-
-
-% doxygen Doxyfile
-// That creates the directory html/.
-*/
+int main () {
+    using namespace std;
+    PFD_solve(cin, cout);
+    return 0;}
