@@ -28,7 +28,9 @@ int tasks=0;
 int rules=0;
 
 vector<vector<bool>> adjMatrix;
-priority_queue<int, list<int>, greater<int>> pQueue;
+priority_queue <int, vector<int>, greater<int>> runq;
+priority_queue <int, vector<int>, greater<int>> stageq;
+vector<bool> freevector;
 
 public:
 

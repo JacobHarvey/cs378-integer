@@ -13,20 +13,15 @@
 #include <sstream>  // istringstream
 #include <string>   // getline, string
 #include <utility>  // make_pair, pair
-#include <map>
+#include <map>      // adjMatrix
 #include <list>
+#include <vector>   // freevector
+#include <queue>    // priority_queue runq, stage q
 
 
 #include "PFD.h"
 
 using namespace std;
-
-int CACHESIZE = 100000;
-#define CACHE true
-#ifdef CACHE
-int cache [100000];
-#endif
-
  
 
 
@@ -36,6 +31,9 @@ Graph::Graph(){
 
  Graph::Graph(istream& r){
     r >> tasks >> rules;
+    ++tasks;
+    
+    freevector= vector<bool>(tasks, false);
     adjMatrix = vector<vector<bool>>(tasks,vector<bool>(tasks,0));
  }
 
@@ -49,6 +47,7 @@ bool Graph::PFD_read (istream& r) {
     int key;
     int task;
     int values=0;
+
     for(int i=0; i< rules; i++){
           getline(r,s);
           istringstream sin(s);
@@ -57,6 +56,9 @@ bool Graph::PFD_read (istream& r) {
           while(sin >> task){
 //        	  cout << "  < " << key << " " << values  << " " << task << endl;
         	  adjMatrix[key][task]=true;
+          }
+          if (values!=0){
+            freevector[key]=true;
           }
     }
     return true;
@@ -68,6 +70,37 @@ bool Graph::PFD_read (istream& r) {
 
 int Graph::PFD_eval () {
     //Set i as lower bound and j as uppper
+    //initializing the runq
+    for (int c=1; c<tasks; c++)
+            if (!freevector[c])
+                runq.push(c);
+    while (!runq.empty() && !stageq.empty()){
+       while(!runq.empty()){
+            int cur = runq.top();
+            runq.pop();
+            for (int i=0; i<tasks; i++){
+                if (adjMatrix [i][cur]){
+                    adjMatrix[i][cur]=false;
+                    stageq.push(i);
+                }
+            }
+        }
+        PFD_print (cout);
+        while (!stageq.empty()){
+            int cur =stageq.top();
+            stageq.pop();
+            bool ready=true;
+            for (int i=0; i<tasks; i++){
+                if (adjMatrix [cur][i]){
+                    ready=false;
+                    break;
+                }
+            }
+            if (ready)
+                runq.push(cur);
+        }
+
+    }
 return 1;}
 
 
@@ -81,14 +114,20 @@ void Graph::PFD_print (ostream& w) {
     assert (tasks > 0);
     assert (rules > 0);
     int idx = 0;
-    string firstLine;
-    firstLine += " " ;
-    for(int i =0; i< tasks;i++){
-    	firstLine += i;
-    	firstLine += " ";
+    
+    
+    for (int c=0; c<tasks; c++){
+        cout << freevector[c] << " ";
     }
+    cout << endl;
+    
+    
 
-    cout << firstLine <<  endl;
+    cout << "  " ;
+    for(int i =0; i< tasks;i++){
+    	cout <<  i << " ";
+    }
+    cout << endl;
 
     for(vector<vector<bool>>::iterator i = adjMatrix.begin(); i!=adjMatrix.end(); i++){
         w << idx ++;
@@ -97,6 +136,17 @@ void Graph::PFD_print (ostream& w) {
           w << " " << *j;}
        cout << endl;
    }
+   
+    cout << " runq: ";
+    for(vector<int>::iterator i = runq.begin() ; i != runq.end(); i++){
+    w<< " " << *i;
+    }
+    w<< endl;
+
+    cout << " stageq: " << stageq.top() << " " 
+
+
+
 }
 
 
