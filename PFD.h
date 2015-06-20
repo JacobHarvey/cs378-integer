@@ -14,8 +14,26 @@
 #include <iostream> // istream, ostream
 #include <string>   // string
 #include <utility>  // pair
+#include "map"
+#include "list"
+#include "queue"
+#include "stack"
 
 using namespace std;
+
+
+
+struct Graph{
+int tasks=0;
+int rules=0;
+
+vector<vector<bool>> adjMatrix;
+priority_queue<int, list<int>, greater<int>> pQueue;
+
+public:
+
+Graph();
+Graph(istream& r);
 
 // ------------
 // PFD_read
@@ -26,7 +44,7 @@ using namespace std;
  * @param s a string
  * @return a pair of ints, representing the beginning and end of a range, [i, j]
  */
-pair<int, int> PFD_read (const string& s);
+bool PFD_read (istream& r);
 
 // ------------
 // PFD_eval
@@ -37,7 +55,7 @@ pair<int, int> PFD_read (const string& s);
  * @param j the end       of the range, inclusive
  * @return the max cycle length of the range [i, j]
  */
-int PFD_eval (int i, int j);
+int PFD_eval ();
 
 // -------------
 // PFD_print
@@ -50,7 +68,9 @@ int PFD_eval (int i, int j);
  * @param j the end       of the range, inclusive
  * @param v the max cycle length
  */
-void PFD_print (ostream& w, int i, int j, int v);
+void PFD_print (ostream& w);
+
+};
 
 // -------------
 // PFD_solve
@@ -61,5 +81,4 @@ void PFD_print (ostream& w, int i, int j, int v);
  * @param w an ostream
  */
 void PFD_solve (istream& r, ostream& w);
-
 #endif // PFD_h

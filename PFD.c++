@@ -28,36 +28,36 @@ int cache [100000];
 #endif
 
  
-struct Graph{
-int tasks=0;
-int rules=0;
-map<int, list<int>> _map;
 
-Graph(){
+
+Graph::Graph(){
   cout << "Initiated graph" <<endl;
  }
- Graph(string s){
-    istringstream sin(s);
-    sin >> tasks >> rules; 
+
+ Graph::Graph(istream& r){
+    r >> tasks >> rules;
+    adjMatrix = vector<vector<bool>>(tasks,vector<bool>(tasks,0));
  }
 
 // ------------
 // PFD_read
 // ------------
-bool PFD_read (istream& r) {
+bool Graph::PFD_read (istream& r) {
+	cout << " PFD_read " << endl;
+
     string s;
     int key;
     int task;
+    int values=0;
     for(int i=0; i< rules; i++){
           getline(r,s);
           istringstream sin(s);
           sin >> key;
+          sin >> values;
           while(sin >> task){
-
-            _map[key].push_back(task);
-          
+//        	  cout << "  < " << key << " " << values  << " " << task << endl;
+        	  adjMatrix[key][task]=true;
           }
-          assert(s.length() > 0);
     }
     return true;
 }
@@ -66,7 +66,7 @@ bool PFD_read (istream& r) {
 // PFD_eval
 // ------------
 
-int PFD_eval () {
+int Graph::PFD_eval () {
     //Set i as lower bound and j as uppper
 return 1;}
 
@@ -76,17 +76,28 @@ return 1;}
 // PFD_print
 // -------------
 
-void PFD_print (ostream& w) {
+void Graph::PFD_print (ostream& w) {
+	cout << " PFD_print " << endl;
     assert (tasks > 0);
     assert (rules > 0);
-    for(map<int,list<int>>::iterator i = _map.begin(); i!=_map.end(); i++){
-        w << i->first;
-       for(list<int>::iterator j = i->second.begin(); j!=i->second.end(); j++){
+    int idx = 0;
+    string firstLine;
+    firstLine += " " ;
+    for(int i =0; i< tasks;i++){
+    	firstLine += i;
+    	firstLine += " ";
+    }
+
+    cout << firstLine <<  endl;
+
+    for(vector<vector<bool>>::iterator i = adjMatrix.begin(); i!=adjMatrix.end(); i++){
+        w << idx ++;
+
+       for(vector<bool>::iterator j = i->begin(); j!= i->end(); j++){
           w << " " << *j;}
        cout << endl;
-       }
-    }
-};
+   }
+}
 
 
 // -------------
@@ -94,11 +105,9 @@ void PFD_print (ostream& w) {
 // -------------
 
 void PFD_solve (istream& r, ostream& w) {
-    string s;
-    while (getline(r, s)) {
-        Graph a(s);
+	cout << " PFD_solve " << endl;
+        Graph a(r);
         a.PFD_read(r);
         a.PFD_eval();
         a.PFD_print(w);
-    }
 }
