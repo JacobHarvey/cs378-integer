@@ -53,9 +53,11 @@ bool Graph::PFD_read (istream& r) {
           istringstream sin(s);
           sin >> key;
           sin >> values;
-          while(sin >> task){
+          int iter = 0;
+          while(sin >> task && iter < values){
 //        	  cout << "  < " << key << " " << values  << " " << task << endl;
         	  adjMatrix[key][task]=true;
+              ++iter;
           }
           if (values!=0){
             freevector[key]=true;
@@ -93,11 +95,6 @@ int Graph::PFD_eval () {
 
     // PFD_print (cout);    
 
-
-
-
-
-
     // cout << "  -------------------START -------  " << endl;
 
     while (!runq.empty() || !stageq.empty()){
@@ -113,9 +110,9 @@ int Graph::PFD_eval () {
             }
         }
         
- if(!stageq.empty())
+ //if(!stageq.empty())
     // cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
-
+/*
         while (!stageq.empty()){
             int cur =stageq.top();
             stageq.pop();
@@ -131,7 +128,7 @@ int Graph::PFD_eval () {
                 runq.push(cur);
             }
         }
-    
+*/    
     // if(!runq.empty())
     // cout << " runq: " << runq.top() << " " << runq.size() << endl;
 
@@ -139,6 +136,15 @@ int Graph::PFD_eval () {
     // cout << " ----------------------- END ------- " << endl;
 
     }
+
+    while(!results.empty()){
+        cout << results.front();
+        results.pop();
+        if(!results.empty())
+            cout << " ";     
+    }
+
+
     cout<< endl;
 return 1;}
 

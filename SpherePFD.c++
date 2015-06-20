@@ -43,6 +43,7 @@ int tasks;
 int rules;
 
 vector<vector<bool> > adjMatrix;
+queue<int> results;
 priority_queue <int, vector<int>, greater<int> > runq;
 priority_queue <int, vector<int>, greater<int> > stageq;
 vector<bool> freevector;
@@ -156,8 +157,7 @@ int Graph::PFD_eval () {
     //     cout << freevector[c] << " ";
     // }
     // cout << endl;
-    queue<int> results;
-
+    
     for (int c=1; c<tasks; c++)
     {
         if (!freevector[c]){            
@@ -192,7 +192,7 @@ int Graph::PFD_eval () {
             }
         }
         
- if(!stageq.empty())
+ //if(!stageq.empty())
     // cout << " stageq: "<< stageq.top() << " " << stageq.size() << endl;       
 
         while (!stageq.empty()){
