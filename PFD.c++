@@ -22,7 +22,7 @@
  *  For simplicity we represent each task by an integer number from <b>1,2,...,N</b> (where \b N is the total number of tasks). The first line of input specifies the number \b N of tasks and the number \bM of rules, such that \bN leq 100,; Mleq 100.
  *  The rest of the input consists of \bM rules, one in each line, specifying dependencies using the following syntax:
  *  <b> T_0    k    T_1    T_2    ...    T_k</b>
- *  This rule means that task number \bT_0 depends on \bk tasks <b>T_1, T_2, ... T_k<\b> (we say that task \bT_0 is the target and <b>T_1 ... T_k<\b> are dependents).
+ *  This rule means that task number \bT_0 depends on \bk tasks <b>T_1, T_2, ... T_k</b> (we say that task \bT_0 is the target and <b>T_1 ... T_k<\b> are dependents).
  *  Note that tasks numbers are separated by single spaces and that rules end with a newline. Rules can appear in any order, but each task can appear as target only once.
  *  Your program can assume that there are no circular dependencies in the rules, i.e. no task depends directly or indirectly on itself.
  *  Output
