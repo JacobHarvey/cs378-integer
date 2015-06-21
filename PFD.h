@@ -26,13 +26,14 @@ using namespace std;
 
 
 struct Graph{
-int tasks=0;
-int rules=0;
+int tasks;
+int rules;
 
-vector<vector<bool>> adjMatrix;
+
+vector<vector<bool> > adjMatrix;
 queue<int> results;
-priority_queue <int, vector<int>, greater<int>> runq;
-priority_queue <int, vector<int>, greater<int>> stageq;
+priority_queue <int, vector<int>, greater<int> > runq;
+priority_queue <int, vector<int>, greater<int> > stageq;
 vector<bool> freevector;
 
 public:
@@ -49,7 +50,7 @@ Graph(istream& r);
  * @param s a string
  * @return a pair of ints, representing the beginning and end of a range, [i, j]
  */
-bool PFD_read (istream& r);
+void PFD_read (istream& r);
 
 // ------------
 // PFD_eval
@@ -60,7 +61,7 @@ bool PFD_read (istream& r);
  * @param j the end       of the range, inclusive
  * @return the max cycle length of the range [i, j]
  */
-int PFD_eval ();
+bool PFD_eval ();
 
 // -------------
 // PFD_print

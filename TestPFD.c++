@@ -33,15 +33,15 @@ TEST(PFDFixture, read1) {
     istringstream s("5 1\n3 2 1 5\n");
 
     Graph g(s);
-    bool valid = g.PFD_read(s);
-    ASSERT_TRUE(valid);
+//    bool valid = g.PFD_read(s);
+//    ASSERT_TRUE(valid);
 }
 
 
 TEST(PFDFixture, read2) {
     istringstream s("5 4\n3 2 1 5\n2 2 25 3\n4 1 3\n 5 1 1\n");
     Graph g(s);
-    ASSERT_TRUE(g.PFD_read(s));
+//    ASSERT_TRUE(g.PFD_read(s));
 }
 
 
@@ -51,9 +51,9 @@ TEST(PFDFixture, read2) {
 
 TEST(PFDFixture, eval_1) {
 //    const int v = PFD_eval(1, 10);
-    istringstream "5 4\n3 2 1 5\n2 3 5 3 4\n4 1 3\n5 1 1\n";
-    
-    ASSERT_EQ(20, v);}
+//    istringstream "5 4\n3 2 1 5\n2 3 5 3 4\n4 1 3\n5 1 1\n";
+//    ASSERT_EQ(20, v);
+}
 
 TEST(PFDFixture, eval_2) {
 	const int v = 20;
@@ -91,7 +91,8 @@ TEST(PFDFixture, print) {
     ostringstream w;
 
 //    PFD_print(w, 1, 10, 20);
-    ASSERT_EQ("1 10 20\n", w.str());}
+    ASSERT_EQ("1 10 20\n", w.str());
+}
 
 TEST(PFDFixture, print_2) {
     ostringstream w;
@@ -104,24 +105,36 @@ TEST(PFDFixture, print_2) {
 // solve
 // -----
 
-TEST(PFDFixture, solve) {
-    istringstream r ("5 4\n3 2 1 5\n2 3 5 3 4\n4 1 3\n5 1 1\n");
+
+TEST(PFDFixture, solve1) {
+    istringstream r ("5 4\n1 3 2 3 4\n2 2 3 4\n3 1 4\n4 0");
     ostringstream w;
     PFD_solve(r, w);
-    ASSERT_EQ("1 5 3 2 4", w.str());}
-
-
-TEST(PFDFixture, solve_2) {
-    istringstream r("4 2\n1 1 4\n2 1 3");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("3 2 4 1\n", w.str());}
+    ASSERT_EQ("4 5 3 2 1\n", w.str());}
 
 TEST(PFDFixture, solve2) {
-    istringstream r("1                            10\n100     200\n201     210\n900          1000\n");
+    istringstream r ("6 5\n1 4 2 3 4 5\n2 3 3 4 5\n3 2 4 5\n4 1 5\n5 0 ");
     ostringstream w;
     PFD_solve(r, w);
-    ASSERT_EQ("1 10 20\n100 200 125\n201 210 89\n900 1000 174\n", w.str());}
+    ASSERT_EQ("5 6 4 3 2 1\n", w.str());}
+
+TEST(PFDFixture, solve3) {
+    istringstream r ("7 6\n1 5 2 3 4 5 6\n2 4 3 4 5 6\n3 3 4 5 6\n4 2 5 6\n5 1 6\n6 0");
+    ostringstream w;
+    PFD_solve(r, w);
+    ASSERT_EQ("6 7 5 4 3 2 1\n", w.str());}
+
+TEST(PFDFixture, solve4) {
+    istringstream r ("8 7\n1 6 2 3 4 5 6 7\n2 5 3 4 5 6 7\n3 4 4 5 6 7\n4 3 5 6 7\n5 2 6 7\n6 1 7");
+    ostringstream w;
+    PFD_solve(r, w);
+    ASSERT_EQ("7 8 6 5 4 3 2 1\n", w.str());}
+
+TEST(PFDFixture, solve5) {
+    istringstream r ("8 7\n1 6 2 3 4 5 6 7\n2 5 3 4 5 6 7\n3 4 4 5 6 7\n\n4 3 5 6 7\n5 2 6 7\n6 1 7\n7 0");
+    ostringstream w;
+    PFD_solve(r, w);
+    ASSERT_EQ("7 8 6 5 4 3 2 1\n", w.str());}
 
 
 /*
