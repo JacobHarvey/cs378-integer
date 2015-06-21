@@ -1,8 +1,42 @@
-// ----------------------------
-// projects/PFD/PFD.c++
-// Copyright (C) 2015
-// Glenn P. Downing
-// ----------------------------
+/** \file PFD.c++
+ *   Main PFD file containing.
+ *  Without the worlds end.
+ */
+
+
+/*! \mainpage CS371P PFD
+ *
+ * \section intro_sec Introduction
+ *
+ *
+ * "Background:
+ * Project managers, such as the UNIX utility make, are used to maintain large software projects made up from many components. Users write a project file specifying which components (called tasks) depend on others and the project manager can automatically update the components in the correct order. ."
+ * http://www.spoj.com/problems/PROBTNPO/
+ * \section time_est Time
+ * Estimate: 8 hours
+ * Actual: 10 hours
+ *
+ * \section install_sec The Problem
+ *  Write a program that reads a project file and outputs the order in which the tasks should be performed
+ *  Input
+ *  For simplicity we represent each task by an integer number from <b>1,2,...,N</b> (where \b N is the total number of tasks). The first line of input specifies the number \b N of tasks and the number \bM of rules, such that \bN leq 100,; Mleq 100.
+ *  The rest of the input consists of \bM rules, one in each line, specifying dependencies using the following syntax:
+ *  <b> T_0    k    T_1    T_2    ...    T_k</b>
+ *  This rule means that task number \bT_0 depends on \bk tasks <b>T_1, T_2, ... T_k<\b> (we say that task \bT_0 is the target and <b>T_1 ... T_k<\b> are dependents).
+ *  Note that tasks numbers are separated by single spaces and that rules end with a newline. Rules can appear in any order, but each task can appear as target only once.
+ *  Your program can assume that there are no circular dependencies in the rules, i.e. no task depends directly or indirectly on itself.
+ *  Output
+ *  The output should be a single line with the permutation of the tasks \b1ldots N\b to be performed, ordered by dependencies (i.e. no task should appear before others that it depends on).
+ *  To avoid ambiguity in the output, tasks that do not depend on each other should be ordered by their number (lower numbers first).
+ *
+ *
+ *
+ *
+ *
+ *
+ *
+ */
+
 
 // --------
 // includes
@@ -71,6 +105,7 @@ bool Graph::PFD_eval () {
     //initializing the runq
     //freevector has 0 in it, but should be ignored since tasks start at number 1, need <=, tasks=100, we need to run vector[100]
     //if freevector[c]==false, it has no dependencies
+	if(tasks == 0 || rules == 0 ) return false;
 
     for (int c=1; c<tasks; c++)
     {

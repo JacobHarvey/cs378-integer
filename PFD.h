@@ -24,19 +24,20 @@
 using namespace std;
 
 
-
 struct Graph{
-int tasks;
-int rules;
-
-
-vector<vector<bool> > adjMatrix;
-queue<int> results;
-priority_queue <int, vector<int>, greater<int> > runq;
-priority_queue <int, vector<int>, greater<int> > stageq;
-vector<bool> freevector;
 
 public:
+
+	int tasks;
+	int rules;
+
+
+	vector<vector<bool> > adjMatrix;
+	queue<int> results;
+	priority_queue <int, vector<int>, greater<int> > runq;
+	priority_queue <int, vector<int>, greater<int> > stageq;
+	vector<bool> freevector;
+
 
 Graph();
 Graph(istream& r);
