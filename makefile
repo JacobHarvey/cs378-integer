@@ -40,9 +40,7 @@ clean:
 	rm -f *.gcno
 	rm -f *.gcov
 	rm -f RunPFD
-	rm -f RunPFD.out
 	rm -f TestPFD
-	rm -f TestPFD.out
 
 config:
 	git config -l
