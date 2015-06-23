@@ -1,9 +1,9 @@
 FILES :=                              \
     .travis.yml                       \
-    PFD-tests/EID-RunPFD.in   \
-    PFD-tests/EID-RunPFD.out  \
-    PFD-tests/EID-TestPFD.c++ \
-    PFD-tests/EID-TestPFD.out \
+    PFD-tests/jlh5585-RunPFD.in   \
+    PFD-tests/jlh5585-RunPFD.out  \
+    PFD-tests/jlh5585-TestPFD.c++ \
+    PFD-tests/jlh5585-TestPFD.out \
     PFD.c++                       \
     PFD.h                         \
     PFD.log                       \
