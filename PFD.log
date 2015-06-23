@@ -1,3 +1,15 @@
+commit ee75396b9479b2256494238a124a2e284412b31b
+Author: Marek <marek.bejda@gmail.com>
+Date:   Tue Jun 23 10:19:26 2015 -0500
+
+    Final change to makefile
+
+commit 9ce4bdd8a2f862b4f207845114ef6d855c69ea90
+Author: Marek <marek.bejda@gmail.com>
+Date:   Tue Jun 23 10:18:23 2015 -0500
+
+    Tested on CS machine
+
 commit c005dcd9599189eec85af565b11bbcad9c881756
 Author: Marek5050 <marek.bejda@gmail.com>
 Date:   Tue Jun 23 10:10:09 2015 -0500
