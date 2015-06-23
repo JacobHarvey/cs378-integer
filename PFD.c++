@@ -29,12 +29,6 @@
  *  The output should be a single line with the permutation of the tasks \b1ldots N\b to be performed, ordered by dependencies (i.e. no task should appear before others that it depends on).
  *  To avoid ambiguity in the output, tasks that do not depend on each other should be ordered by their number (lower numbers first).
  *
- *
- *
- *
- *
- *
- *
  */
 
 
