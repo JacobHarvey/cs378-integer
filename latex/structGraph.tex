@@ -1,0 +1,231 @@
+\hypertarget{structGraph}{\section{\-Graph \-Struct \-Reference}
+\label{structGraph}\index{\-Graph@{\-Graph}}
+}
+
+
+{\ttfamily \#include $<$\-P\-F\-D.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}{\-Graph} ()
+\item 
+\hyperlink{structGraph_a027cae955d12fe3635094c8a6e91880d}{\-Graph} (istream \&r)
+\item 
+void \hyperlink{structGraph_a07988362cfd085560a746c1e1e4604df}{\-P\-F\-D\-\_\-read} (istream \&r)
+\item 
+bool \hyperlink{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\-P\-F\-D\-\_\-eval} ()
+\item 
+void \hyperlink{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\-P\-F\-D\-\_\-print} (ostream \&w)
+\item 
+\hyperlink{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}{\-Graph} ()
+\item 
+\hyperlink{structGraph_a027cae955d12fe3635094c8a6e91880d}{\-Graph} (istream \&r)
+\item 
+void \hyperlink{structGraph_a07988362cfd085560a746c1e1e4604df}{\-P\-F\-D\-\_\-read} (istream \&r)
+\item 
+bool \hyperlink{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\-P\-F\-D\-\_\-eval} ()
+\item 
+void \hyperlink{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\-P\-F\-D\-\_\-print} (ostream \&w)
+\end{DoxyCompactItemize}
+\subsection*{\-Public \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{structGraph_a4d2a4b0944a121f0415137f0f1538e4a}{tasks}
+\begin{DoxyCompactList}\small\item\em number of tasks \end{DoxyCompactList}\item 
+int \hyperlink{structGraph_a7d540d84c08510deb0f2b0692ed5afcd}{rules}
+\begin{DoxyCompactList}\small\item\em number of rules/ lines to read from the input to generate the adj\-Matrix \end{DoxyCompactList}\item 
+vector$<$ vector$<$ bool $>$ $>$ \hyperlink{structGraph_a25439b7cad72199504e1fdd1fbe70130}{adj\-Matrix}
+\begin{DoxyCompactList}\small\item\em \-Used to store the vertex pairs and the dependencies, size is tasks\-Xtasks large, sets value to 1 at adj\-Matrix\mbox{[}x\mbox{]}\mbox{[}c\mbox{]} if \-Task x depends on \-Task c. \-Can be used to check dependencies or successors by iterating through either rows or columns. \end{DoxyCompactList}\item 
+queue$<$ int $>$ \hyperlink{structGraph_a97da3b3f97afbd334c70b354a3be4551}{results}
+\begin{DoxyCompactList}\small\item\em \-Stores the list of ordered output. \end{DoxyCompactList}\item 
+priority\-\_\-queue$<$ int, vector\*
+$<$ int $>$, greater$<$ int $>$ $>$ \hyperlink{structGraph_af6491f1c520f1cbff611984f0da0167a}{runq}
+\begin{DoxyCompactList}\small\item\em \-Holds the tasks that have 0 dependencies left and are good to run. \end{DoxyCompactList}\item 
+priority\-\_\-queue$<$ int, vector\*
+$<$ int $>$, greater$<$ int $>$ $>$ \hyperlink{structGraph_a8e75929d511a2d1808f89b7a899c6f12}{stageq}
+\begin{DoxyCompactList}\small\item\em \-Holds all of the vectors that were changed as a result of iterating through the runq vertex. \-These vectors may or may not have dependencies left. \-If no dependencies left, they will be added to the runq. \end{DoxyCompactList}\item 
+vector$<$ bool $>$ \hyperlink{structGraph_a8d3788ddc13794edb1426c6c1960b4c6}{freevector}
+\begin{DoxyCompactList}\small\item\em \-Used to start the \hyperlink{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\-P\-F\-D\-\_\-eval()} func, sizeof(freevector)==tasks, holds whether each task has a dependency or not. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}{\index{\-Graph@{\-Graph}!\-Graph@{\-Graph}}
+\index{\-Graph@{\-Graph}!Graph@{\-Graph}}
+\subsubsection[{\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Graph\-::\-Graph} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}
+\hypertarget{structGraph_a027cae955d12fe3635094c8a6e91880d}{\index{\-Graph@{\-Graph}!\-Graph@{\-Graph}}
+\index{\-Graph@{\-Graph}!Graph@{\-Graph}}
+\subsubsection[{\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Graph\-::\-Graph} (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a027cae955d12fe3635094c8a6e91880d}
+\-Reads in the first line from the istream, sets int tasks and int rules. \-Creates the freevector \-Creates the adjacency \-Matrix used to hold the \-Task relationship pairs 
+\begin{DoxyParams}{\-Parameters}
+{\em istream\&} & r must be a string that follows the guidelines mentioned in the \-P\-F\-D sphere page \-Line1\-: \#\-Tasks \#\-Rules \-Line 2-\/\-N\-: \#task \#dependencies\-\_\-for\-\_\-this\-\_\-task dependency\-\_\-1 depedency\-\_\-2 \\
+\hline
+\end{DoxyParams}
+\hypertarget{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}{\index{\-Graph@{\-Graph}!\-Graph@{\-Graph}}
+\index{\-Graph@{\-Graph}!Graph@{\-Graph}}
+\subsubsection[{\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Graph\-::\-Graph} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structGraph_ae4c72b8ac4d693c49800a4c7e273654f}
+\hypertarget{structGraph_a027cae955d12fe3635094c8a6e91880d}{\index{\-Graph@{\-Graph}!\-Graph@{\-Graph}}
+\index{\-Graph@{\-Graph}!Graph@{\-Graph}}
+\subsubsection[{\-Graph}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Graph\-::\-Graph} (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a027cae955d12fe3635094c8a6e91880d}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-eval@{\-P\-F\-D\-\_\-eval}}
+\index{\-P\-F\-D\-\_\-eval@{\-P\-F\-D\-\_\-eval}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-eval}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::\-P\-F\-D\-\_\-eval} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structGraph_ac6a0946ed59ad938626736c9c5e084e6}
+
+\begin{DoxyParams}{\-Parameters}
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+the max cycle length of the range \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-eval@{\-P\-F\-D\-\_\-eval}}
+\index{\-P\-F\-D\-\_\-eval@{\-P\-F\-D\-\_\-eval}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-eval}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Graph\-::\-P\-F\-D\-\_\-eval} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{structGraph_ac6a0946ed59ad938626736c9c5e084e6}
+\-Has to have the graph initialized, else the function returns false. \-Evals returns the run order for a list of tasks and their dependencies \-The \-Given graph must not have any cycles!!! \-Must be a \-D\-A\-G graph \-The graph must follow the guidelines outlined in the sphere page \-Output\-: the resulting list of tasks is put into the resultqueue defined within the graph class \begin{DoxyReturn}{\-Returns}
+boolean if the eval was successful, false otherwise 
+\end{DoxyReturn}
+\hypertarget{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-print@{\-P\-F\-D\-\_\-print}}
+\index{\-P\-F\-D\-\_\-print@{\-P\-F\-D\-\_\-print}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::\-P\-F\-D\-\_\-print} (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{w}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}
+print three ints 
+\begin{DoxyParams}{\-Parameters}
+{\em w} & an ostream \\
+\hline
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+{\em v} & the max cycle length \\
+\hline
+\end{DoxyParams}
+\hypertarget{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-print@{\-P\-F\-D\-\_\-print}}
+\index{\-P\-F\-D\-\_\-print@{\-P\-F\-D\-\_\-print}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-print}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::\-P\-F\-D\-\_\-print} (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{w}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a827cc502fc4ff3dcd45f54daf6b66aa1}
+prints the results from \-P\-F\-D\-\_\-eval in one line with spaces delineating the tasks 
+\begin{DoxyParams}{\-Parameters}
+{\em w} & an ostream \\
+\hline
+\end{DoxyParams}
+\hypertarget{structGraph_a07988362cfd085560a746c1e1e4604df}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-read@{\-P\-F\-D\-\_\-read}}
+\index{\-P\-F\-D\-\_\-read@{\-P\-F\-D\-\_\-read}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::\-P\-F\-D\-\_\-read} (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a07988362cfd085560a746c1e1e4604df}
+read two ints 
+\begin{DoxyParams}{\-Parameters}
+{\em s} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+a pair of ints, representing the beginning and end of a range, \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{structGraph_a07988362cfd085560a746c1e1e4604df}{\index{\-Graph@{\-Graph}!\-P\-F\-D\-\_\-read@{\-P\-F\-D\-\_\-read}}
+\index{\-P\-F\-D\-\_\-read@{\-P\-F\-D\-\_\-read}!Graph@{\-Graph}}
+\subsubsection[{\-P\-F\-D\-\_\-read}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Graph\-::\-P\-F\-D\-\_\-read} (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{structGraph_a07988362cfd085560a746c1e1e4604df}
+\-Reads in a string that must follow the format\-: \#\-Tasks \#\-Rules \#task \#dependencies\-\_\-for\-\_\-this\-\_\-task dependency\-\_\-1 depedency\-\_\-2 \-Generate the adjacency matrix, set int key, task in the \hyperlink{structGraph}{\-Graph} class. 
+\begin{DoxyParams}{\-Parameters}
+{\em s} & a string \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{\-Member \-Data \-Documentation}
+\hypertarget{structGraph_a25439b7cad72199504e1fdd1fbe70130}{\index{\-Graph@{\-Graph}!adj\-Matrix@{adj\-Matrix}}
+\index{adj\-Matrix@{adj\-Matrix}!Graph@{\-Graph}}
+\subsubsection[{adj\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ vector$<$ bool $>$ $>$ {\bf \-Graph\-::adj\-Matrix}}}\label{structGraph_a25439b7cad72199504e1fdd1fbe70130}
+
+
+\-Used to store the vertex pairs and the dependencies, size is tasks\-Xtasks large, sets value to 1 at adj\-Matrix\mbox{[}x\mbox{]}\mbox{[}c\mbox{]} if \-Task x depends on \-Task c. \-Can be used to check dependencies or successors by iterating through either rows or columns. 
+
+\hypertarget{structGraph_a8d3788ddc13794edb1426c6c1960b4c6}{\index{\-Graph@{\-Graph}!freevector@{freevector}}
+\index{freevector@{freevector}!Graph@{\-Graph}}
+\subsubsection[{freevector}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ bool $>$ {\bf \-Graph\-::freevector}}}\label{structGraph_a8d3788ddc13794edb1426c6c1960b4c6}
+
+
+\-Used to start the \hyperlink{structGraph_ac6a0946ed59ad938626736c9c5e084e6}{\-P\-F\-D\-\_\-eval()} func, sizeof(freevector)==tasks, holds whether each task has a dependency or not. 
+
+\hypertarget{structGraph_a97da3b3f97afbd334c70b354a3be4551}{\index{\-Graph@{\-Graph}!results@{results}}
+\index{results@{results}!Graph@{\-Graph}}
+\subsubsection[{results}]{\setlength{\rightskip}{0pt plus 5cm}queue$<$ int $>$ {\bf \-Graph\-::results}}}\label{structGraph_a97da3b3f97afbd334c70b354a3be4551}
+
+
+\-Stores the list of ordered output. 
+
+\hypertarget{structGraph_a7d540d84c08510deb0f2b0692ed5afcd}{\index{\-Graph@{\-Graph}!rules@{rules}}
+\index{rules@{rules}!Graph@{\-Graph}}
+\subsubsection[{rules}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Graph\-::rules}}}\label{structGraph_a7d540d84c08510deb0f2b0692ed5afcd}
+
+
+number of rules/ lines to read from the input to generate the adj\-Matrix 
+
+\hypertarget{structGraph_af6491f1c520f1cbff611984f0da0167a}{\index{\-Graph@{\-Graph}!runq@{runq}}
+\index{runq@{runq}!Graph@{\-Graph}}
+\subsubsection[{runq}]{\setlength{\rightskip}{0pt plus 5cm}priority\-\_\-queue$<$ int, vector$<$ int $>$, greater$<$ int $>$ $>$ {\bf \-Graph\-::runq}}}\label{structGraph_af6491f1c520f1cbff611984f0da0167a}
+
+
+\-Holds the tasks that have 0 dependencies left and are good to run. 
+
+\hypertarget{structGraph_a8e75929d511a2d1808f89b7a899c6f12}{\index{\-Graph@{\-Graph}!stageq@{stageq}}
+\index{stageq@{stageq}!Graph@{\-Graph}}
+\subsubsection[{stageq}]{\setlength{\rightskip}{0pt plus 5cm}priority\-\_\-queue$<$ int, vector$<$ int $>$, greater$<$ int $>$ $>$ {\bf \-Graph\-::stageq}}}\label{structGraph_a8e75929d511a2d1808f89b7a899c6f12}
+
+
+\-Holds all of the vectors that were changed as a result of iterating through the runq vertex. \-These vectors may or may not have dependencies left. \-If no dependencies left, they will be added to the runq. 
+
+\hypertarget{structGraph_a4d2a4b0944a121f0415137f0f1538e4a}{\index{\-Graph@{\-Graph}!tasks@{tasks}}
+\index{tasks@{tasks}!Graph@{\-Graph}}
+\subsubsection[{tasks}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Graph\-::tasks}}}\label{structGraph_a4d2a4b0944a121f0415137f0f1538e4a}
+
+
+number of tasks 
+
+
+
+\-The documentation for this struct was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{PFD_8h}{\-P\-F\-D.\-h}\item 
+\hyperlink{SpherePFD_8c_09_09}{\-Sphere\-P\-F\-D.\-c++}\item 
+\hyperlink{PFD_8c_09_09}{\-P\-F\-D.\-c++}\end{DoxyCompactItemize}

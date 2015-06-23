@@ -1,3 +1,43 @@
+<<<<<<< HEAD
+=======
+commit ee75396b9479b2256494238a124a2e284412b31b
+Author: Marek <marek.bejda@gmail.com>
+Date:   Tue Jun 23 10:19:26 2015 -0500
+
+    Final change to makefile
+
+commit 9ce4bdd8a2f862b4f207845114ef6d855c69ea90
+Author: Marek <marek.bejda@gmail.com>
+Date:   Tue Jun 23 10:18:23 2015 -0500
+
+    Tested on CS machine
+
+commit c005dcd9599189eec85af565b11bbcad9c881756
+Author: Marek5050 <marek.bejda@gmail.com>
+Date:   Tue Jun 23 10:10:09 2015 -0500
+
+    Added the git.log
+
+commit 34d6785a4c627e3343f13a414bc62d5f8f1e891b
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Mon Jun 22 20:30:37 2015 -0500
+
+    Done, done done. Fixed #18 fixed #12
+
+commit 0e8aed83dfe2184c0786390263521ba08a8da21d
+Author: Marek5050 <marek.bejda@gmail.com>
+Date:   Mon Jun 22 12:45:47 2015 -0500
+
+    Updated the doxygen from my project to the correct title. Added couple
+    of comments to PFD.c++
+
+commit 076631e4418c229d5e542ca29a368e464fafc130
+Author: JacobHarvey <jacoblharvey@utexas.edu>
+Date:   Sun Jun 21 14:17:12 2015 -0500
+
+    finished adding comments for html. Need to be checked over before submission.
+
+>>>>>>> dev
 commit f4d6d427879d60d0442f5a52f32e3bb269079edb
 Author: JacobHarvey <jacoblharvey@utexas.edu>
 Date:   Sun Jun 21 13:15:08 2015 -0500
