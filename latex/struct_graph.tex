@@ -1,0 +1,160 @@
+\hypertarget{struct_graph}{\section{Graph Struct Reference}
+\label{struct_graph}\index{Graph@{Graph}}
+}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_graph_a027cae955d12fe3635094c8a6e91880d}{{\bfseries Graph} (istream \&r)}\label{struct_graph_a027cae955d12fe3635094c8a6e91880d}
+
+\item 
+void \hyperlink{struct_graph_a07988362cfd085560a746c1e1e4604df}{P\+F\+D\+\_\+read} (istream \&r)
+\item 
+bool \hyperlink{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}{P\+F\+D\+\_\+eval} ()
+\item 
+void \hyperlink{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}{P\+F\+D\+\_\+print} (ostream \&w)
+\item 
+\hypertarget{struct_graph_a027cae955d12fe3635094c8a6e91880d}{{\bfseries Graph} (istream \&r)}\label{struct_graph_a027cae955d12fe3635094c8a6e91880d}
+
+\item 
+void \hyperlink{struct_graph_a07988362cfd085560a746c1e1e4604df}{P\+F\+D\+\_\+read} (istream \&r)
+\item 
+bool \hyperlink{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}{P\+F\+D\+\_\+eval} ()
+\item 
+void \hyperlink{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}{P\+F\+D\+\_\+print} (ostream \&w)
+\end{DoxyCompactItemize}
+\subsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{struct_graph_a4d2a4b0944a121f0415137f0f1538e4a}{int {\bfseries tasks}}\label{struct_graph_a4d2a4b0944a121f0415137f0f1538e4a}
+
+\item 
+\hypertarget{struct_graph_a7d540d84c08510deb0f2b0692ed5afcd}{int {\bfseries rules}}\label{struct_graph_a7d540d84c08510deb0f2b0692ed5afcd}
+
+\item 
+\hypertarget{struct_graph_a25439b7cad72199504e1fdd1fbe70130}{vector$<$ vector$<$ bool $>$ $>$ {\bfseries adj\+Matrix}}\label{struct_graph_a25439b7cad72199504e1fdd1fbe70130}
+
+\item 
+\hypertarget{struct_graph_a97da3b3f97afbd334c70b354a3be4551}{queue$<$ int $>$ {\bfseries results}}\label{struct_graph_a97da3b3f97afbd334c70b354a3be4551}
+
+\item 
+\hypertarget{struct_graph_af6491f1c520f1cbff611984f0da0167a}{priority\+\_\+queue$<$ int, vector\\*
+$<$ int $>$, greater$<$ int $>$ $>$ {\bfseries runq}}\label{struct_graph_af6491f1c520f1cbff611984f0da0167a}
+
+\item 
+\hypertarget{struct_graph_a8e75929d511a2d1808f89b7a899c6f12}{priority\+\_\+queue$<$ int, vector\\*
+$<$ int $>$, greater$<$ int $>$ $>$ {\bfseries stageq}}\label{struct_graph_a8e75929d511a2d1808f89b7a899c6f12}
+
+\item 
+\hypertarget{struct_graph_a8d3788ddc13794edb1426c6c1960b4c6}{vector$<$ bool $>$ {\bfseries freevector}}\label{struct_graph_a8d3788ddc13794edb1426c6c1960b4c6}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}{\index{Graph@{Graph}!P\+F\+D\+\_\+eval@{P\+F\+D\+\_\+eval}}
+\index{P\+F\+D\+\_\+eval@{P\+F\+D\+\_\+eval}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+eval}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\+::\+P\+F\+D\+\_\+eval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the max cycle length of the range \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}{\index{Graph@{Graph}!P\+F\+D\+\_\+eval@{P\+F\+D\+\_\+eval}}
+\index{P\+F\+D\+\_\+eval@{P\+F\+D\+\_\+eval}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+eval}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\+::\+P\+F\+D\+\_\+eval (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_ac6a0946ed59ad938626736c9c5e084e6}
+
+\begin{DoxyParams}{Parameters}
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the max cycle length of the range \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\index{Graph@{Graph}!P\+F\+D\+\_\+print@{P\+F\+D\+\_\+print}}
+\index{P\+F\+D\+\_\+print@{P\+F\+D\+\_\+print}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+print}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\+::\+P\+F\+D\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{w}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}
+print three ints 
+\begin{DoxyParams}{Parameters}
+{\em w} & an ostream \\
+\hline
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+{\em v} & the max cycle length \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}{\index{Graph@{Graph}!P\+F\+D\+\_\+print@{P\+F\+D\+\_\+print}}
+\index{P\+F\+D\+\_\+print@{P\+F\+D\+\_\+print}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+print}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\+::\+P\+F\+D\+\_\+print (
+\begin{DoxyParamCaption}
+\item[{ostream \&}]{w}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_a827cc502fc4ff3dcd45f54daf6b66aa1}
+print three ints 
+\begin{DoxyParams}{Parameters}
+{\em w} & an ostream \\
+\hline
+{\em i} & the beginning of the range, inclusive \\
+\hline
+{\em j} & the end of the range, inclusive \\
+\hline
+{\em v} & the max cycle length \\
+\hline
+\end{DoxyParams}
+\hypertarget{struct_graph_a07988362cfd085560a746c1e1e4604df}{\index{Graph@{Graph}!P\+F\+D\+\_\+read@{P\+F\+D\+\_\+read}}
+\index{P\+F\+D\+\_\+read@{P\+F\+D\+\_\+read}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\+::\+P\+F\+D\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_a07988362cfd085560a746c1e1e4604df}
+read two ints 
+\begin{DoxyParams}{Parameters}
+{\em s} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair of ints, representing the beginning and end of a range, \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+\hypertarget{struct_graph_a07988362cfd085560a746c1e1e4604df}{\index{Graph@{Graph}!P\+F\+D\+\_\+read@{P\+F\+D\+\_\+read}}
+\index{P\+F\+D\+\_\+read@{P\+F\+D\+\_\+read}!Graph@{Graph}}
+\subsubsection[{P\+F\+D\+\_\+read}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\+::\+P\+F\+D\+\_\+read (
+\begin{DoxyParamCaption}
+\item[{istream \&}]{r}
+\end{DoxyParamCaption}
+)}}\label{struct_graph_a07988362cfd085560a746c1e1e4604df}
+read two ints 
+\begin{DoxyParams}{Parameters}
+{\em s} & a string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+a pair of ints, representing the beginning and end of a range, \mbox{[}i, j\mbox{]} 
+\end{DoxyReturn}
+
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+P\+F\+D.\+h\item 
+Sphere\+P\+F\+D.\+c++\item 
+\hyperlink{_p_f_d_8c_09_09}{P\+F\+D.\+c++}\end{DoxyCompactItemize}
