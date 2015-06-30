@@ -1,77 +1,85 @@
-FILES :=                              \
-    .travis.yml                       \
-    PFD-tests/jlh5585-RunPFD.in   \
-    PFD-tests/jlh5585-RunPFD.out  \
-    PFD-tests/jlh5585-TestPFD.c++ \
-    PFD-tests/jlh5585-TestPFD.out \
-    PFD.c++                       \
-    PFD.h                         \
-    PFD.log                       \
-    html                              \
-    RunPFD.c++                    \
-    RunPFD.in                     \
-    RunPFD.out                    \
-    TestPFD.c++                   \
-    TestPFD.out
-
-ifeq ($(CXX), clang++)
-    COVFLAGS := --coverage
-    GCOV     := gcov-4.6
+ifeq ($(shell uname), Darwin)
+    CXX       := g++
+    CXXVER    := --version 2>&1 | grep c++
+    GTESTVER  := head -1 /usr/local/src/gtest-1.7.0/CHANGES
+    GCOV      := gcov
+    GCOVFLAGS := -fprofile-arcs -ftest-coverage
+    GCOVVER   := -version | grep version
+    BOOST     := /usr/local/src/boost_1_57_0/boost
+    LDFLAGS   := -lgtest_main
+    VALGRIND  :=
+else ifeq ($(CXX), clang++)
+    CXXVER    := --version 2>&1 | grep clang
+    GTESTVER  := dpkg -l libgtest-dev | grep libgtest
+    GCOV      := gcov-4.6
+    GCOVFLAGS := --coverage
+    GCOVVER   := -v | grep gcov
+    BOOST     := /usr/include/boost
+    LDFLAGS   := -lgtest -lgtest_main -pthread
+    VALGRIND  := valgrind
 else
-    CXX      := g++-4.8
-    COVFLAGS := -fprofile-arcs -ftest-coverage
-    GCOV     := gcov-4.8
+    CXX       := g++-4.8
+    CXXVER    := --version 2>&1 | grep g++
+    GTESTVER  := dpkg -l libgtest-dev | grep libgtest
+    GCOV      := gcov-4.8
+    GCOVFLAGS := -fprofile-arcs -ftest-coverage
+    GCOVVER   := -v | grep gcov
+    BOOST     := /usr/include/boost
+    LDFLAGS   := -lgtest -lgtest_main -pthread
+    VALGRIND  := valgrind
 endif
 
 CXXFLAGS := -pedantic -std=c++11 -Wall
-LDFLAGS  := -lgtest -lgtest_main -pthread
-VALGRIND := valgrind
 
-all: RunPFD TestPFD
-
-check:
-	@for i in $(FILES);                                         \
-	do                                                          \
-        [ -e $$i ] && echo "$$i found" || echo "$$i NOT FOUND"; \
-    done
+.PRECIOUS: %.app
 
 clean:
 	rm -f *.gcda
 	rm -f *.gcno
 	rm -f *.gcov
-	rm -f RunPFD
-	rm -f TestPFD
+	rm -f RunInteger
 
-config:
-	git config -l
+sync:
+	@echo `pwd`
+	@rsync -r -t -u -v --delete        \
+    --include "Integer.h"              \
+    --include "makefile"               \
+    --include "RunInteger.c++"         \
+    --exclude "*"                      \
+    . downing@$(CS):cs/cs378/github/c++/integer/
 
-test: RunPFD.out TestPFD.out
+test: RunInteger.out
 
-PFD-tests:
-	git clone https://github.com/cs378-summer-2015/PFD-tests.git
+versions:
+	uname -a
+	@echo
+	printenv
+	@echo
+	which $(CXX)
+	@echo hi
+	$(CXX) $(CXXVER)
+	@echo hi
+	$(GTESTVER)
+	@echo
+	which $(GCOV)
+	@echo
+	$(GCOV) $(GCOVVER)
+	@echo
+	grep "#define BOOST_VERSION " $(BOOST)/version.hpp
+ifdef VALGRIND
+	@echo
+	which $(VALGRIND)
+	@echo
+	$(VALGRIND) --version
+endif
+	@echo
+	which doxygen
+	@echo
+	doxygen --version
 
-html: Doxyfile PFD.h PFD.c++ RunPFD.c++ TestPFD.c++
-	doxygen Doxyfile
+RunInteger: Integer.h RunInteger.c++
+	$(CXX) $(CXXFLAGS) RunInteger.c++ -o RunInteger
 
-PFD.log:
-	git log > PFD.log
-
-Doxyfile:
-	doxygen -g
-
-RunPFD: PFD.h PFD.c++ RunPFD.c++
-	$(CXX) $(CXXFLAGS) PFD.c++ RunPFD.c++ -o RunPFD
-
-RunPFD.out: RunPFD
-	cat RunPFD.in
-	./RunPFD < RunPFD.in > RunPFD.out
-	cat RunPFD.out
-
-TestPFD: PFD.h PFD.c++ TestPFD.c++
-	$(CXX) $(COVFLAGS) $(CXXFLAGS) PFD.c++ TestPFD.c++ -o TestPFD $(LDFLAGS)
-
-TestPFD.out: TestPFD
-	$(VALGRIND) ./TestPFD  >  TestPFD.out 2>&1
-	$(GCOV) -b PFD.c++     >> TestPFD.out
-	$(GCOV) -b TestPFD.c++ >> TestPFD.out
-	cat TestPFD.out
+RunInteger.out: RunInteger
+	./RunInteger > RunInteger.out
+	cat RunInteger.out
