@@ -379,6 +379,30 @@ TEST(IntegerFixture, multiplies_digits_3) {
     	ASSERT_EQ(*output_b, 0);
         
 }
+TEST(IntegerFixture, multiplies_digits_4) {
+        using namespace std;
+        //std::vector<int> input  (4, 100);
+
+    	int array[] = {9, 9, 9};
+        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2 []= {0};
+        std::vector<int> of (array2, array2 + sizeof(array2) / sizeof(int));
+    	
+        std::vector<int> output(6, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator of_b = of.begin();
+        std::vector<int>::iterator of_e = of.end();
+        std::vector<int>::iterator output_b = output.begin();
+	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+        int r_array[] = {0};
+        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+    	ASSERT_TRUE(equal(correct.begin(),correct.end(), output.begin()));
+        
+}
+
+
+
 
 TEST(IntegerFixture, valid_1) {
         using namespace std;
@@ -454,6 +478,27 @@ TEST(IntegerFixture, valid_7) {
             ASSERT_EQ (1,0);
         }
 }
+TEST(IntegerFixture, valid_8) {
+        using namespace std;
+        try{
+            Integer <int, std::deque<int> > n = Integer<int, std::deque<int> >(-12999);
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+TEST(IntegerFixture, valid_9) {
+        using namespace std;
+        try{
+            Integer <int, std::deque<int> > n = Integer<int, std::deque<int> >("-12999999");
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+
+
+
 
 
 TEST(IntegerFixture, equals_1) {
@@ -519,10 +564,37 @@ TEST(IntegerFixture, timesequal_3) {
         Integer <int> n = Integer<int>(123);
         Integer <int> x = Integer<int> (0);
         n *= x;
-	
         Integer <int> result = Integer<int> (0);
         ASSERT_TRUE(result == n);
 }
+
+
+
+TEST(IntegerFixture, negation_1) {
+        using namespace std;
+        
+        Integer <int> n = Integer<int>(123);
+        n = -n;
+	
+        Integer <int> result = Integer<int> (-123);
+        ASSERT_TRUE(result == n);
+}
+
+
+TEST(IntegerFixture, negation_2) {
+        using namespace std;
+        
+        Integer <int> n = Integer<int>(-123);
+        n = -n;
+	
+        Integer <int> result = Integer<int> (123);
+        ASSERT_TRUE(result == n);
+}
+
+
+
+
+
 
 TEST(IntegerFixture, pow_1) {
         using namespace std;
@@ -533,6 +605,66 @@ TEST(IntegerFixture, pow_1) {
         ASSERT_TRUE(result==n);
     	
 }
+
+
+TEST(IntegerFixture, pow_2) {
+        using namespace std;
+        
+        Integer <int> n = Integer<int>(3);
+        n.pow(3);
+        Integer <int> result = Integer<int> (27);
+        ASSERT_TRUE(result==n);
+    	
+}
+
+
+
+TEST(IntegerFixture, pow_3) {
+        using namespace std;
+        try{
+            Integer <int> n = Integer<int>(0);
+            n.pow(3);
+            Integer <int> result = Integer<int> (0);
+            ASSERT_TRUE(result==n);
+        }
+        catch (exception& e){
+            ASSERT_EQ(1,0);
+        }
+    	
+}
+TEST(IntegerFixture, pow_4) {
+        using namespace std;
+        try{
+            Integer <int> n = Integer<int>(0);
+            n.pow(0);
+            Integer <int> result = Integer<int> (0);
+            ASSERT_TRUE(result==n);
+        }
+        catch (exception& e){
+            return;
+        }
+        ASSERT_EQ(1,0);
+}
+
+
+TEST(IntegerFixture, pow_5) {
+        using namespace std;
+        try{
+            Integer <int> n = Integer<int>(4);
+            n.pow(-2);
+            Integer <int> result = Integer<int> (4);
+            ASSERT_TRUE(result==n);
+        }
+        catch (exception& e){
+            return;
+        }
+    	ASSERT_EQ(1,0);
+}
+
+
+
+
+
 
 TEST(IntegerFixture, lessthan_1){
         using namespace std;

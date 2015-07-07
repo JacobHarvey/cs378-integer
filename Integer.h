@@ -239,7 +239,9 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     *  @param const Integer& lhs is *this
+     * @param const Integer& rhs
+     * @return lhs==rhs
      */
     friend bool operator == (const Integer& lhs, const Integer& rhs) {
         // <your code> - editing
@@ -265,7 +267,9 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     * @param const Integer& lhs is *this
+     * @param const Integer& rhs
+     * @return !(lhs==rhs)
      */
     friend bool operator != (const Integer& lhs, const Integer& rhs) {
         return !(lhs == rhs);}
@@ -275,7 +279,10 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs const Integer class 
+     * @param rhs const Integer class 
+     * @return   a boolan value if lhs < rhs
+     * determines if the Integer lhs < Integer rhs
      */
     friend bool operator < (const Integer& lhs, const Integer& rhs) {
         // <your code>
@@ -316,7 +323,10 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     * @param lhs const Integer class 
+     * @param rhs const Integer class 
+     * @return   a boolan value if lhs <= rhs
+     * determines if the Integer lhs <= Integer rhs
      */
     friend bool operator <= (const Integer& lhs, const Integer& rhs) {
         return !(rhs < lhs);}
@@ -326,8 +336,11 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
-     */
+     * @param lhs const Integer class 
+     * @param rhs const Integer class 
+     * @return   a boolan value if lhs > rhs
+     * determines if the Integer lhs > Integer rhs 
+     * */
     friend bool operator > (const Integer& lhs, const Integer& rhs) {
         return (rhs < lhs);}
 
@@ -336,8 +349,11 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
-     */
+     * @param lhs const Integer class 
+     * @param rhs const Integer class 
+     * @return   a boolan value if lhs > rhs
+     * determines if the Integer lhs > Integer rhs 
+     * */
     friend bool operator >= (const Integer& lhs, const Integer& rhs) {
         return !(lhs < rhs);}
 
@@ -346,7 +362,12 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  r-value of lhs + rhs
+     * Calls lhs+=rhs. 
+     * Adds rhs to lhs. 
+     * Lhs is modified 
      */
     friend Integer operator + (Integer lhs, const Integer& rhs) {
         return lhs += rhs;}
@@ -356,7 +377,11 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  l-value lhs.
+     * lhs= lhs-rhs
+     * Calls -=
      */
     friend Integer operator - (Integer lhs, const Integer& rhs) {
 	return lhs -= rhs;}
@@ -366,7 +391,11 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  l-value lhs.
+     * lhs= lhs*rhs
+     * Calls *=
      */
     friend Integer operator * (Integer lhs, const Integer& rhs) {
         return lhs *= rhs;}
@@ -376,10 +405,17 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  l-value lhs.
+     * lhs= lhs/rhs
+     * Calls /=
      * @throws invalid_argument if (rhs == 0)
      */
     friend Integer operator / (Integer lhs, const Integer& rhs) {
+
+        if (rhs.size() == 0 || rhs.size()==1 && rhs._x[0]==0)
+            throw std::invalid_argument("integer::integer()");
         return lhs /= rhs;}
 
     // ----------
@@ -387,10 +423,16 @@ class Integer {
     // ----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  l-value lhs.
+     * lhs= lhs % rhs
+     * Calls %=
      * @throws invalid_argument if (rhs <= 0)
      */
     friend Integer operator % (Integer lhs, const Integer& rhs) {
+        if (rhs<=0)
+            throw std::invalid_argument("integer::integer()");
         return lhs %= rhs;}
 
     // -----------
@@ -398,10 +440,17 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param int rhs 
+     * @return  lhs<<rhs
+     * lhs= lhs << rhs
+     * Calls <<=
+     * if lhs== 100, rhs==2, return==10000
      * @throws invalid_argument if (rhs < 0)
      */
     friend Integer operator << (Integer lhs, int rhs) {
+        if (rhs<0)
+            throw std::invalid_argument("Integer::Integer()");
         return lhs <<= rhs;}
 
     // -----------
@@ -409,10 +458,18 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     * @param lhs Integer class 
+     * @param rhs const Integer class 
+     * @return  l-value lhs.
+     * lhs= lhs % rhs
+     * Calls <<=
+     * @throws invalid_argument if (rhs < 0)
+
      * @throws invalid_argument if (rhs < 0)
      */
     friend Integer operator >> (Integer lhs, int rhs) {
+        if (rhs<0)
+            throw std::invalid_argument("Integer::Integer()");
         return lhs >>= rhs;}
 
     // -----------
@@ -420,7 +477,14 @@ class Integer {
     // -----------
 
     /**
-     * <your documentation>
+     * @param lhs ostream 
+     * @param const Integer rhs
+     * @return  void
+     * Outputs rhs to lhs
+     * Outputs the largest value to smallest, so
+     * rhs= Integer <T,C> (12345),
+     * output= 12345
+     * Goes from end of rhs._x to begining
      */
     friend std::ostream& operator << (std::ostream& lhs, const Integer& rhs) {
         	// <your code> - edited
@@ -439,7 +503,9 @@ class Integer {
 
     /**
      * absolute value
-     * <your documentation>
+     * @param Integer x
+     * @return Integer x. 
+     * Makes x positive
      */
     friend Integer abs (Integer x) {
         return x.abs();}
@@ -450,8 +516,13 @@ class Integer {
 
     /**
      * power
-     * <your documentation>
+     * @param Integer x
+     * @param int e
+     * @return l-value x, x= x^e.
      * @throws invalid_argument if ((x == 0) && (e == 0)) || (e < 0)
+     * calls .pow()
+     * throw handled in .pow()
+     * Raises x to the power of e
      */
     friend Integer pow (Integer x, int e) {
         return x.pow(e);}
@@ -462,8 +533,7 @@ class Integer {
         // ----
 
         C _x; // the backing container
-        // <your data>
-	bool neg;
+	    bool neg; //used to tell if negative or not
 
     private:
         // -----
@@ -485,25 +555,36 @@ class Integer {
         // ------------
 
         /**
-         * <your documentation>
-         */
+         * @param value, makes an Integer class with default container of vector<int>
+         * @return returns an Integer variable where the container within holds a parsed int variable
+         * So if Integer(123) was called, _x[0]==3, _x[1]==2, _x[2]==3
+         * Can take in negative values
+         * @throws exception if value is not valid
+         * */
         Integer (int value) {
             	// <your code> - edited
-		if(value == 0){
+		
+        if(value == 0){
 			_x.push_back(value);
 		}
 		else{
+	        neg = value<0;
+            if (value<0)
+                value*=-1;
 			while(value != 0){
 				_x.push_back(value % 10);
 				value /= 10;
 			}
-			neg = value<0;
 		}
         assert(valid());}
 
         /**
-         * <your documentation>
-         * @throws invalid_argument if value is not a valid representation of an Integer
+         * @param std::string value, makes an Integer class with default container of vector<int>
+         * @return returns an Integer variable where the container within holds a parsed int variable
+         * Parses the string into the backing container _x
+         * So if Integer("123") was called, _x[0]==3, _x[1]==2, _x[2]==3
+         * Can take in negative values
+         * @throws invalid_argument if value is not a valid representation of an Integer (if a character is passed in instead of a valid number
          */
         explicit Integer (const std::string& value) {
             bool is_neg=false;
@@ -530,26 +611,28 @@ class Integer {
         // ----------
 
         /**
-         * <your documentation>
+         * @result return negation of *this
          */
         Integer operator - () const {
             	// <your code> - edited
-		neg = (!neg);
-        	return *this;}
+        Integer<T, C> temp (*this);
+		temp.neg = (!temp.neg);
+        return temp;}
 
         // -----------
         // operator ++
         // -----------
 
         /**
-         * <your documentation>
+         * @return returns lvalue of this incremented by 1
+         * Calls +=1
          */
         Integer& operator ++ () {
             *this += 1;
             return *this;}
 
         /**
-         * <your documentation>
+         * @return returns rvalue of this, then *this is incremented by 1
          */
         Integer operator ++ (int) {
             Integer x = *this;
@@ -561,14 +644,14 @@ class Integer {
         // -----------
 
         /**
-         * <your documentation>
+         * @return returns lvalue of *this decremented by 1
          */
         Integer& operator -- () {
             *this -= 1;
             return *this;}
 
         /**
-         * <your documentation>
+         * @return return rvalue of *this, then *this is decremented by 1
          */
         Integer operator -- (int) {
             Integer x = *this;
@@ -580,7 +663,10 @@ class Integer {
         // -----------
 
         /**
-         * <your documentation>
+         * @param const Integer& rhs
+         * @return lvalue of *this+=rhs
+         * lhs= lhs+rhs
+         * Does basic integer addition
          */
         Integer& operator += (const Integer& rhs) {
             // <your code>
@@ -610,7 +696,10 @@ class Integer {
         // -----------
 
         /**
-         * <your documentation>
+         * @param const Integer& rhs
+         * @return lvalue of *this-=rhs
+         * lhs= lhs-rhs
+         * Does basic integer subtraction
          */
         Integer& operator -= (const Integer& rhs) {
             Integer<T, C> temp (0);
@@ -678,22 +767,17 @@ class Integer {
         // operator *=
         // -----------
 
-        /**
-         * <your documentation>
+        /**:
+         * @param const Integer& rhs
+         * @return lvalue of *this*=rhs, lvalue.size() <= *this.size()+rhs.size()
+         * lhs= lhs*rhs
+         * Does basic integer multiplication
          */
         Integer& operator *= (const Integer& rhs) {
             int size= rhs._x.size()+_x.size();
             Integer <T,C> temp (0);
             for (int i=0; i<size; i++)
                 temp._x.push_back(0);
-            /*
-             * Integer <T,C> temp (0);
-            for (int c=0;c<_x.size();c++)
-                temp._x.push_back(_x[c];
-            _x.clear();
-            for (int i=0; i<size; i++)
-                _x.push_back(0);
-            */
             multiplies_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
             //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
             auto iter_end = temp._x.end();
@@ -703,7 +787,9 @@ class Integer {
             }
 	     
             //_x=temp;
+            temp.neg= neg ^ rhs.neg;
             *this=temp;
+            
             return *this;}
 
         // -----------
@@ -711,10 +797,16 @@ class Integer {
         // -----------
 
         /**
-         * <your documentation>
+         * @param const Integer& rhs
+         * @return lvalue of *this/=rhs, lvalue.size() <= *this.size()
+         * lhs= lhs*rhs
+         * Does basic integer division
          * @throws invalid_argument if (rhs == 0)
          */
         Integer& operator /= (const Integer& rhs) {
+            if (rhs._x.size()==0)
+                throw std::invalid_argument("Integer::Integer()");
+
             // <your code>
             return *this;}
 
@@ -723,19 +815,28 @@ class Integer {
         // -----------
 
         /**
-         * <your documentation>
+         * @param const Integer& rhs
+         * @return lvalue of *this%=rhs, lvalue.size() <= rhs.size()
+         * lhs= lhs%rhs
+         * Does basic integer modulo
+
          * @throws invalid_argument if (rhs <= 0)
          */
         Integer& operator %= (const Integer& rhs) {
+            if (rhs._x.size()==0)
+                throw std::invalid_argument("Integer::Integer()");
+
+
             // <your code>
             return *this;}
 
         // ------------
         // operator <<=
         // ------------
-
         /**
-         * <your documentation>
+         * @param int n
+         * @return lvalue &this<< n time
+         * if *this=100, n=2, result *this==10000
          */
         Integer& operator <<= (int n) {
             // <your code>
@@ -746,7 +847,9 @@ class Integer {
         // ------------
 
         /**
-         * <your documentation>
+         * @param int n
+         * @return lvalue &this<< n time
+         * if *this=100, n=2, result *this==1
          */
         Integer& operator >>= (int n) {
             // <your code>
@@ -758,11 +861,10 @@ class Integer {
 
         /**
          * absolute value
-         * <your documentation>
+         * @return lvalue |*this|
          */
         Integer& abs () {
             neg=false;
-            // <your code>
             return *this;}
 
         // ---
@@ -771,10 +873,17 @@ class Integer {
 
         /**
          * power
-         * <your documentation>
+         * @param int e, must be >=0
+         * @param *this int, _x.size() must be > 0
          * @throws invalid_argument if ((this == 0) && (e == 0)) or (e < 0)
+         * raises *this to the power of e, so if *this==3, e==3, result==27
          */
         Integer& pow (int e) {
+            if ((_x.size()==1 && _x[0]==0 && e==0) || e<0 || _x.size()==0)
+                throw std::invalid_argument("Integer::Integer()");
+
+
+            
             //*this=pow_aux(e, *this);
             if (e==0){
                 *this= Integer <T,C> (1);
@@ -783,10 +892,10 @@ class Integer {
             else if (e==1)
                 return *this;
             else{
-                Integer <T,C> copy1(*this);
-                Integer <T,C> copy2(*this);
-                Integer <T,C> copy3(*this);
-             *this=copy1.pow(e/2)*copy2.pow(e/2)*copy3.pow(e%2);
+                Integer <T,C> temp1(*this);
+                Integer <T,C> temp2(*this);
+                Integer <T,C> temp3(*this);
+             *this=temp1.pow(e/2)*temp2.pow(e/2)*temp3.pow(e%2);
              return *this;}
         }
       

@@ -1,14 +1,14 @@
-==28233== Memcheck, a memory error detector
-==28233== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==28233== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==28233== Command: ./TestInteger
-==28233== 
+==30638== Memcheck, a memory error detector
+==30638== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==30638== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==30638== Command: ./TestInteger
+==30638== 
 Running main() from gtest_main.cc
-[==========] Running 34 tests from 1 test case.
+[==========] Running 43 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 34 tests from IntegerFixture
+[----------] 43 tests from IntegerFixture
 [ RUN      ] IntegerFixture.shift_left_digits_1
-[       OK ] IntegerFixture.shift_left_digits_1 (25 ms)
+[       OK ] IntegerFixture.shift_left_digits_1 (26 ms)
 [ RUN      ] IntegerFixture.shift_left_digits_2
 [       OK ] IntegerFixture.shift_left_digits_2 (4 ms)
 [ RUN      ] IntegerFixture.shift_left_digits_3
@@ -26,9 +26,9 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.plus_digits_3
 [       OK ] IntegerFixture.plus_digits_3 (5 ms)
 [ RUN      ] IntegerFixture.minus_digits_1
-[       OK ] IntegerFixture.minus_digits_1 (6 ms)
+[       OK ] IntegerFixture.minus_digits_1 (7 ms)
 [ RUN      ] IntegerFixture.minus_digits_2
-[       OK ] IntegerFixture.minus_digits_2 (6 ms)
+[       OK ] IntegerFixture.minus_digits_2 (5 ms)
 [ RUN      ] IntegerFixture.minus_digits_3
 [       OK ] IntegerFixture.minus_digits_3 (5 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_1
@@ -36,9 +36,11 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.multiplies_digits_2
 [       OK ] IntegerFixture.multiplies_digits_2 (6 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_3
-[       OK ] IntegerFixture.multiplies_digits_3 (5 ms)
+[       OK ] IntegerFixture.multiplies_digits_3 (6 ms)
+[ RUN      ] IntegerFixture.multiplies_digits_4
+[       OK ] IntegerFixture.multiplies_digits_4 (5 ms)
 [ RUN      ] IntegerFixture.valid_1
-[       OK ] IntegerFixture.valid_1 (52 ms)
+[       OK ] IntegerFixture.valid_1 (51 ms)
 [ RUN      ] IntegerFixture.valid_2
 [       OK ] IntegerFixture.valid_2 (3 ms)
 [ RUN      ] IntegerFixture.valid_3
@@ -51,22 +53,38 @@ Running main() from gtest_main.cc
 [       OK ] IntegerFixture.valid_6 (2 ms)
 [ RUN      ] IntegerFixture.valid_7
 [       OK ] IntegerFixture.valid_7 (14 ms)
+[ RUN      ] IntegerFixture.valid_8
+[       OK ] IntegerFixture.valid_8 (2 ms)
+[ RUN      ] IntegerFixture.valid_9
+[       OK ] IntegerFixture.valid_9 (2 ms)
 [ RUN      ] IntegerFixture.equals_1
 [       OK ] IntegerFixture.equals_1 (5 ms)
 [ RUN      ] IntegerFixture.equals_2
 [       OK ] IntegerFixture.equals_2 (3 ms)
 [ RUN      ] IntegerFixture.notequals_1
-[       OK ] IntegerFixture.notequals_1 (2 ms)
+[       OK ] IntegerFixture.notequals_1 (3 ms)
 [ RUN      ] IntegerFixture.notequals_2
-[       OK ] IntegerFixture.notequals_2 (3 ms)
+[       OK ] IntegerFixture.notequals_2 (2 ms)
 [ RUN      ] IntegerFixture.timesequal_1
 [       OK ] IntegerFixture.timesequal_1 (14 ms)
 [ RUN      ] IntegerFixture.timesequal_2
-[       OK ] IntegerFixture.timesequal_2 (7 ms)
+[       OK ] IntegerFixture.timesequal_2 (8 ms)
 [ RUN      ] IntegerFixture.timesequal_3
 [       OK ] IntegerFixture.timesequal_3 (3 ms)
+[ RUN      ] IntegerFixture.negation_1
+[       OK ] IntegerFixture.negation_1 (10 ms)
+[ RUN      ] IntegerFixture.negation_2
+[       OK ] IntegerFixture.negation_2 (3 ms)
 [ RUN      ] IntegerFixture.pow_1
-[       OK ] IntegerFixture.pow_1 (12 ms)
+[       OK ] IntegerFixture.pow_1 (6 ms)
+[ RUN      ] IntegerFixture.pow_2
+[       OK ] IntegerFixture.pow_2 (2 ms)
+[ RUN      ] IntegerFixture.pow_3
+[       OK ] IntegerFixture.pow_3 (3 ms)
+[ RUN      ] IntegerFixture.pow_4
+[       OK ] IntegerFixture.pow_4 (2 ms)
+[ RUN      ] IntegerFixture.pow_5
+[       OK ] IntegerFixture.pow_5 (2 ms)
 [ RUN      ] IntegerFixture.lessthan_1
 [       OK ] IntegerFixture.lessthan_1 (5 ms)
 [ RUN      ] IntegerFixture.minusequals_1
@@ -74,33 +92,33 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.minusequals_2
 [       OK ] IntegerFixture.minusequals_2 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_3
-[       OK ] IntegerFixture.minusequals_3 (4 ms)
-[----------] 34 tests from IntegerFixture (261 ms total)
+[       OK ] IntegerFixture.minusequals_3 (5 ms)
+[----------] 43 tests from IntegerFixture (290 ms total)
 
 [----------] Global test environment tear-down
-[==========] 34 tests from 1 test case ran. (290 ms total)
-[  PASSED  ] 34 tests.
-==28233== 
-==28233== HEAP SUMMARY:
-==28233==     in use at exit: 0 bytes in 0 blocks
-==28233==   total heap usage: 895 allocs, 895 frees, 101,030 bytes allocated
-==28233== 
-==28233== All heap blocks were freed -- no leaks are possible
-==28233== 
-==28233== For counts of detected and suppressed errors, rerun with: -v
-==28233== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 43 tests from 1 test case ran. (318 ms total)
+[  PASSED  ] 43 tests.
+==30638== 
+==30638== HEAP SUMMARY:
+==30638==     in use at exit: 0 bytes in 0 blocks
+==30638==   total heap usage: 1,089 allocs, 1,089 frees, 116,817 bytes allocated
+==30638== 
+==30638== All heap blocks were freed -- no leaks are possible
+==30638== 
+==30638== For counts of detected and suppressed errors, rerun with: -v
+==30638== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestInteger.c++'
-Lines executed:95.70% of 302
-Branches executed:67.40% of 994
-Taken at least once:33.70% of 994
-Calls executed:57.54% of 1333
+Lines executed:93.44% of 366
+Branches executed:62.13% of 1294
+Taken at least once:31.07% of 1294
+Calls executed:54.60% of 1696
 Creating 'TestInteger.c++.gcov'
 
 File '/usr/include/gtest/internal/gtest-internal.h'
 Lines executed:42.86% of 7
-Branches executed:49.28% of 138
-Taken at least once:24.64% of 138
-Calls executed:37.09% of 275
+Branches executed:49.43% of 174
+Taken at least once:24.71% of 174
+Calls executed:37.18% of 347
 Creating 'gtest-internal.h.gcov'
 
 File '/usr/include/c++/4.8/iostream'
@@ -213,13 +231,6 @@ Taken at least once:0.00% of 16
 Calls executed:0.00% of 19
 Creating 'basic_string.tcc.gcov'
 
-File '/usr/include/c++/4.8/bits/stl_vector.h'
-Lines executed:86.43% of 140
-Branches executed:84.21% of 38
-Taken at least once:44.74% of 38
-Calls executed:79.21% of 101
-Creating 'stl_vector.h.gcov'
-
 File '/usr/include/c++/4.8/bits/move.h'
 Lines executed:100.00% of 9
 No branches
@@ -232,6 +243,13 @@ Branches executed:34.62% of 52
 Taken at least once:21.15% of 52
 Calls executed:46.07% of 89
 Creating 'vector.tcc.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_vector.h'
+Lines executed:86.62% of 142
+Branches executed:84.21% of 38
+Taken at least once:44.74% of 38
+Calls executed:79.21% of 101
+Creating 'stl_vector.h.gcov'
 
 File '/usr/include/gtest/gtest.h'
 Lines executed:52.63% of 19
@@ -272,10 +290,10 @@ No calls
 Removing 'basic_ios.h.gcov'
 
 File 'Integer.h'
-Lines executed:93.30% of 194
-Branches executed:91.74% of 242
-Taken at least once:65.29% of 242
-Calls executed:85.40% of 226
+Lines executed:94.58% of 203
+Branches executed:90.21% of 286
+Taken at least once:63.99% of 286
+Calls executed:80.77% of 260
 Creating 'Integer.h.gcov'
 
 File '/usr/include/gtest/internal/gtest-port.h'
