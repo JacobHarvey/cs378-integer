@@ -313,7 +313,7 @@ TEST(IntegerFixture, multiplies_digits_1) {
     	int array[] = {3, 2, 1};
         std::vector<int> og (array, array + sizeof(array) / sizeof(int));
         std::vector<int> of (array, array + sizeof(array) / sizeof(int));
-    	int n = 2;
+    	
         std::vector<int> output(6, 0);
         std::vector<int>::iterator og_b = og.begin();
         std::vector<int>::iterator og_e = og.end();
@@ -340,7 +340,7 @@ TEST(IntegerFixture, multiplies_digits_2) {
     	int array[] = {9, 9, 9};
         std::vector<int> og (array, array + sizeof(array) / sizeof(int));
         std::vector<int> of (array, array + sizeof(array) / sizeof(int));
-    	int n = 2;
+    	
         std::vector<int> output(6, 0);
         std::vector<int>::iterator og_b = og.begin();
         std::vector<int>::iterator og_e = og.end();
@@ -366,7 +366,7 @@ TEST(IntegerFixture, multiplies_digits_3) {
         std::vector<int> og (array, array + sizeof(array) / sizeof(int));
         int array2 []= {0};
         std::vector<int> of (array2, array2 + sizeof(array2) / sizeof(int));
-    	int n = 2;
+    	
         std::vector<int> output(6, 0);
         std::vector<int>::iterator og_b = og.begin();
         std::vector<int>::iterator og_e = og.end();
@@ -435,7 +435,7 @@ TEST(IntegerFixture, valid_5) {
 
 TEST(IntegerFixture, valid_6) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
+        
         try{
             Integer <int> n = Integer<int>("");
         }
@@ -447,7 +447,6 @@ TEST(IntegerFixture, valid_6) {
 }
 TEST(IntegerFixture, valid_7) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         try{
             Integer <int, std::deque<int> > n = Integer<int, std::deque<int> >(129999999);
         }
@@ -459,7 +458,6 @@ TEST(IntegerFixture, valid_7) {
 
 TEST(IntegerFixture, equals_1) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(2);
         Integer <int> x = Integer<int> (2);
@@ -467,7 +465,6 @@ TEST(IntegerFixture, equals_1) {
 }
 TEST(IntegerFixture, equals_2) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(3);
         Integer <int> x = Integer<int> (2);
@@ -475,7 +472,6 @@ TEST(IntegerFixture, equals_2) {
 }
 TEST(IntegerFixture, notequals_1) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(2);
         Integer <int> x = Integer<int> (2);
@@ -483,7 +479,6 @@ TEST(IntegerFixture, notequals_1) {
 }
 TEST(IntegerFixture, notequals_2) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(3);
         Integer <int> x = Integer<int> (2);
@@ -497,7 +492,6 @@ TEST(IntegerFixture, notequals_2) {
 
 TEST(IntegerFixture, timesequal_1) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(123);
         Integer <int> x = Integer<int> (2);
@@ -509,7 +503,6 @@ TEST(IntegerFixture, timesequal_1) {
 
 TEST(IntegerFixture, timesequal_2) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(999);
         Integer <int> x = Integer<int> (999);
@@ -519,21 +512,20 @@ TEST(IntegerFixture, timesequal_2) {
     	
 }
 
-/*
+
 TEST(IntegerFixture, timesequal_3) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(123);
         Integer <int> x = Integer<int> (0);
         n *= x;
+	
         Integer <int> result = Integer<int> (0);
-        ASSERT_TRUE(result==n);
+        ASSERT_TRUE(result == n);
 }
-*/
+
 TEST(IntegerFixture, pow_1) {
         using namespace std;
-        //std::vector<int> input  (4, 100)
         
         Integer <int> n = Integer<int>(2);
         n.pow(3);
@@ -554,6 +546,23 @@ TEST(IntegerFixture, minusequals_1){
         Integer <int> n = Integer<int>(23);
         Integer <int> m = Integer<int>(22);
         Integer <int> output = Integer<int>(1);
+	ASSERT_TRUE((n -= m) == output );
+}
+
+
+TEST(IntegerFixture, minusequals_2){
+        using namespace std;
+        Integer <int> n = Integer<int>(23);
+        Integer <int> m = Integer<int>(12);
+        Integer <int> output = Integer<int>(11);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_3){
+        using namespace std;
+        Integer <int> n = Integer<int>(9000);
+        Integer <int> m = Integer<int>(1);
+        Integer <int> output = Integer<int>(8999);
         ASSERT_TRUE((n -= m) == output );
 }
 

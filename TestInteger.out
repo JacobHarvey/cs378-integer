@@ -1,12 +1,12 @@
-==16154== Memcheck, a memory error detector
-==16154== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==16154== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==16154== Command: ./TestInteger
-==16154== 
+==28233== Memcheck, a memory error detector
+==28233== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==28233== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==28233== Command: ./TestInteger
+==28233== 
 Running main() from gtest_main.cc
-[==========] Running 31 tests from 1 test case.
+[==========] Running 34 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 31 tests from IntegerFixture
+[----------] 34 tests from IntegerFixture
 [ RUN      ] IntegerFixture.shift_left_digits_1
 [       OK ] IntegerFixture.shift_left_digits_1 (25 ms)
 [ RUN      ] IntegerFixture.shift_left_digits_2
@@ -18,40 +18,16 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.shift_right_digits_2
 [       OK ] IntegerFixture.shift_right_digits_2 (4 ms)
 [ RUN      ] IntegerFixture.shift_right_digits_3
-[       OK ] IntegerFixture.shift_right_digits_3 (5 ms)
+[       OK ] IntegerFixture.shift_right_digits_3 (4 ms)
 [ RUN      ] IntegerFixture.plus_digits_1
 [       OK ] IntegerFixture.plus_digits_1 (9 ms)
 [ RUN      ] IntegerFixture.plus_digits_2
 [       OK ] IntegerFixture.plus_digits_2 (5 ms)
 [ RUN      ] IntegerFixture.plus_digits_3
-[       OK ] IntegerFixture.plus_digits_3 (4 ms)
+[       OK ] IntegerFixture.plus_digits_3 (5 ms)
 [ RUN      ] IntegerFixture.minus_digits_1
 [       OK ] IntegerFixture.minus_digits_1 (6 ms)
 [ RUN      ] IntegerFixture.minus_digits_2
-==16154== Invalid read of size 4
-==16154==    at 0x413FA7: __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > minus_digits<__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > > >(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, __gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x409DF6: IntegerFixture_minus_digits_2_Test::TestBody() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x442472: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x434E8C: testing::Test::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x434F23: testing::TestInfo::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x435024: testing::TestCase::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x43529C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x43557D: testing::UnitTest::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x404D0F: main (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==  Address 0x5c530d4 is 0 bytes after a block of size 4 alloc'd
-==16154==    at 0x4C2B0E0: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
-==16154==    by 0x41A833: __gnu_cxx::new_allocator<int>::allocate(unsigned long, void const*) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x41932A: std::_Vector_base<int, std::allocator<int> >::_M_allocate(unsigned long) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x418DBD: void std::vector<int, std::allocator<int> >::_M_range_initialize<int*>(int*, int*, std::forward_iterator_tag) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x416712: void std::vector<int, std::allocator<int> >::_M_initialize_dispatch<int*>(int*, int*, std::__false_type) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x4136C1: std::vector<int, std::allocator<int> >::vector<int*, void>(int*, int*, std::allocator<int> const&) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x409BBB: IntegerFixture_minus_digits_2_Test::TestBody() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x442472: void testing::internal::HandleExceptionsInMethodIfSupported<testing::Test, void>(testing::Test*, void (testing::Test::*)(), char const*) (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x434E8C: testing::Test::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x434F23: testing::TestInfo::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x435024: testing::TestCase::Run() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154==    by 0x43529C: testing::internal::UnitTestImpl::RunAllTests() (in /v/filer4b/v38q001/jlharv/cs378-int/cs378-integer/TestInteger)
-==16154== 
 [       OK ] IntegerFixture.minus_digits_2 (6 ms)
 [ RUN      ] IntegerFixture.minus_digits_3
 [       OK ] IntegerFixture.minus_digits_3 (5 ms)
@@ -60,17 +36,17 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.multiplies_digits_2
 [       OK ] IntegerFixture.multiplies_digits_2 (6 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_3
-[       OK ] IntegerFixture.multiplies_digits_3 (6 ms)
+[       OK ] IntegerFixture.multiplies_digits_3 (5 ms)
 [ RUN      ] IntegerFixture.valid_1
-[       OK ] IntegerFixture.valid_1 (51 ms)
+[       OK ] IntegerFixture.valid_1 (52 ms)
 [ RUN      ] IntegerFixture.valid_2
 [       OK ] IntegerFixture.valid_2 (3 ms)
 [ RUN      ] IntegerFixture.valid_3
-[       OK ] IntegerFixture.valid_3 (1 ms)
+[       OK ] IntegerFixture.valid_3 (2 ms)
 [ RUN      ] IntegerFixture.valid_4
-[       OK ] IntegerFixture.valid_4 (3 ms)
+[       OK ] IntegerFixture.valid_4 (2 ms)
 [ RUN      ] IntegerFixture.valid_5
-[       OK ] IntegerFixture.valid_5 (1 ms)
+[       OK ] IntegerFixture.valid_5 (4 ms)
 [ RUN      ] IntegerFixture.valid_6
 [       OK ] IntegerFixture.valid_6 (2 ms)
 [ RUN      ] IntegerFixture.valid_7
@@ -86,33 +62,263 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.timesequal_1
 [       OK ] IntegerFixture.timesequal_1 (14 ms)
 [ RUN      ] IntegerFixture.timesequal_2
-[       OK ] IntegerFixture.timesequal_2 (8 ms)
+[       OK ] IntegerFixture.timesequal_2 (7 ms)
+[ RUN      ] IntegerFixture.timesequal_3
+[       OK ] IntegerFixture.timesequal_3 (3 ms)
 [ RUN      ] IntegerFixture.pow_1
 [       OK ] IntegerFixture.pow_1 (12 ms)
 [ RUN      ] IntegerFixture.lessthan_1
 [       OK ] IntegerFixture.lessthan_1 (5 ms)
 [ RUN      ] IntegerFixture.minusequals_1
-size 3, 1 0 0
-TestInteger.c++:557: Failure
-Value of: (n -= m) == output
-  Actual: false
-Expected: true
-[  FAILED  ] IntegerFixture.minusequals_1 (29 ms)
-[----------] 31 tests from IntegerFixture (270 ms total)
+[       OK ] IntegerFixture.minusequals_1 (10 ms)
+[ RUN      ] IntegerFixture.minusequals_2
+[       OK ] IntegerFixture.minusequals_2 (3 ms)
+[ RUN      ] IntegerFixture.minusequals_3
+[       OK ] IntegerFixture.minusequals_3 (4 ms)
+[----------] 34 tests from IntegerFixture (261 ms total)
 
 [----------] Global test environment tear-down
-[==========] 31 tests from 1 test case ran. (299 ms total)
-[  PASSED  ] 30 tests.
-[  FAILED  ] 1 test, listed below:
-[  FAILED  ] IntegerFixture.minusequals_1
+[==========] 34 tests from 1 test case ran. (290 ms total)
+[  PASSED  ] 34 tests.
+==28233== 
+==28233== HEAP SUMMARY:
+==28233==     in use at exit: 0 bytes in 0 blocks
+==28233==   total heap usage: 895 allocs, 895 frees, 101,030 bytes allocated
+==28233== 
+==28233== All heap blocks were freed -- no leaks are possible
+==28233== 
+==28233== For counts of detected and suppressed errors, rerun with: -v
+==28233== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+File 'TestInteger.c++'
+Lines executed:95.70% of 302
+Branches executed:67.40% of 994
+Taken at least once:33.70% of 994
+Calls executed:57.54% of 1333
+Creating 'TestInteger.c++.gcov'
 
- 1 FAILED TEST
-==16154== 
-==16154== HEAP SUMMARY:
-==16154==     in use at exit: 0 bytes in 0 blocks
-==16154==   total heap usage: 849 allocs, 849 frees, 101,693 bytes allocated
-==16154== 
-==16154== All heap blocks were freed -- no leaks are possible
-==16154== 
-==16154== For counts of detected and suppressed errors, rerun with: -v
-==16154== ERROR SUMMARY: 2 errors from 1 contexts (suppressed: 0 from 0)
+File '/usr/include/gtest/internal/gtest-internal.h'
+Lines executed:42.86% of 7
+Branches executed:49.28% of 138
+Taken at least once:24.64% of 138
+Calls executed:37.09% of 275
+Creating 'gtest-internal.h.gcov'
+
+File '/usr/include/c++/4.8/iostream'
+Lines executed:100.00% of 1
+No branches
+Calls executed:100.00% of 2
+Creating 'iostream.gcov'
+
+File '/usr/include/gtest/gtest-printers.h'
+Lines executed:0.00% of 39
+Branches executed:0.00% of 34
+Taken at least once:0.00% of 34
+Calls executed:0.00% of 36
+Creating 'gtest-printers.h.gcov'
+
+File '/usr/include/c++/4.8/ostream'
+No executable lines
+No branches
+No calls
+Removing 'ostream.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_algobase.h'
+Lines executed:73.91% of 46
+Branches executed:66.67% of 12
+Taken at least once:58.33% of 12
+Calls executed:73.53% of 68
+Creating 'stl_algobase.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_iterator.h'
+Lines executed:100.00% of 25
+No branches
+Calls executed:100.00% of 8
+Creating 'stl_iterator.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_iterator_base_types.h'
+Lines executed:100.00% of 6
+No branches
+Calls executed:100.00% of 3
+Creating 'stl_iterator_base_types.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_iterator_base_funcs.h'
+Lines executed:100.00% of 4
+No branches
+Calls executed:50.00% of 4
+Creating 'stl_iterator_base_funcs.h.gcov'
+
+File '/usr/include/c++/4.8/ext/new_allocator.h'
+Lines executed:92.86% of 14
+Branches executed:100.00% of 8
+Taken at least once:50.00% of 8
+Calls executed:83.33% of 12
+Creating 'new_allocator.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_uninitialized.h'
+Lines executed:65.22% of 23
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:83.33% of 18
+Creating 'stl_uninitialized.h.gcov'
+
+File '/usr/include/c++/4.8/bits/alloc_traits.h'
+Lines executed:80.77% of 26
+No branches
+Calls executed:94.12% of 17
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/4.8/bits/basic_string.h'
+Lines executed:0.00% of 5
+Branches executed:0.00% of 4
+Taken at least once:0.00% of 4
+Calls executed:0.00% of 3
+Creating 'basic_string.h.gcov'
+
+File '/usr/include/c++/4.8/ext/type_traits.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'type_traits.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_construct.h'
+Lines executed:100.00% of 7
+No branches
+Calls executed:100.00% of 4
+Creating 'stl_construct.h.gcov'
+
+File '/usr/include/c++/4.8/bits/allocator.h'
+Lines executed:55.56% of 9
+No branches
+Calls executed:100.00% of 5
+Creating 'allocator.h.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_deque.h'
+Lines executed:81.25% of 112
+Branches executed:69.23% of 26
+Taken at least once:42.31% of 26
+Calls executed:73.77% of 61
+Creating 'stl_deque.h.gcov'
+
+File '/usr/include/c++/4.8/bits/deque.tcc'
+Lines executed:16.67% of 42
+Branches executed:14.29% of 14
+Taken at least once:7.14% of 14
+Calls executed:6.67% of 30
+Creating 'deque.tcc.gcov'
+
+File '/usr/include/c++/4.8/bits/basic_string.tcc'
+Lines executed:0.00% of 16
+Branches executed:0.00% of 16
+Taken at least once:0.00% of 16
+Calls executed:0.00% of 19
+Creating 'basic_string.tcc.gcov'
+
+File '/usr/include/c++/4.8/bits/stl_vector.h'
+Lines executed:86.43% of 140
+Branches executed:84.21% of 38
+Taken at least once:44.74% of 38
+Calls executed:79.21% of 101
+Creating 'stl_vector.h.gcov'
+
+File '/usr/include/c++/4.8/bits/move.h'
+Lines executed:100.00% of 9
+No branches
+Calls executed:100.00% of 3
+Creating 'move.h.gcov'
+
+File '/usr/include/c++/4.8/bits/vector.tcc'
+Lines executed:46.67% of 90
+Branches executed:34.62% of 52
+Taken at least once:21.15% of 52
+Calls executed:46.07% of 89
+Creating 'vector.tcc.gcov'
+
+File '/usr/include/gtest/gtest.h'
+Lines executed:52.63% of 19
+Branches executed:28.57% of 14
+Taken at least once:14.29% of 14
+Calls executed:24.14% of 29
+Creating 'gtest.h.gcov'
+
+File '/usr/include/c++/4.8/streambuf'
+No executable lines
+No branches
+No calls
+Removing 'streambuf.gcov'
+
+File '/usr/include/c++/4.8/ext/alloc_traits.h'
+Lines executed:75.00% of 8
+No branches
+Calls executed:100.00% of 1
+Creating 'alloc_traits.h.gcov'
+
+File '/usr/include/c++/4.8/sstream'
+Lines executed:0.00% of 1
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 5
+Creating 'sstream.gcov'
+
+File '/usr/include/c++/4.8/istream'
+No executable lines
+No branches
+No calls
+Removing 'istream.gcov'
+
+File '/usr/include/c++/4.8/bits/basic_ios.h'
+No executable lines
+No branches
+No calls
+Removing 'basic_ios.h.gcov'
+
+File 'Integer.h'
+Lines executed:93.30% of 194
+Branches executed:91.74% of 242
+Taken at least once:65.29% of 242
+Calls executed:85.40% of 226
+Creating 'Integer.h.gcov'
+
+File '/usr/include/gtest/internal/gtest-port.h'
+Lines executed:50.00% of 10
+Branches executed:16.67% of 12
+Taken at least once:8.33% of 12
+Calls executed:14.29% of 7
+Creating 'gtest-port.h.gcov'
+
+File '/usr/include/gtest/gtest-message.h'
+Lines executed:0.00% of 1
+No branches
+Calls executed:0.00% of 1
+Creating 'gtest-message.h.gcov'
+
+File '/usr/include/c++/4.8/bits/ios_base.h'
+Lines executed:0.00% of 4
+No branches
+No calls
+Creating 'ios_base.h.gcov'
+
+File '/usr/include/c++/4.8/new'
+Lines executed:100.00% of 2
+No branches
+No calls
+Creating 'new.gcov'
+
+File '/usr/include/c++/4.8/ext/atomicity.h'
+Lines executed:0.00% of 10
+Branches executed:0.00% of 2
+Taken at least once:0.00% of 2
+Calls executed:0.00% of 3
+Creating 'atomicity.h.gcov'
+
+File '/usr/include/x86_64-linux-gnu/c++/4.8/bits/gthr-default.h'
+Lines executed:0.00% of 2
+No branches
+No calls
+Creating 'gthr-default.h.gcov'
+
+File '/usr/include/c++/4.8/bits/char_traits.h'
+Lines executed:0.00% of 6
+No branches
+No calls
+Creating 'char_traits.h.gcov'
+

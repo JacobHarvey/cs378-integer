@@ -132,12 +132,12 @@ OI minus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
 	bool remove = false;
 	while(b1 != e1){
         int temp = *b1;
-        int temp2 = *b2;
 		if(remove){
 			--temp;
 			remove = false;
 		}
 		if(b2 != e2){
+			int temp2 = *b2;
 			if(temp < temp2){
 				remove = true;
 				temp += 10;
@@ -145,12 +145,18 @@ OI minus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
 			*x = temp - temp2;
 			++b2;
 		}
-		else
+		else{
+			if (temp == -1){
+				temp += 10;
+				remove = true;
+			}
 			*x = temp;
+		}
 		++b1;
-		++x;	
+		++x;
+		
 	}
-
+	
     	return x;}
 
 // -----------------
@@ -244,7 +250,10 @@ class Integer {
 	if((e2-b2) != (e1-b1))
 		return false;
 	while(b1 != e1){
-		if(*b1 != *b2)
+		int temp = *b1;
+		int temp2 = *b2;
+		//printf("%d, %d\n", temp, temp2);
+		if(temp != temp2)
 			return false;
 		++b1;
 		++b2;
@@ -350,7 +359,7 @@ class Integer {
      * <your documentation>
      */
     friend Integer operator - (Integer lhs, const Integer& rhs) {
-        return lhs -= rhs;}
+	return lhs -= rhs;}
 
     // ----------
     // operator *
@@ -480,11 +489,16 @@ class Integer {
          */
         Integer (int value) {
             	// <your code> - edited
-		while(value != 0){
-			_x.push_back(value % 10);
-			value /= 10;
+		if(value == 0){
+			_x.push_back(value);
 		}
-		neg = value<0;
+		else{
+			while(value != 0){
+				_x.push_back(value % 10);
+				value /= 10;
+			}
+			neg = value<0;
+		}
         assert(valid());}
 
         /**
@@ -634,7 +648,15 @@ class Integer {
                 for (int i=0; i<size; i++)
                     temp._x.push_back(0);
 
-                bool normal = *this>rhs;
+                
+		
+		bool normal = *this>rhs;
+		
+		if(_x.size() > rhs._x.size())
+			normal = true;
+		else if(_x.size() < rhs._x.size())
+			normal  = false;
+
                 if (normal){
                     minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
                     temp.neg = false;
@@ -645,11 +667,10 @@ class Integer {
                 }
             //}
             auto iter_end = temp._x.end();
-            if (*(--iter_end)==0 && temp._x.size()!=0){
-                  temp._x.resize(temp._x.size()-1);
+            while (*(--iter_end)==0 && temp._x.size()>1){ 
+		temp._x.pop_back();
             }
 
-            printf("size %d, %d %d %d\n", temp._x.size(),temp._x[0], temp._x[1], temp._x[2]);
             *this=temp;
             return *this;}
 
@@ -677,10 +698,10 @@ class Integer {
             //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
             auto iter_end = temp._x.end();
             
-            if (*(--iter_end)==0 && temp._x.size()!=0){
-                temp._x.resize(--size);
+            while (*(--iter_end)==0 && temp._x.size()>1){
+                temp._x.pop_back(); 
             }
-            //printf ("size is %d", _x.size()); 
+	     
             //_x=temp;
             *this=temp;
             return *this;}

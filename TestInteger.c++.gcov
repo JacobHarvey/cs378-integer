@@ -1,0 +1,3128 @@
+        -:    0:Source:TestInteger.c++
+        -:    0:Graph:TestInteger.gcno
+        -:    0:Data:TestInteger.gcda
+        -:    0:Runs:1
+        -:    0:Programs:1
+        -:    1:// --------
+        -:    2:// includes
+        -:    3:// --------
+        -:    4:
+        -:    5:#include <iostream> // cout, endl
+        -:    6:#include <sstream>  // istringtstream, ostringstream
+        -:    7:#include <string>   // string
+        -:    8:#include <utility>  // pair
+        -:    9:#include <vector>   // vector
+        -:   10:
+        -:   11:#include "gtest/gtest.h"
+        -:   12:
+        -:   13:#include "Integer.h"
+        -:   14:
+        -:   15:using namespace std;
+        -:   16:
+        -:   17:// -----------
+        -:   18:// TestInteger
+        -:   19:// -----------
+        -:   20:
+        -:   21:// ----
+        -:   22:// shift_left_digits
+        -:   23:// ----
+        -:   24:
+function _ZN39IntegerFixture_shift_left_digits_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_shift_left_digits_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_shift_left_digits_1_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN39IntegerFixture_shift_left_digits_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:   25:TEST(IntegerFixture, shift_left_digits_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:   26:
+        1:   27:    	int array[] = {1, 1, 1};
+        1:   28:    	vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:   29:    	int n = 2;
+        1:   30:	int real[] = {0, 0, 1, 1, 1};
+        2:   31:	vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:   32:	std::vector<int> output(5, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:   33:	std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:   34:	std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:   35:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:   36:
+        1:   37:	std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   38:	
+        2:   39:    	ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:   40:        
+        -:   41:}
+        -:   42:
+function _ZN39IntegerFixture_shift_left_digits_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_shift_left_digits_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_shift_left_digits_2_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN39IntegerFixture_shift_left_digits_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:   43:TEST(IntegerFixture, shift_left_digits_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:   44:
+        1:   45:        int array[] = {2, 1, 1, 8};
+        1:   46:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:   47:        int n = 7;
+        1:   48:        int real[] = {0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 8};
+        2:   49:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:   50:        std::vector<int> output(11, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:   51:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:   52:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:   53:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:   54:
+        1:   55:        std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   56:
+        2:   57:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:   58:
+        -:   59:}
+        -:   60:
+function _ZN39IntegerFixture_shift_left_digits_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_shift_left_digits_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_shift_left_digits_3_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN39IntegerFixture_shift_left_digits_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:   61:TEST(IntegerFixture, shift_left_digits_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:   62:
+        1:   63:        int array[] = {5};
+        1:   64:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:   65:        int n = 7;
+        1:   66:        int real[] = {0, 0, 0, 0, 0, 0, 0, 5};
+        2:   67:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:   68:        std::vector<int> output(8, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:   69:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:   70:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:   71:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:   72:
+        1:   73:        std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   74:
+        2:   75:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:   76:
+        -:   77:}
+        -:   78:
+        -:   79:// ----
+        -:   80:// shift_right_digits
+        -:   81:// ----
+        -:   82:
+function _ZN40IntegerFixture_shift_right_digits_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN40IntegerFixture_shift_right_digits_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN40IntegerFixture_shift_right_digits_1_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN40IntegerFixture_shift_right_digits_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:   83:TEST(IntegerFixture, shift_right_digits_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:   84:
+        1:   85:        int array[] = {1, 1, 1};
+        1:   86:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:   87:        int n = 2;
+        1:   88:        int real[] = { 1};
+        2:   89:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:   90:        std::vector<int> output(1, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:   91:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:   92:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:   93:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:   94:
+        1:   95:        std::vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:   96:
+        2:   97:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:   98:
+        -:   99:}
+        -:  100:
+        -:  101:
+function _ZN40IntegerFixture_shift_right_digits_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN40IntegerFixture_shift_right_digits_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN40IntegerFixture_shift_right_digits_2_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN40IntegerFixture_shift_right_digits_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  102:TEST(IntegerFixture, shift_right_digits_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  103:
+        1:  104:        int array[] = {2, 3, 4, 6, 7};
+        1:  105:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  106:        int n = 3;
+        1:  107:        int real[] = {6, 7};
+        2:  108:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  109:        vector<int> output(2, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  110:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  111:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  112:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  113:
+        1:  114:        vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  115:
+        2:  116:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  117:
+        -:  118:}
+        -:  119:
+function _ZN40IntegerFixture_shift_right_digits_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN40IntegerFixture_shift_right_digits_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN40IntegerFixture_shift_right_digits_3_Test8TestBodyEv called 1 returned 100% blocks executed 53%
+function _ZN40IntegerFixture_shift_right_digits_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  120:TEST(IntegerFixture, shift_right_digits_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  121:
+        1:  122:        int array[] = {2, 3, 4};
+        1:  123:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  124:        int n = 1;
+        1:  125:        int real[] = {3, 4};
+        2:  126:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  127:        vector<int> output(2, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  128:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  129:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  130:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  131:
+        1:  132:        vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  133:
+        2:  134:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  135:
+        -:  136:}
+        -:  137:
+        -:  138:// ----
+        -:  139:// plus_digits
+        -:  140:// ----
+        -:  141:
+function _ZN33IntegerFixture_plus_digits_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_plus_digits_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_plus_digits_1_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN33IntegerFixture_plus_digits_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  142:TEST(IntegerFixture, plus_digits_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  143:	//(11 ) <- carries
+        -:  144:	// 432
+        -:  145:	//+
+        -:  146:	// 789
+        -:  147:	//------
+        -:  148:	//1221
+        1:  149:        int array[] = {2, 3, 4};
+        1:  150:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  151:	int array2[] = {9, 8, 7};
+        2:  152:	vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  153:
+        1:  154:        int real[] = {1, 2, 2, 1};
+        2:  155:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  156:        vector<int> output(4, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  157:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  158:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  159:	vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  160:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  161:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  162:
+        1:  163:        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  164:
+        2:  165:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  166:
+        -:  167:}
+        -:  168:
+function _ZN33IntegerFixture_plus_digits_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_plus_digits_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_plus_digits_2_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN33IntegerFixture_plus_digits_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  169:TEST(IntegerFixture, plus_digits_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  170:        //( 1 ) <- carries
+        -:  171:        // 002
+        -:  172:        //+
+        -:  173:        // 789
+        -:  174:        //------
+        -:  175:        // 791
+        1:  176:        int array[] = {2};
+        1:  177:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  178:        int array2[] = {9, 8, 7};
+        2:  179:        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  180:
+        1:  181:        int real[] = {1, 9, 7};
+        2:  182:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  183:        vector<int> output(3, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  184:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  185:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  186:        vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  187:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  188:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  189:
+        1:  190:        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  191:
+        2:  192:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  193:
+        -:  194:}
+        -:  195:
+function _ZN33IntegerFixture_plus_digits_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_plus_digits_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_plus_digits_3_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN33IntegerFixture_plus_digits_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  196:TEST(IntegerFixture, plus_digits_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  197:        //(1  ) <- carries
+        -:  198:        // 888
+        -:  199:        //+
+        -:  200:        //  20
+        -:  201:        //------
+        -:  202:        // 908
+        1:  203:        int array[] = {8, 8, 8};
+        1:  204:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  205:        int array2[] = {0, 2};
+        2:  206:        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  207:
+        1:  208:        int real[] = {8, 0, 9};
+        2:  209:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  210:        vector<int> output(3, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  211:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  212:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  213:        vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  214:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  215:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  216:
+        1:  217:        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  218:
+        2:  219:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  220:
+        -:  221:}
+        -:  222:
+        -:  223:// ----
+        -:  224:// minus_digits
+        -:  225:// ----
+        -:  226:
+function _ZN34IntegerFixture_minus_digits_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN34IntegerFixture_minus_digits_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN34IntegerFixture_minus_digits_1_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN34IntegerFixture_minus_digits_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  227:TEST(IntegerFixture, minus_digits_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  228:        //(   ) <- borrows
+        -:  229:        // 789
+        -:  230:        //-
+        -:  231:        // 432
+        -:  232:        //------
+        -:  233:        // 357
+        1:  234:        int array[] = {9, 8, 7};
+        1:  235:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  236:        int array2[] = {2, 3, 4};
+        2:  237:        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  238:
+        1:  239:        int real[] = {7, 5, 3};
+        2:  240:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  241:        vector<int> output(3, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  242:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  243:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  244:        vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  245:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  246:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  247:
+        1:  248:        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  249:
+        2:  250:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  251:
+        -:  252:}
+        -:  253:
+function _ZN34IntegerFixture_minus_digits_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN34IntegerFixture_minus_digits_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN34IntegerFixture_minus_digits_2_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN34IntegerFixture_minus_digits_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  254:TEST(IntegerFixture, minus_digits_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  255:        //( 1 ) <- borrows
+        -:  256:        // 987
+        -:  257:        //-
+        -:  258:        // 009
+        -:  259:        //------
+        -:  260:        // 978
+        1:  261:        int array[] = {7, 8 ,9};
+        1:  262:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  263:        int array2[] = {9};
+        2:  264:        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  265:
+        1:  266:        int real[] = {8, 7, 9};
+        2:  267:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  268:        vector<int> output(3, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  269:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  270:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  271:        vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  272:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  273:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  274:
+        1:  275:        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  276:
+        2:  277:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  278:
+        -:  279:}
+        -:  280:
+function _ZN34IntegerFixture_minus_digits_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN34IntegerFixture_minus_digits_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN34IntegerFixture_minus_digits_3_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN34IntegerFixture_minus_digits_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  281:TEST(IntegerFixture, minus_digits_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  282:        //( 1 ) <- borrows
+        -:  283:        // 955
+        -:  284:        //-
+        -:  285:        // 587
+        -:  286:        //------
+        -:  287:        // 368
+        1:  288:        int array[] = {5, 5, 9};
+        1:  289:        vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  290:        int array2[] = {7, 8, 5};
+        2:  291:        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        -:  292:
+        1:  293:        int real[] = {8, 6, 3};
+        2:  294:        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  295:        vector<int> output(3, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+        1:  296:        vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  297:        vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  298:        vector<int>::iterator og2_b = og2.begin();
+call    0 returned 100%
+        1:  299:        vector<int>::iterator og2_e = og2.end();
+call    0 returned 100%
+        1:  300:        vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        -:  301:
+        1:  302:        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  303:
+        2:  304:        ASSERT_EQ(real_answer, output);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 0% (fallthrough)
+branch  5 taken 100%
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 returned 100%
+branch 21 taken 100%
+branch 22 taken 0%
+call   23 returned 100%
+branch 24 taken 100%
+branch 25 taken 0%
+call   26 never executed
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+        -:  305:
+        -:  306:}
+        -:  307:
+        -:  308:
+function _ZN39IntegerFixture_multiplies_digits_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_multiplies_digits_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_multiplies_digits_1_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN39IntegerFixture_multiplies_digits_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  309:TEST(IntegerFixture, multiplies_digits_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  310:        using namespace std;
+        -:  311:        //std::vector<int> input  (4, 100);
+        -:  312:
+        1:  313:    	int array[] = {3, 2, 1};
+        1:  314:        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        2:  315:        std::vector<int> of (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        -:  316:    	
+        2:  317:        std::vector<int> output(6, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+call   10 never executed
+        1:  318:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  319:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  320:        std::vector<int>::iterator of_b = of.begin();
+call    0 returned 100%
+        1:  321:        std::vector<int>::iterator of_e = of.end();
+call    0 returned 100%
+        1:  322:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        1:  323:	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        1:  324:        int r_array[] = {9, 2, 1, 5, 1};
+        2:  325:        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        1:  326:        if (*(--result)==0){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 0% (fallthrough)
+branch  3 taken 100%
+    #####:  327:            output.resize(5);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  328:        }
+        -:  329:        
+        2:  330:	    ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+branch 10 taken 0% (fallthrough)
+branch 11 taken 100%
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 returned 100%
+branch 32 taken 100%
+branch 33 taken 0%
+call   34 never executed
+call   35 never executed
+call   36 never executed
+call   37 never executed
+call   38 never executed
+call   39 never executed
+        -:  331:        
+        -:  332:}
+        -:  333:    //	ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+        -:  334:        
+        -:  335:
+function _ZN39IntegerFixture_multiplies_digits_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_multiplies_digits_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_multiplies_digits_2_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN39IntegerFixture_multiplies_digits_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  336:TEST(IntegerFixture, multiplies_digits_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  337:        using namespace std;
+        -:  338:        //std::vector<int> input  (4, 100);
+        -:  339:
+        1:  340:    	int array[] = {9, 9, 9};
+        1:  341:        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        2:  342:        std::vector<int> of (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        -:  343:    	
+        2:  344:        std::vector<int> output(6, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+call   10 never executed
+        1:  345:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  346:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  347:        std::vector<int>::iterator of_b = of.begin();
+call    0 returned 100%
+        1:  348:        std::vector<int>::iterator of_e = of.end();
+call    0 returned 100%
+        1:  349:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        1:  350:	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        1:  351:        int r_array[] = {1,0,0,8,9,9};
+        2:  352:        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        1:  353:        if (*(--result)==0){
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 0% (fallthrough)
+branch  3 taken 100%
+    #####:  354:            output.resize(5);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+        -:  355:        }
+        -:  356:        
+        2:  357:    	ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+branch 10 taken 0% (fallthrough)
+branch 11 taken 100%
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 returned 100%
+branch 32 taken 100%
+branch 33 taken 0%
+call   34 never executed
+call   35 never executed
+call   36 never executed
+call   37 never executed
+call   38 never executed
+call   39 never executed
+        -:  358:        
+        -:  359:}
+        -:  360:
+function _ZN39IntegerFixture_multiplies_digits_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN39IntegerFixture_multiplies_digits_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN39IntegerFixture_multiplies_digits_3_Test8TestBodyEv called 1 returned 100% blocks executed 55%
+function _ZN39IntegerFixture_multiplies_digits_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  361:TEST(IntegerFixture, multiplies_digits_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  362:        using namespace std;
+        -:  363:        //std::vector<int> input  (4, 100);
+        -:  364:
+        1:  365:    	int array[] = {9, 9, 9};
+        1:  366:        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 never executed
+        1:  367:        int array2 []= {0};
+        2:  368:        std::vector<int> of (array2, array2 + sizeof(array2) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        -:  369:    	
+        2:  370:        std::vector<int> output(6, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+call    9 never executed
+call   10 never executed
+        1:  371:        std::vector<int>::iterator og_b = og.begin();
+call    0 returned 100%
+        1:  372:        std::vector<int>::iterator og_e = og.end();
+call    0 returned 100%
+        1:  373:        std::vector<int>::iterator of_b = of.begin();
+call    0 returned 100%
+        1:  374:        std::vector<int>::iterator of_e = of.end();
+call    0 returned 100%
+        1:  375:        std::vector<int>::iterator output_b = output.begin();
+call    0 returned 100%
+        1:  376:	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        1:  377:        int r_array[] = {0};
+        2:  378:        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+call    5 returned 100%
+branch  6 taken 100%
+branch  7 taken 0%
+call    8 never executed
+        2:  379:    	ASSERT_EQ(*output_b, 0);
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+branch  5 taken 0% (fallthrough)
+branch  6 taken 100%
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+call   20 never executed
+call   21 returned 100%
+branch 22 taken 100%
+branch 23 taken 0%
+call   24 returned 100%
+branch 25 taken 100%
+branch 26 taken 0%
+call   27 never executed
+call   28 never executed
+call   29 never executed
+call   30 never executed
+call   31 never executed
+        -:  380:        
+        -:  381:}
+        -:  382:
+function _ZN27IntegerFixture_valid_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_1_Test8TestBodyEv called 1 returned 100% blocks executed 33%
+function _ZN27IntegerFixture_valid_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  383:TEST(IntegerFixture, valid_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  384:        using namespace std;
+        -:  385:        //std::vector<int> input  (4, 100)
+        -:  386:        try{
+        2:  387:            Integer <int> n = Integer<int>("13a");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+branch  5 taken 0% (fallthrough)
+branch  6 taken 100% (throw)
+call    7 never executed
+call    8 never executed
+call    9 never executed
+call   10 returned 100%
+branch 11 taken 0% (fallthrough)
+branch 12 taken 100%
+call   13 never executed
+        -:  388:        }
+        2:  389:        catch (exception& e){
+call    0 returned 100%
+call    1 returned 100%
+        1:  390:            return;
+        -:  391:        }
+    #####:  392:    	ASSERT_EQ( 1, 0);
+call    0 never executed
+branch  1 never executed
+branch  2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+call   20 never executed
+branch 21 never executed
+branch 22 never executed
+call   23 returned 100%
+call   24 never executed
+call   25 never executed
+call   26 never executed
+        -:  393:}
+        -:  394:
+function _ZN27IntegerFixture_valid_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_2_Test8TestBodyEv called 1 returned 100% blocks executed 13%
+function _ZN27IntegerFixture_valid_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  395:TEST(IntegerFixture, valid_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  396:        using namespace std;
+        -:  397:        //std::vector<int> input  (4, 100)
+        -:  398:        try{
+        1:  399:            Integer <int> n = Integer<int>(125);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+        -:  400:        }
+    =====:  401:        catch (exception& e){
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+        1:  402:            ASSERT_EQ (1,0);
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+branch 24 never executed
+branch 25 never executed
+    =====:  403:        }
+        -:  404:}
+function _ZN27IntegerFixture_valid_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_3_Test8TestBodyEv called 1 returned 100% blocks executed 13%
+function _ZN27IntegerFixture_valid_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  405:TEST(IntegerFixture, valid_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  406:        using namespace std;
+        -:  407:        //std::vector<int> input  (4, 100)
+        -:  408:        try{
+        1:  409:            Integer <int> n = Integer<int>(129999999);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+        -:  410:        }
+    =====:  411:        catch (exception& e){
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+        1:  412:            ASSERT_EQ (1,0);
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+branch 24 never executed
+branch 25 never executed
+    =====:  413:        }
+        -:  414:}
+function _ZN27IntegerFixture_valid_4_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_4_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_4_Test8TestBodyEv called 1 returned 100% blocks executed 19%
+function _ZN27IntegerFixture_valid_4_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  415:TEST(IntegerFixture, valid_4) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  416:        using namespace std;
+        -:  417:        //std::vector<int> input  (4, 100)
+        -:  418:        try{
+        1:  419:            Integer <int> n = Integer<int>("99999999999999999999999999999999999999999999999999999999999999");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+branch  5 taken 100% (fallthrough)
+branch  6 taken 0% (throw)
+call    7 returned 100%
+call    8 returned 100%
+call    9 returned 100%
+call   10 never executed
+        -:  420:        }
+    =====:  421:        catch (exception& e){
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+        1:  422:            ASSERT_EQ (1,0);
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+call    4 never executed
+branch  5 never executed
+branch  6 never executed
+call    7 never executed
+branch  8 never executed
+branch  9 never executed
+call   10 never executed
+branch 11 never executed
+branch 12 never executed
+call   13 never executed
+branch 14 never executed
+branch 15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+branch 25 never executed
+branch 26 never executed
+    =====:  423:        }
+        -:  424:}
+function _ZN27IntegerFixture_valid_5_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_5_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_5_Test8TestBodyEv called 1 returned 100% blocks executed 13%
+function _ZN27IntegerFixture_valid_5_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  425:TEST(IntegerFixture, valid_5) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  426:        using namespace std;
+        -:  427:        //std::vector<int> input  (4, 100)
+        -:  428:        try{
+        1:  429:            Integer <int> n = Integer<int>(0);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+        -:  430:        }
+    =====:  431:        catch (exception& e){
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+        1:  432:            ASSERT_EQ (1,0);
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+branch 24 never executed
+branch 25 never executed
+    =====:  433:        }
+        -:  434:}
+        -:  435:
+function _ZN27IntegerFixture_valid_6_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_6_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_6_Test8TestBodyEv called 1 returned 100% blocks executed 72%
+function _ZN27IntegerFixture_valid_6_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  436:TEST(IntegerFixture, valid_6) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  437:        using namespace std;
+        -:  438:        
+        -:  439:        try{
+        2:  440:            Integer <int> n = Integer<int>("");
+call    0 returned 100%
+call    1 returned 100%
+branch  2 taken 100% (fallthrough)
+branch  3 taken 0% (throw)
+call    4 returned 100%
+branch  5 taken 0% (fallthrough)
+branch  6 taken 100% (throw)
+call    7 never executed
+call    8 never executed
+call    9 never executed
+call   10 returned 100%
+branch 11 taken 0% (fallthrough)
+branch 12 taken 100%
+call   13 never executed
+        -:  441:        }
+        2:  442:        catch (exception& e){
+call    0 returned 100%
+        2:  443:            return;    
+call    0 returned 100%
+        -:  444:        }
+        -:  445:        //ASSERT_EQ(0,1);
+        -:  446:
+        -:  447:}
+function _ZN27IntegerFixture_valid_7_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN27IntegerFixture_valid_7_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN27IntegerFixture_valid_7_Test8TestBodyEv called 1 returned 100% blocks executed 13%
+function _ZN27IntegerFixture_valid_7_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  448:TEST(IntegerFixture, valid_7) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  449:        using namespace std;
+        -:  450:        try{
+        1:  451:            Integer <int, std::deque<int> > n = Integer<int, std::deque<int> >(129999999);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+        -:  452:        }
+    =====:  453:        catch (exception& e){
+call    0 never executed
+call    1 never executed
+branch  2 never executed
+branch  3 never executed
+call    4 never executed
+call    5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+        1:  454:            ASSERT_EQ (1,0);
+call    0 never executed
+call    1 never executed
+call    2 never executed
+call    3 never executed
+branch  4 never executed
+branch  5 never executed
+call    6 never executed
+branch  7 never executed
+branch  8 never executed
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+branch 19 never executed
+branch 20 never executed
+call   21 never executed
+call   22 never executed
+call   23 never executed
+branch 24 never executed
+branch 25 never executed
+    =====:  455:        }
+        -:  456:}
+        -:  457:
+        -:  458:
+function _ZN28IntegerFixture_equals_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN28IntegerFixture_equals_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN28IntegerFixture_equals_1_Test8TestBodyEv called 1 returned 100% blocks executed 46%
+function _ZN28IntegerFixture_equals_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  459:TEST(IntegerFixture, equals_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  460:        using namespace std;
+        -:  461:        
+        1:  462:        Integer <int> n = Integer<int>(2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  463:        Integer <int> x = Integer<int> (2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  464:        ASSERT_TRUE(n==x);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  465:}
+function _ZN28IntegerFixture_equals_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN28IntegerFixture_equals_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN28IntegerFixture_equals_2_Test8TestBodyEv called 1 returned 100% blocks executed 46%
+function _ZN28IntegerFixture_equals_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  466:TEST(IntegerFixture, equals_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  467:        using namespace std;
+        -:  468:        
+        1:  469:        Integer <int> n = Integer<int>(3);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  470:        Integer <int> x = Integer<int> (2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  471:        ASSERT_FALSE(n==x);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  472:}
+function _ZN31IntegerFixture_notequals_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN31IntegerFixture_notequals_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN31IntegerFixture_notequals_1_Test8TestBodyEv called 1 returned 100% blocks executed 46%
+function _ZN31IntegerFixture_notequals_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  473:TEST(IntegerFixture, notequals_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  474:        using namespace std;
+        -:  475:        
+        1:  476:        Integer <int> n = Integer<int>(2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  477:        Integer <int> x = Integer<int> (2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  478:        ASSERT_FALSE(n!=x);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  479:}
+function _ZN31IntegerFixture_notequals_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN31IntegerFixture_notequals_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN31IntegerFixture_notequals_2_Test8TestBodyEv called 1 returned 100% blocks executed 46%
+function _ZN31IntegerFixture_notequals_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  480:TEST(IntegerFixture, notequals_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  481:        using namespace std;
+        -:  482:        
+        1:  483:        Integer <int> n = Integer<int>(3);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  484:        Integer <int> x = Integer<int> (2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  485:        ASSERT_TRUE(n!=x);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  486:}
+        -:  487:
+        -:  488:
+        -:  489:
+        -:  490:
+        -:  491:
+        -:  492:
+function _ZN32IntegerFixture_timesequal_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN32IntegerFixture_timesequal_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN32IntegerFixture_timesequal_1_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN32IntegerFixture_timesequal_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  493:TEST(IntegerFixture, timesequal_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  494:        using namespace std;
+        -:  495:        
+        1:  496:        Integer <int> n = Integer<int>(123);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  497:        Integer <int> x = Integer<int> (2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        1:  498:        n *= x;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  499:        Integer <int> result = Integer<int> (246);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  500:        ASSERT_TRUE(result==n);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  501:    	
+        -:  502:}
+        -:  503:
+function _ZN32IntegerFixture_timesequal_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN32IntegerFixture_timesequal_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN32IntegerFixture_timesequal_2_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN32IntegerFixture_timesequal_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  504:TEST(IntegerFixture, timesequal_2) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  505:        using namespace std;
+        -:  506:        
+        1:  507:        Integer <int> n = Integer<int>(999);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  508:        Integer <int> x = Integer<int> (999);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        1:  509:        n *= x;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  510:        Integer <int> result = Integer<int> (998001);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  511:        ASSERT_TRUE(result==n);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  512:    	
+        -:  513:}
+        -:  514:
+        -:  515:
+function _ZN32IntegerFixture_timesequal_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN32IntegerFixture_timesequal_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN32IntegerFixture_timesequal_3_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN32IntegerFixture_timesequal_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  516:TEST(IntegerFixture, timesequal_3) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  517:        using namespace std;
+        -:  518:        
+        1:  519:        Integer <int> n = Integer<int>(123);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  520:        Integer <int> x = Integer<int> (0);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        1:  521:        n *= x;
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        -:  522:	
+        2:  523:        Integer <int> result = Integer<int> (0);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  524:        ASSERT_TRUE(result == n);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  525:}
+        -:  526:
+function _ZN25IntegerFixture_pow_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN25IntegerFixture_pow_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN25IntegerFixture_pow_1_Test8TestBodyEv called 1 returned 100% blocks executed 47%
+function _ZN25IntegerFixture_pow_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  527:TEST(IntegerFixture, pow_1) {
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  528:        using namespace std;
+        -:  529:        
+        1:  530:        Integer <int> n = Integer<int>(2);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        1:  531:        n.pow(3);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  532:        Integer <int> result = Integer<int> (8);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  533:        ASSERT_TRUE(result==n);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  534:    	
+        -:  535:}
+        -:  536:
+function _ZN30IntegerFixture_lessthan_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN30IntegerFixture_lessthan_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN30IntegerFixture_lessthan_1_Test8TestBodyEv called 1 returned 100% blocks executed 46%
+function _ZN30IntegerFixture_lessthan_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  537:TEST(IntegerFixture, lessthan_1){
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  538:        using namespace std;
+        1:  539:        Integer <int> n = Integer<int>(23);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  540:        Integer <int> m = Integer<int>(22);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  541:        ASSERT_TRUE(m < n);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+branch 10 never executed
+branch 11 never executed
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+call   16 never executed
+branch 17 never executed
+branch 18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+call   23 never executed
+call   24 never executed
+call   25 returned 100%
+branch 26 taken 100%
+branch 27 taken 0%
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 never executed
+call   32 never executed
+call   33 never executed
+call   34 never executed
+call   35 never executed
+        -:  542:}
+        -:  543:
+function _ZN33IntegerFixture_minusequals_1_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_minusequals_1_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_minusequals_1_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN33IntegerFixture_minusequals_1_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  544:TEST(IntegerFixture, minusequals_1){
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  545:        using namespace std;
+        1:  546:        Integer <int> n = Integer<int>(23);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  547:        Integer <int> m = Integer<int>(22);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  548:        Integer <int> output = Integer<int>(1);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  549:	ASSERT_TRUE((n -= m) == output );
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+branch 10 taken 0% (fallthrough)
+branch 11 taken 100%
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 returned 100%
+branch 32 taken 100%
+branch 33 taken 0%
+call   34 never executed
+call   35 never executed
+call   36 never executed
+call   37 never executed
+call   38 never executed
+        -:  550:}
+        -:  551:
+        -:  552:
+function _ZN33IntegerFixture_minusequals_2_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_minusequals_2_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_minusequals_2_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN33IntegerFixture_minusequals_2_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  553:TEST(IntegerFixture, minusequals_2){
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  554:        using namespace std;
+        1:  555:        Integer <int> n = Integer<int>(23);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  556:        Integer <int> m = Integer<int>(12);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  557:        Integer <int> output = Integer<int>(11);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  558:        ASSERT_TRUE((n -= m) == output );
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+branch 10 taken 0% (fallthrough)
+branch 11 taken 100%
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 returned 100%
+branch 32 taken 100%
+branch 33 taken 0%
+call   34 never executed
+call   35 never executed
+call   36 never executed
+call   37 never executed
+call   38 never executed
+        -:  559:}
+        -:  560:
+function _ZN33IntegerFixture_minusequals_3_TestD0Ev called 1 returned 100% blocks executed 100%
+function _ZN33IntegerFixture_minusequals_3_TestD2Ev called 1 returned 100% blocks executed 75%
+function _ZN33IntegerFixture_minusequals_3_Test8TestBodyEv called 1 returned 100% blocks executed 49%
+function _ZN33IntegerFixture_minusequals_3_TestC2Ev called 1 returned 100% blocks executed 100%
+        5:  561:TEST(IntegerFixture, minusequals_3){
+call    0 returned 100%
+call    1 returned 100%
+call    2 returned 100%
+call    3 returned 100%
+call    4 returned 100%
+call    5 returned 100%
+call    6 returned 100%
+branch  7 taken 0% (fallthrough)
+branch  8 taken 100%
+call    9 never executed
+call   10 returned 100%
+        -:  562:        using namespace std;
+        1:  563:        Integer <int> n = Integer<int>(9000);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+        2:  564:        Integer <int> m = Integer<int>(1);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  565:        Integer <int> output = Integer<int>(8999);
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100%
+branch  5 taken 0%
+call    6 never executed
+        2:  566:        ASSERT_TRUE((n -= m) == output );
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0% (throw)
+call    3 returned 100%
+branch  4 taken 100% (fallthrough)
+branch  5 taken 0% (throw)
+call    6 returned 100%
+branch  7 taken 100% (fallthrough)
+branch  8 taken 0% (throw)
+call    9 returned 100%
+branch 10 taken 0% (fallthrough)
+branch 11 taken 100%
+call   12 never executed
+branch 13 never executed
+branch 14 never executed
+call   15 never executed
+branch 16 never executed
+branch 17 never executed
+call   18 never executed
+call   19 never executed
+branch 20 never executed
+branch 21 never executed
+call   22 never executed
+branch 23 never executed
+branch 24 never executed
+call   25 never executed
+call   26 never executed
+call   27 never executed
+call   28 returned 100%
+branch 29 taken 100%
+branch 30 taken 0%
+call   31 returned 100%
+branch 32 taken 100%
+branch 33 taken 0%
+call   34 never executed
+call   35 never executed
+call   36 never executed
+call   37 never executed
+call   38 never executed
+function _GLOBAL__sub_I__ZN39IntegerFixture_shift_left_digits_1_Test10test_info_E called 1 returned 100% blocks executed 100%
+function _Z41__static_initialization_and_destruction_0ii called 1 returned 100% blocks executed 100%
+        3:  567:}
+call    0 returned 100%
+branch  1 taken 100% (fallthrough)
+branch  2 taken 0%
+branch  3 taken 100% (fallthrough)
+branch  4 taken 0%
+        -:  568:
+        -:  569:
+        -:  570:/*
+        -:  571:% ls -al /usr/include/gtest/
+        -:  572:...
+        -:  573:gtest.h
+        -:  574:...
+        -:  575:
+        -:  576:
+        -:  577:
+        -:  578:% locate libgtest.a
+        -:  579:/usr/lib/libgtest.a
+        -:  580:...
+        -:  581:
+        -:  582:
+        -:  583:
+        -:  584:% locate libpthread.a
+        -:  585:...
+        -:  586:/usr/lib32/libpthread.a
+        -:  587:
+        -:  588:
+        -:  589:
+        -:  590:% locate libgtest_main.a
+        -:  591:/usr/lib/libgtest_main.a
+        -:  592:...
+        -:  593:
+        -:  594:
+        -:  595:
+        -:  596:% g++-4.8 -fprofile-arcs -ftest-coverage -pedantic -std=c++11 -Wall PFD.c++ TestPFD.c++ -o TestPFD -lgtest -lgtest_main -lpthread
+        -:  597:
+        -:  598:
+        -:  599:
+        -:  600:% valgrind TestPFD        >  TestPFD.out 2>&1
+        -:  601:% gcov-4.8 -b PFD.c++     >> TestPFD.out
+        -:  602:% gcov-4.8 -b TestPFD.c++ >> TestPFD.out
+        -:  603:
+        -:  604:
+        -:  605:
+        -:  606:% cat TestPFD.out
+        -:  607:==14225== Memcheck, a memory error detector
+        -:  608:==14225== Copyright (C) 2002-2011, and GNU GPL'd, by Julian Seward et al.
+        -:  609:==14225== Using Valgrind-3.7.0 and LibVEX; rerun with -h for copyright info
+        -:  610:==14225== Command: TestPFD
+        -:  611:==14225==
+        -:  612:Running main() from gtest_main.cc
+        -:  613:[==========] Running 7 tests from 1 test case.
+        -:  614:[----------] Global test environment set-up.
+        -:  615:[----------] 7 tests from PFD
+        -:  616:[ RUN      ] PFD.read
+        -:  617:[       OK ] PFD.read (31 ms)
+        -:  618:[ RUN      ] PFD.eval_1
+        -:  619:[       OK ] PFD.eval_1 (5 ms)
+        -:  620:[ RUN      ] PFD.eval_2
+        -:  621:[       OK ] PFD.eval_2 (3 ms)
+        -:  622:[ RUN      ] PFD.eval_3
+        -:  623:[       OK ] PFD.eval_3 (3 ms)
+        -:  624:[ RUN      ] PFD.eval_4
+        -:  625:[       OK ] PFD.eval_4 (3 ms)
+        -:  626:[ RUN      ] PFD.print
+        -:  627:[       OK ] PFD.print (17 ms)
+        -:  628:[ RUN      ] PFD.solve
+        -:  629:[       OK ] PFD.solve (10 ms)
+        -:  630:[----------] 7 tests from PFD (88 ms total)
+        -:  631:
+        -:  632:[----------] Global test environment tear-down
+        -:  633:[==========] 7 tests from 1 test case ran. (132 ms total)
+        -:  634:[  PASSED  ] 7 tests.
+        -:  635:==14225==
+        -:  636:==14225== HEAP SUMMARY:
+        -:  637:==14225==     in use at exit: 0 bytes in 0 blocks
+        -:  638:==14225==   total heap usage: 495 allocs, 495 frees, 70,302 bytes allocated
+        -:  639:==14225==
+        -:  640:==14225== All heap blocks were freed -- no leaks are possible
+        -:  641:==14225==
+        -:  642:==14225== For counts of detected and suppressed errors, rerun with: -v
+        -:  643:==14225== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 2 from 2)
+        -:  644:File 'PFD.c++'
+        -:  645:Lines executed:100.00% of 17
+        -:  646:Branches executed:100.00% of 18
+        -:  647:Taken at least once:61.11% of 18
+        -:  648:Calls executed:89.47% of 19
+        -:  649:Creating 'PFD.c++.gcov'
+        -:  650:...
+        -:  651:File 'TestPFD.c++'
+        -:  652:Lines executed:100.00% of 26
+        -:  653:Branches executed:57.14% of 224
+        -:  654:Taken at least once:28.57% of 224
+        -:  655:Calls executed:54.07% of 209
+        -:  656:Creating 'TestPFD.c++.gcov'
+        -:  657:...
+        -:  658:*/
