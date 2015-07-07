@@ -16,7 +16,7 @@
 #include <stdexcept> // invalid_argument
 #include <string>    // string
 #include <vector>    // vector
-
+#include <deque>
 // -----------------
 // shift_left_digits
 // -----------------
@@ -30,10 +30,21 @@
  * output the shift left of the input sequence into the output sequence
  * ([b, e) << n) => x
  */
-template <typename II, typename FI>
-FI shift_left_digits (II b, II e, int n, FI x) {
-    // <your code>
-    return x;}
+template <typename II, typename OI>
+OI shift_left_digits (II b, II e, int n, OI x) {
+    	// <your code> - edited
+	//this is if we have the least significant digit first
+	while (n > 0){
+                *x = 0;
+                ++x;
+        }
+	while(b != e){
+		*x = *b;
+		++x;
+		++b;
+	}
+	
+    	return x;}
 
 // ------------------
 // shift_right_digits
@@ -48,10 +59,16 @@ FI shift_left_digits (II b, II e, int n, FI x) {
  * output the shift right of the input sequence into the output sequence
  * ([b, e) >> n) => x
  */
-template <typename II, typename FI>
-FI shift_right_digits (II b, II e, int n, FI x) {
-    // <your code>
-    return x;}
+template <typename II, typename OI>
+OI shift_right_digits (II b, II e, int n, OI x) {
+    	// <your code> - edited
+	b += n;
+	while(b != e){
+		*x = *b;
+		++x;
+		++b;
+	}
+    	return x;}
 
 // -----------
 // plus_digits
@@ -68,10 +85,25 @@ FI shift_right_digits (II b, II e, int n, FI x) {
  * output the sum of the two input sequences into the output sequence
  * ([b1, e1) + [b2, e2)) => x
  */
-template <typename II1, typename II2, typename FI>
-FI plus_digits (II1 b1, II1 e1, II2 b2, II2 e2, FI x) {
-    // <your code>
-    return x;}
+template <typename II1, typename II2, typename OI>
+OI plus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
+    	// <your code> - edited
+	int carry = 0;
+	while(b1 != e1 || b2 != e2){
+		*x += carry;
+		if(b1 != e1){
+			*x += *b1;
+			++b1;
+		}
+		if(b2 != e2){
+			*x += *b2;
+			++b2;
+		} 
+		carry = *x / 10;
+		*x %= 10;
+		++x;
+	}
+    	return x;}
 
 // ------------
 // minus_digits
@@ -88,10 +120,30 @@ FI plus_digits (II1 b1, II1 e1, II2 b2, II2 e2, FI x) {
  * output the difference of the two input sequences into the output sequence
  * ([b1, e1) - [b2, e2)) => x
  */
-template <typename II1, typename II2, typename FI>
-FI minus_digits (II1 b1, II1 e1, II2 b2, II2 e2, FI x) {
-    // <your code>
-    return x;}
+template <typename II1, typename II2, typename OI>
+OI minus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
+    	// <your code> - editing
+	bool remove = false;
+	while(b1 != e1){
+		if(remove){
+			--*b1;
+			remove = false;
+		}
+		if(b2 != e2){
+			if(*b1 < *b2){
+				remove = true;
+				*b1 += 10;
+			}
+			*x = *b1 - *b2;
+			++b2;
+		}
+		else
+			*x = *b1;
+		++b1;
+		++x;	
+	}
+
+    	return x;}
 
 // -----------------
 // multiplies_digits
@@ -147,8 +199,20 @@ class Integer {
      * <your documentation>
      */
     friend bool operator == (const Integer& lhs, const Integer& rhs) {
-        // <your code>
-        return false;}
+        // <your code> - editing
+	typename C::iterator b1 = lhs._x.begin();
+	typename C::iterator e1 = lhs._x.end();
+	typename C::iterator b2 = rhs._x.begin();
+	typename C::iterator e2 = rhs._x.end();
+	if((e2-b2) != (e1-b1))
+		return false;
+	while(b1 != e1){
+		if(*b1 != *b2)
+			return false;
+		++b1;
+		++b2;
+	}
+        return true;}
 
     // -----------
     // operator !=
@@ -169,7 +233,37 @@ class Integer {
      */
     friend bool operator < (const Integer& lhs, const Integer& rhs) {
         // <your code>
-        return false;}
+	if(lhs.neg && !rhs.neg)
+		return true;
+	else if (!lhs.neg && rhs.neg)
+		return false;
+	else{
+		typename C::iterator b1 = lhs._x.begin();
+        	typename C::iterator e1 = lhs._x.end();
+        	typename C::iterator b2 = rhs._x.begin();
+        	typename C::iterator e2 = rhs._x.end();
+		int l = 0;
+		int r = 0;
+		int i = 1;
+		while(b1 != e1){
+			l += (*b1 * i);
+			i *= 10;
+			++b1;
+		}	
+		i = 1;
+		while(b2 != e2){
+                        r += (*b2 * i);
+                        i *= 10;
+                        ++b2;
+                }
+		if(!lhs.neg && l < r)
+			return true;
+		else if(lhs.neg && r < l)
+			return true;
+		else
+			return false;	
+	}
+    }
 
     // -----------
     // operator <=
@@ -283,8 +377,14 @@ class Integer {
      * <your documentation>
      */
     friend std::ostream& operator << (std::ostream& lhs, const Integer& rhs) {
-        // <your code>
-        return lhs << "0";}
+        	// <your code> - edited
+		typename C::iterator e = rhs._x.end();
+		typename C::iterator b = rhs._x.begin();
+		while(e != b){
+			lhs << *e;
+			--e;	
+		}
+        	return lhs << std::endl;}
 
     // ---
     // abs
@@ -316,6 +416,7 @@ class Integer {
 
         C _x; // the backing container
         // <your data>
+	bool neg;
 
     private:
         // -----
@@ -334,9 +435,17 @@ class Integer {
         /**
          * <your documentation>
          */
+	template <typename RI>
         Integer (int value) {
-            // <your code>
-            assert(valid());}
+            	// <your code> - edited
+		RI b = _x.begin();
+		while(value != 0){
+			*b = value % 10;
+			value /= 10;
+			++b;
+		}
+		neg = false;
+            	assert(valid());}
 
         /**
          * <your documentation>
@@ -360,8 +469,9 @@ class Integer {
          * <your documentation>
          */
         Integer operator - () const {
-            // <your code>
-            return Integer(0);}
+            	// <your code>
+		neg = true;
+        	return *this;}
 
         // -----------
         // operator ++

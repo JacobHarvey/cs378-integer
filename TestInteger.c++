@@ -6,166 +6,36 @@
 #include <sstream>  // istringtstream, ostringstream
 #include <string>   // string
 #include <utility>  // pair
+#include <vector>   // vector
 
 #include "gtest/gtest.h"
 
-#include "PFD.h"
+#include "Integer.h"
 
 using namespace std;
 
 // -----------
-// TestPFD
+// TestInteger
 // -----------
 
 // ----
-// read
+// shift_left_digits
 // ----
 
-TEST(PFDFixture, read_1) {
-    istringstream s("5 1\n3 2 1 5\n");
+TEST(IntegerFixture, shift_left_digits_1) {
+    	int array[] = {1, 1, 1};
+    	vector<int> og (array, array + sizeof(array) / sizeof(int));
+    	int n = 2;
+	std::vector<int> output(10, 0);
+	std::vector<int>::iterator og_b = og.begin();
+	std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator output_b = output.begin();
 
-    Graph g(s);
-    ASSERT_EQ(g.tasks, 6);
-    ASSERT_EQ(g.rules, 1);
+	std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+	
+    	ASSERT_EQ(og, output);
 }
 
-TEST(PFDFixture, read_2) {
-    istringstream s("5 1\n3 2 1 5\n");
-
-    Graph g(s);
-    g.PFD_read(s);
-
-    ASSERT_EQ(g.adjMatrix.size(), g.tasks);
-    ASSERT_EQ(g.rules, g.rules);
-}
-
-TEST(PFDFixture, read_3) {
-    istringstream s("5 4\n"
-    				"3 2 1 5\n"
-    				"2 2 5 3\n"
-    				"4 1 3\n"
-    				"5 1 1\n");
-    Graph g(s);
-    g.PFD_read(s);
-    ASSERT_EQ(g.freevector.size(), g.tasks);
-    int sumOfFree = 0;
-    for(int i =1; i < g.freevector.size(); i++){
-    	sumOfFree += (int) g.freevector[i];
-    }
-    ASSERT_EQ(sumOfFree,4);
-}
-
-// -----
-// print
-// -----
-
-TEST(PFDFixture, print_1) {
-    istringstream s("7 4\n");
-	Graph a(s);
-	 std::vector<int> mylist={1,2,3,4,5,6};
-
-	 for (vector<int>::iterator begin = mylist.begin() ;
-			 begin != mylist.end();
-			 ++begin){
-		 a.results.push(*begin);
-	 }
-
-	 ostringstream out;
-
-	a.PFD_print(out);
-    ASSERT_EQ("1 2 3 4 5 6\n", out.str());}
-
-
-TEST(PFDFixture, print_2) {
-    istringstream s("7 4\n");
-	Graph a(s);
-	 std::vector<int> mylist={1,2,3,4,5,6,7,8,9,10};
-
-	 for (vector<int>::iterator begin = mylist.begin() ;
-			 begin != mylist.end();
-			 ++begin){
-		 a.results.push(*begin);
-	 }
-
-	 ostringstream out;
-
-	a.PFD_print(out);
-    ASSERT_EQ("1 2 3 4 5 6 7 8 9 10\n", out.str());}
-
-
-TEST(PFDFixture, print_3) {
-    istringstream s("7 4\n");
-	Graph a(s);
-	 std::vector<int> mylist={9,9,9,7,8,9,10};
-
-	 for (vector<int>::iterator begin = mylist.begin() ;
-			 begin != mylist.end();
-			 ++begin){
-		 a.results.push(*begin);
-	 }
-
-	 ostringstream out;
-
-	a.PFD_print(out);
-    ASSERT_EQ("9 9 9 7 8 9 10\n", out.str());}
-
-
-
-// -----
-// Eval
-// -----
-
-TEST(PFDFixture, eval_1) {
-    istringstream r ("0 0\n1 3 2 3 4\n2 2 3 4\n3 1 4\n4 0");
-    ostringstream w;
-    Graph a(r);
-    ASSERT_TRUE(!a.PFD_eval());
-}
-
-
-TEST(PFDFixture, eval_2) {
-    istringstream r ("5 4\n1 3 2 3 4\n2 2 3 4\n3 1 4\n4 0");
-    ostringstream w;
-    Graph a(r);
-    a.PFD_read(r);
-    ASSERT_TRUE(a.PFD_eval());
-}
-
-
-// -----
-// solve
-// -----
-
-
-TEST(PFDFixture, solve1) {
-    istringstream r ("5 4\n1 3 2 3 4\n2 2 3 4\n3 1 4\n4 0");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("4 3 2 1 5\n", w.str());}
-
-TEST(PFDFixture, solve2) {
-    istringstream r ("6 5\n1 4 2 3 4 5\n2 3 3 4 5\n3 2 4 5\n4 1 5\n5 0 ");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("5 4 3 2 1 6\n", w.str());}
-
-TEST(PFDFixture, solve3) {
-    istringstream r ("7 6\n1 5 2 3 4 5 6\n2 4 3 4 5 6\n3 3 4 5 6\n4 2 5 6\n5 1 6\n6 0");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("6 5 4 3 2 1 7\n", w.str());}
-
-TEST(PFDFixture, solve4) {
-    istringstream r ("8 7\n1 6 2 3 4 5 6 7\n2 5 3 4 5 6 7\n3 4 4 5 6 7\n4 3 5 6 7\n5 2 6 7\n6 1 7");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("7 6 5 4 3 2 1 8\n", w.str());}
-
-TEST(PFDFixture, solve5) {
-    istringstream r ("8 7\n1 6 2 3 4 5 6 7\n2 5 3 4 5 6 7\n3 4 4 5 6 7\n\n4 3 5 6 7\n5 2 6 7\n6 1 7\n7 0");
-    ostringstream w;
-    PFD_solve(r, w);
-    ASSERT_EQ("7 6 5 4 3 2 1 8\n", w.str());}
 
 
 /*
