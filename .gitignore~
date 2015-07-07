@@ -1,0 +1,6 @@
+tignore
+*.gcda
+*.gcno
+*.gcov
+*.c++~
+PFD-tests

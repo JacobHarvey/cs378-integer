@@ -60,12 +60,13 @@ Doxyfile:
 	doxygen -g
 
 RunInteger: Integer.h RunInteger.c++
-	$(CXX) $(CXXFLAGS) RunInteger.c++ -o RunInteger
+	$(CXX) $(CXXFLAGS) Integer.c++ RunInteger.c++ -o RunInteger
 
 TestInteger: Integer.h TestInteger.c++
-	$(CXX) $(COVFLAGS) $(CXXFLAGS) TestInteger.c++ -o TestInteger $(LDFLAGS)
+	$(CXX) $(COVFLAGS) $(CXXFLAGS) Integer.c++ TestInteger.c++ -o TestInteger $(LDFLAGS)
 
 TestInteger.out: TestInteger
 	$(VALGRIND) ./TestInteger  >  TestInteger.out 2>&1
+	$(GCOV) -b Integer.c++     >> TestInteger.out
 	$(GCOV) -b TestInteger.c++ >> TestInteger.out
 	cat TestInteger.out

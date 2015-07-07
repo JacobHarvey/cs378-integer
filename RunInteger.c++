@@ -24,8 +24,8 @@ int main () {
     // less than 300 ms
     cout << "*** 20th Mersenne prime: 1,332 digits ***" << endl << endl;
 
-    {
-    const Integer<int> n = Integer<int>(2).pow(4423) - 1;
+    { }
+/*    const Integer<int> n = Integer<int>(2).pow(4423) - 1;
     cout << "2^4423 - 1 = " << n << endl << endl;
     }
 
@@ -47,5 +47,6 @@ int main () {
     }
 
     cout << "Done." << endl;
-
+*/
     return 0;}
+    
