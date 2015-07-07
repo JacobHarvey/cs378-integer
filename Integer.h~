@@ -30,7 +30,6 @@
  * output the shift left of the input sequence into the output sequence
  * ([b, e) << n) => x
  */
-using namespace std;
 template <typename II, typename OI>
 OI shift_left_digits (II b, II e, int n, OI x) {
     	// <your code> - edited
@@ -459,11 +458,7 @@ class Integer {
         // -----
 
         bool valid () const { // class invariant
-            auto iter = _x.begin();
-            while (iter != _x.end()){
-                if (*iter<0 || *iter>9)
-                    return false;
-            }
+            // <your code>
             return true;}
 
     public:
@@ -476,21 +471,21 @@ class Integer {
          */
         Integer (int value) {
             	// <your code> - edited
+		typename C::iterator b = _x.begin();
 		while(value != 0){
-			_x.push_back(value % 10);
+			*b = value % 10;
 			value /= 10;
+			++b;
 		}
-		neg = value<0;
-        assert(valid());}
+		neg = false;
+            	assert(valid());}
 
         /**
          * <your documentation>
          * @throws invalid_argument if value is not a valid representation of an Integer
          */
         explicit Integer (const std::string& value) {
-            for (int c= value.size()-1; c>=0; c--){
-                _x.push_back((int)(value[c]-'0'));
-            }
+            // <your code>
             if (!valid())
                 throw std::invalid_argument("Integer::Integer()");}
 
@@ -579,18 +574,7 @@ class Integer {
          * <your documentation>
          */
         Integer& operator *= (const Integer& rhs) {
-            int size= rhs._x.size()+*this._x.size();
-            vector <int> temp (_x);
-            _x.clear();
-            for (int i=0; i<size; i++)
-                _x.push_back(0);
-
-            multiplies_digits (rhs.begin(), rhs.end(), *this.begin(), *this.end(), temp.begin());
-            auto iter_end = temp.end();
-            if (*(--iter_end)==0){
-                temp.resize(--size);
-            }
-            _x=temp;
+            // <your code>
             return *this;}
 
         // -----------

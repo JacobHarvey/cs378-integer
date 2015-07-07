@@ -305,6 +305,161 @@ TEST(IntegerFixture, minus_digits_3) {
 
 }
 
+
+TEST(IntegerFixture, multiplies_digits_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100);
+
+    	int array[] = {3, 2, 1};
+        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+        std::vector<int> of (array, array + sizeof(array) / sizeof(int));
+    	int n = 2;
+        std::vector<int> output(6, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator of_b = of.begin();
+        std::vector<int>::iterator of_e = of.end();
+        std::vector<int>::iterator output_b = output.begin();
+	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+        int r_array[] = {9, 2, 1, 5, 1};
+        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+        if (*(--result)==0){
+            output.resize(5);
+        }
+        
+	    ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+        
+}
+    //	ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+        
+
+TEST(IntegerFixture, multiplies_digits_2) {
+        using namespace std;
+        //std::vector<int> input  (4, 100);
+
+    	int array[] = {9, 9, 9};
+        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+        std::vector<int> of (array, array + sizeof(array) / sizeof(int));
+    	int n = 2;
+        std::vector<int> output(6, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator of_b = of.begin();
+        std::vector<int>::iterator of_e = of.end();
+        std::vector<int>::iterator output_b = output.begin();
+	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+        int r_array[] = {1,0,0,8,9,9};
+        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+        if (*(--result)==0){
+            output.resize(5);
+        }
+        
+    	ASSERT_TRUE(equal(correct.begin(), correct.end(), output.begin()));
+        
+}
+
+TEST(IntegerFixture, multiplies_digits_3) {
+        using namespace std;
+        //std::vector<int> input  (4, 100);
+
+    	int array[] = {9, 9, 9};
+        std::vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2 []= {0};
+        std::vector<int> of (array2, array2 + sizeof(array2) / sizeof(int));
+    	int n = 2;
+        std::vector<int> output(6, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator of_b = of.begin();
+        std::vector<int>::iterator of_e = of.end();
+        std::vector<int>::iterator output_b = output.begin();
+	    std::vector<int>::iterator result = multiplies_digits(og_b, og_e, of_b, of_e, output_b);
+        int r_array[] = {0};
+        std::vector<int>  correct (r_array, r_array + sizeof(r_array) / sizeof(int));
+    	ASSERT_EQ(*output_b, 0);
+        
+}
+
+TEST(IntegerFixture, valid_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>("13a");
+        }
+        catch (exception& e){
+            return;
+        }
+    	ASSERT_EQ( 1, 0);
+}
+
+TEST(IntegerFixture, valid_2) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>(125);
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+TEST(IntegerFixture, valid_3) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>(129999999);
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+TEST(IntegerFixture, valid_4) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>("99999999999999999999999999999999999999999999999999999999999999");
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+TEST(IntegerFixture, valid_5) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>();
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+
+TEST(IntegerFixture, valid_6) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>("");
+        }
+        catch (exception& e){
+            ASSERT_EQ (1,0);
+        }
+}
+
+
+
+
+TEST(IntegerFixture, *=_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int> n = Integer<int>("13a");
+        
+//    	ASSERT_EQ( 1, 0);
+}
+
+
+
+
+
 /*
 % ls -al /usr/include/gtest/
 ...
