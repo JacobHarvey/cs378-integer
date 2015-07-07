@@ -131,20 +131,22 @@ OI minus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
     	// <your code> - editing
 	bool remove = false;
 	while(b1 != e1){
+        int temp = *b1;
+        int temp2 = *b2;
 		if(remove){
-			--*b1;
+			--temp;
 			remove = false;
 		}
 		if(b2 != e2){
-			if(*b1 < *b2){
+			if(temp < temp2){
 				remove = true;
-				*b1 += 10;
+				temp += 10;
 			}
-			*x = *b1 - *b2;
+			*x = temp - temp2;
 			++b2;
 		}
 		else
-			*x = *b1;
+			*x = temp;
 		++b1;
 		++x;	
 	}
@@ -235,10 +237,10 @@ class Integer {
      */
     friend bool operator == (const Integer& lhs, const Integer& rhs) {
         // <your code> - editing
-	typename C::iterator b1 = lhs._x.begin();
-	typename C::iterator e1 = lhs._x.end();
-	typename C::iterator b2 = rhs._x.begin();
-	typename C::iterator e2 = rhs._x.end();
+	auto b1 = lhs._x.begin();
+	auto e1 = lhs._x.end();
+	auto b2 = rhs._x.begin();
+	auto e2 = rhs._x.end();
 	if((e2-b2) != (e1-b1))
 		return false;
 	while(b1 != e1){
@@ -273,10 +275,10 @@ class Integer {
 	else if (!lhs.neg && rhs.neg)
 		return false;
 	else{
-		typename C::iterator b1 = lhs._x.begin();
-        	typename C::iterator e1 = lhs._x.end();
-        	typename C::iterator b2 = rhs._x.begin();
-        	typename C::iterator e2 = rhs._x.end();
+        auto b1 = lhs._x.begin();
+        auto e1 = lhs._x.end();
+        auto b2 = rhs._x.begin();
+        auto e2 = rhs._x.end();
 		int l = 0;
 		int r = 0;
 		int i = 1;
@@ -413,11 +415,12 @@ class Integer {
      */
     friend std::ostream& operator << (std::ostream& lhs, const Integer& rhs) {
         	// <your code> - edited
-		typename C::iterator e = rhs._x.end();
-		typename C::iterator b = rhs._x.begin();
+		auto e = rhs._x.end();
+		auto b = rhs._x.begin();
 		while(e != b){
-			lhs << *e;
-			--e;	
+			--e;
+            lhs << *e;
+				
 		}
         	return lhs << std::endl;}
 
@@ -463,6 +466,7 @@ class Integer {
             while (iter != _x.end()){
                 if (*iter<0 || *iter>9)
                     return false;
+                ++iter;
             }
             return true;}
 
@@ -488,8 +492,16 @@ class Integer {
          * @throws invalid_argument if value is not a valid representation of an Integer
          */
         explicit Integer (const std::string& value) {
-            for (int c= value.size()-1; c>=0; c--){
+            bool is_neg=false;
+            if (value[0]=='-'){
+                neg=true;
+                is_neg=true;
+            }
+            for (int c= value.size()-1; c>=1; c--){
                 _x.push_back((int)(value[c]-'0'));
+            }
+            if (!is_neg){
+                _x.push_back((int)value[0]-'0');
             }
             if (!valid())
                 throw std::invalid_argument("Integer::Integer()");}
@@ -558,6 +570,25 @@ class Integer {
          */
         Integer& operator += (const Integer& rhs) {
             // <your code>
+            auto b1 = _x.begin();
+            auto e1 = _x.end();
+            auto b2 = rhs._x.begin();
+            auto e2 = rhs._x.end();
+             int size= rhs._x.size()+_x.size();
+            Integer <T,C> temp (0);
+            for (int i=0; i<size; i++)
+                temp._x.push_back(0);
+        
+            plus_digits (b1, e1, b2, e2, temp._x.begin());
+            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
+            auto iter_end = temp._x.end();
+            
+            if (*(--iter_end)==0 && temp._x.size()!=0){
+                temp._x.resize(--size);
+            }
+            //printf ("size is %d", _x.size()); 
+            //_x=temp;
+            *this=temp;
             return *this;}
 
         // -----------
@@ -568,7 +599,58 @@ class Integer {
          * <your documentation>
          */
         Integer& operator -= (const Integer& rhs) {
-            // <your code>
+            Integer<T, C> temp (0);
+           int size= rhs._x.size()+_x.size(); 
+           /* if(!neg && rhs.neg){
+                //rhs.neg = false;
+                *this += rhs;
+                neg = false;
+                return *this;
+            }
+            else if(neg && !rhs.neg){
+                neg = false;
+                *this += rhs;
+                neg = true;
+                return *this;
+            }
+            else if(neg && rhs.neg){
+                for (int i=0; i<size; i++)
+                     temp._x.push_back(0);
+                //neg=false;
+                //rhs.neg=false;
+                bool normal =  (*this < rhs);
+                if (normal){
+                    minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                }
+                else{
+                    minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
+                }
+
+                temp.neg = normal ? rhs.neg:neg;
+
+            }
+            else{*/
+                
+                for (int i=0; i<size; i++)
+                    temp._x.push_back(0);
+
+                bool normal = *this>rhs;
+                if (normal){
+                    minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                    temp.neg = false;
+                }
+                else{
+                    minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
+                    temp.neg = true;
+                }
+            //}
+            auto iter_end = temp._x.end();
+            if (*(--iter_end)==0 && temp._x.size()!=0){
+                  temp._x.resize(temp._x.size()-1);
+            }
+
+            printf("size %d, %d %d %d\n", temp._x.size(),temp._x[0], temp._x[1], temp._x[2]);
+            *this=temp;
             return *this;}
 
         // -----------
@@ -579,18 +661,28 @@ class Integer {
          * <your documentation>
          */
         Integer& operator *= (const Integer& rhs) {
-            int size= rhs._x.size()+*this._x.size();
-            vector <int> temp (_x);
+            int size= rhs._x.size()+_x.size();
+            Integer <T,C> temp (0);
+            for (int i=0; i<size; i++)
+                temp._x.push_back(0);
+            /*
+             * Integer <T,C> temp (0);
+            for (int c=0;c<_x.size();c++)
+                temp._x.push_back(_x[c];
             _x.clear();
             for (int i=0; i<size; i++)
                 _x.push_back(0);
-
-            multiplies_digits (rhs.begin(), rhs.end(), *this.begin(), *this.end(), temp.begin());
-            auto iter_end = temp.end();
-            if (*(--iter_end)==0){
-                temp.resize(--size);
+            */
+            multiplies_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
+            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
+            auto iter_end = temp._x.end();
+            
+            if (*(--iter_end)==0 && temp._x.size()!=0){
+                temp._x.resize(--size);
             }
-            _x=temp;
+            //printf ("size is %d", _x.size()); 
+            //_x=temp;
+            *this=temp;
             return *this;}
 
         // -----------
@@ -648,6 +740,7 @@ class Integer {
          * <your documentation>
          */
         Integer& abs () {
+            neg=false;
             // <your code>
             return *this;}
 
@@ -661,7 +754,26 @@ class Integer {
          * @throws invalid_argument if ((this == 0) && (e == 0)) or (e < 0)
          */
         Integer& pow (int e) {
-            // <your code>
-            return *this;}};
+            //*this=pow_aux(e, *this);
+            if (e==0){
+                *this= Integer <T,C> (1);
+                return *this;
+            }
+            else if (e==1)
+                return *this;
+            else{
+                Integer <T,C> copy1(*this);
+                Integer <T,C> copy2(*this);
+                Integer <T,C> copy3(*this);
+             *this=copy1.pow(e/2)*copy2.pow(e/2)*copy3.pow(e%2);
+             return *this;}
+        }
+      
+            
 
+
+
+
+
+};
 #endif // Integer_h

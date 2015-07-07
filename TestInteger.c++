@@ -426,7 +426,7 @@ TEST(IntegerFixture, valid_5) {
         using namespace std;
         //std::vector<int> input  (4, 100)
         try{
-            Integer <int> n = Integer<int>();
+            Integer <int> n = Integer<int>(0);
         }
         catch (exception& e){
             ASSERT_EQ (1,0);
@@ -440,24 +440,122 @@ TEST(IntegerFixture, valid_6) {
             Integer <int> n = Integer<int>("");
         }
         catch (exception& e){
+            return;    
+        }
+        //ASSERT_EQ(0,1);
+
+}
+TEST(IntegerFixture, valid_7) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        try{
+            Integer <int, std::deque<int> > n = Integer<int, std::deque<int> >(129999999);
+        }
+        catch (exception& e){
             ASSERT_EQ (1,0);
         }
 }
 
 
-
-
-TEST(IntegerFixture, *=_1) {
+TEST(IntegerFixture, equals_1) {
         using namespace std;
         //std::vector<int> input  (4, 100)
-        try{
-            Integer <int> n = Integer<int>("13a");
         
-//    	ASSERT_EQ( 1, 0);
+        Integer <int> n = Integer<int>(2);
+        Integer <int> x = Integer<int> (2);
+        ASSERT_TRUE(n==x);
+}
+TEST(IntegerFixture, equals_2) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(3);
+        Integer <int> x = Integer<int> (2);
+        ASSERT_FALSE(n==x);
+}
+TEST(IntegerFixture, notequals_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(2);
+        Integer <int> x = Integer<int> (2);
+        ASSERT_FALSE(n!=x);
+}
+TEST(IntegerFixture, notequals_2) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(3);
+        Integer <int> x = Integer<int> (2);
+        ASSERT_TRUE(n!=x);
 }
 
 
 
+
+
+
+TEST(IntegerFixture, timesequal_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(123);
+        Integer <int> x = Integer<int> (2);
+        n *= x;
+        Integer <int> result = Integer<int> (246);
+        ASSERT_TRUE(result==n);
+    	
+}
+
+TEST(IntegerFixture, timesequal_2) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(999);
+        Integer <int> x = Integer<int> (999);
+        n *= x;
+        Integer <int> result = Integer<int> (998001);
+        ASSERT_TRUE(result==n);
+    	
+}
+
+/*
+TEST(IntegerFixture, timesequal_3) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(123);
+        Integer <int> x = Integer<int> (0);
+        n *= x;
+        Integer <int> result = Integer<int> (0);
+        ASSERT_TRUE(result==n);
+}
+*/
+TEST(IntegerFixture, pow_1) {
+        using namespace std;
+        //std::vector<int> input  (4, 100)
+        
+        Integer <int> n = Integer<int>(2);
+        n.pow(3);
+        Integer <int> result = Integer<int> (8);
+        ASSERT_TRUE(result==n);
+    	
+}
+
+TEST(IntegerFixture, lessthan_1){
+        using namespace std;
+        Integer <int> n = Integer<int>(23);
+        Integer <int> m = Integer<int>(22);
+        ASSERT_TRUE(m < n);
+}
+
+TEST(IntegerFixture, minusequals_1){
+        using namespace std;
+        Integer <int> n = Integer<int>(23);
+        Integer <int> m = Integer<int>(22);
+        Integer <int> output = Integer<int>(1);
+        ASSERT_TRUE((n -= m) == output );
+}
 
 
 /*
