@@ -23,23 +23,287 @@ using namespace std;
 // ----
 
 TEST(IntegerFixture, shift_left_digits_1) {
-    vector<int> input  (4, 100);
 
     	int array[] = {1, 1, 1};
     	vector<int> og (array, array + sizeof(array) / sizeof(int));
     	int n = 2;
-	std::vector<int> output(10, 0);
+	int real[] = {0, 0, 1, 1, 1};
+	vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+	std::vector<int> output(5, 0);
 	std::vector<int>::iterator og_b = og.begin();
 	std::vector<int>::iterator og_e = og.end();
         std::vector<int>::iterator output_b = output.begin();
 
 	std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
-	/*
-    	ASSERT_EQ(og, output);
-        */
+	
+    	ASSERT_EQ(real_answer, output);
+        
+}
+
+TEST(IntegerFixture, shift_left_digits_2) {
+
+        int array[] = {2, 1, 1, 8};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int n = 7;
+        int real[] = {0, 0, 0, 0, 0, 0, 0, 2, 1, 1, 8};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        std::vector<int> output(11, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator output_b = output.begin();
+
+        std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, shift_left_digits_3) {
+
+        int array[] = {5};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int n = 7;
+        int real[] = {0, 0, 0, 0, 0, 0, 0, 5};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        std::vector<int> output(8, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator output_b = output.begin();
+
+        std::vector<int>::iterator output_e = shift_left_digits(og_b, og_e, n, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+// ----
+// shift_right_digits
+// ----
+
+TEST(IntegerFixture, shift_right_digits_1) {
+
+        int array[] = {1, 1, 1};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int n = 2;
+        int real[] = { 1};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        std::vector<int> output(1, 0);
+        std::vector<int>::iterator og_b = og.begin();
+        std::vector<int>::iterator og_e = og.end();
+        std::vector<int>::iterator output_b = output.begin();
+
+        std::vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
 }
 
 
+TEST(IntegerFixture, shift_right_digits_2) {
+
+        int array[] = {2, 3, 4, 6, 7};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int n = 3;
+        int real[] = {6, 7};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(2, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, shift_right_digits_3) {
+
+        int array[] = {2, 3, 4};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int n = 1;
+        int real[] = {3, 4};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(2, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = shift_right_digits(og_b, og_e, n, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+// ----
+// plus_digits
+// ----
+
+TEST(IntegerFixture, plus_digits_1) {
+	//(11 ) <- carries
+	// 432
+	//+
+	// 789
+	//------
+	//1221
+        int array[] = {2, 3, 4};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+	int array2[] = {9, 8, 7};
+	vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {1, 2, 2, 1};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(4, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+	vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, plus_digits_2) {
+        //( 1 ) <- carries
+        // 002
+        //+
+        // 789
+        //------
+        // 791
+        int array[] = {2};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2[] = {9, 8, 7};
+        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {1, 9, 7};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(3, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, plus_digits_3) {
+        //(1  ) <- carries
+        // 888
+        //+
+        //  20
+        //------
+        // 908
+        int array[] = {8, 8, 8};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2[] = {0, 2};
+        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {8, 0, 9};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(3, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = plus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+// ----
+// minus_digits
+// ----
+
+TEST(IntegerFixture, minus_digits_1) {
+        //(   ) <- borrows
+        // 789
+        //-
+        // 432
+        //------
+        // 357
+        int array[] = {9, 8, 7};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2[] = {2, 3, 4};
+        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {7, 5, 3};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(3, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, minus_digits_2) {
+        //( 1 ) <- borrows
+        // 987
+        //-
+        // 009
+        //------
+        // 978
+        int array[] = {7, 8 ,9};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2[] = {9};
+        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {8, 7, 9};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(3, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
+
+TEST(IntegerFixture, minus_digits_3) {
+        //( 1 ) <- borrows
+        // 955
+        //-
+        // 587
+        //------
+        // 368
+        int array[] = {5, 5, 9};
+        vector<int> og (array, array + sizeof(array) / sizeof(int));
+        int array2[] = {7, 8, 5};
+        vector<int> og2 (array2, array2 + sizeof(array2) / sizeof(int));
+
+        int real[] = {8, 6, 3};
+        vector<int> real_answer (real, real + sizeof(real) /sizeof(int));
+        vector<int> output(3, 0);
+        vector<int>::iterator og_b = og.begin();
+        vector<int>::iterator og_e = og.end();
+        vector<int>::iterator og2_b = og2.begin();
+        vector<int>::iterator og2_e = og2.end();
+        vector<int>::iterator output_b = output.begin();
+
+        vector<int>::iterator output_e = minus_digits(og_b, og_e, og2_b, og2_e, output_b);
+
+        ASSERT_EQ(real_answer, output);
+
+}
 
 /*
 % ls -al /usr/include/gtest/

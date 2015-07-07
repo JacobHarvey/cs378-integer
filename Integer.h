@@ -37,6 +37,7 @@ OI shift_left_digits (II b, II e, int n, OI x) {
 	while (n > 0){
                 *x = 0;
                 ++x;
+		--n;
         }
 	while(b != e){
 		*x = *b;
@@ -98,9 +99,13 @@ OI plus_digits (II1 b1, II1 e1, II2 b2, II2 e2, OI x) {
 		if(b2 != e2){
 			*x += *b2;
 			++b2;
-		} 
+		}
 		carry = *x / 10;
 		*x %= 10;
+		++x;
+	}
+	if(carry != 0){
+		*x = carry;
 		++x;
 	}
     	return x;}
@@ -435,10 +440,9 @@ class Integer {
         /**
          * <your documentation>
          */
-	template <typename RI>
         Integer (int value) {
             	// <your code> - edited
-		RI b = _x.begin();
+		typename C::iterator b = _x.begin();
 		while(value != 0){
 			*b = value % 10;
 			value /= 10;
@@ -469,8 +473,8 @@ class Integer {
          * <your documentation>
          */
         Integer operator - () const {
-            	// <your code>
-		neg = true;
+            	// <your code> - edited
+		neg = (!neg);
         	return *this;}
 
         // -----------
