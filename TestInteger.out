@@ -1,34 +1,34 @@
-==3724== Memcheck, a memory error detector
-==3724== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
-==3724== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
-==3724== Command: ./TestInteger
-==3724== 
+==6431== Memcheck, a memory error detector
+==6431== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==6431== Using Valgrind-3.10.0.SVN and LibVEX; rerun with -h for copyright info
+==6431== Command: ./TestInteger
+==6431== 
 Running main() from gtest_main.cc
-[==========] Running 66 tests from 1 test case.
+[==========] Running 72 tests from 1 test case.
 [----------] Global test environment set-up.
-[----------] 66 tests from IntegerFixture
+[----------] 72 tests from IntegerFixture
 [ RUN      ] IntegerFixture.shift_left_digits_1
-[       OK ] IntegerFixture.shift_left_digits_1 (30 ms)
+[       OK ] IntegerFixture.shift_left_digits_1 (26 ms)
 [ RUN      ] IntegerFixture.shift_left_digits_2
 [       OK ] IntegerFixture.shift_left_digits_2 (4 ms)
 [ RUN      ] IntegerFixture.shift_left_digits_3
 [       OK ] IntegerFixture.shift_left_digits_3 (4 ms)
 [ RUN      ] IntegerFixture.shift_right_digits_1
-[       OK ] IntegerFixture.shift_right_digits_1 (5 ms)
+[       OK ] IntegerFixture.shift_right_digits_1 (6 ms)
 [ RUN      ] IntegerFixture.shift_right_digits_2
-[       OK ] IntegerFixture.shift_right_digits_2 (5 ms)
+[       OK ] IntegerFixture.shift_right_digits_2 (4 ms)
 [ RUN      ] IntegerFixture.shift_right_digits_3
 [       OK ] IntegerFixture.shift_right_digits_3 (4 ms)
 [ RUN      ] IntegerFixture.plus_digits_1
 [       OK ] IntegerFixture.plus_digits_1 (9 ms)
 [ RUN      ] IntegerFixture.plus_digits_2
-[       OK ] IntegerFixture.plus_digits_2 (7 ms)
+[       OK ] IntegerFixture.plus_digits_2 (4 ms)
 [ RUN      ] IntegerFixture.plus_digits_3
-[       OK ] IntegerFixture.plus_digits_3 (6 ms)
+[       OK ] IntegerFixture.plus_digits_3 (4 ms)
 [ RUN      ] IntegerFixture.minus_digits_1
 [       OK ] IntegerFixture.minus_digits_1 (7 ms)
 [ RUN      ] IntegerFixture.minus_digits_2
-[       OK ] IntegerFixture.minus_digits_2 (7 ms)
+[       OK ] IntegerFixture.minus_digits_2 (6 ms)
 [ RUN      ] IntegerFixture.minus_digits_3
 [       OK ] IntegerFixture.minus_digits_3 (4 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_1
@@ -36,11 +36,11 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.multiplies_digits_2
 [       OK ] IntegerFixture.multiplies_digits_2 (7 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_3
-[       OK ] IntegerFixture.multiplies_digits_3 (6 ms)
+[       OK ] IntegerFixture.multiplies_digits_3 (5 ms)
 [ RUN      ] IntegerFixture.multiplies_digits_4
 [       OK ] IntegerFixture.multiplies_digits_4 (6 ms)
 [ RUN      ] IntegerFixture.valid_1
-[       OK ] IntegerFixture.valid_1 (58 ms)
+[       OK ] IntegerFixture.valid_1 (51 ms)
 [ RUN      ] IntegerFixture.valid_2
 [       OK ] IntegerFixture.valid_2 (3 ms)
 [ RUN      ] IntegerFixture.valid_3
@@ -52,11 +52,11 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.valid_6
 [       OK ] IntegerFixture.valid_6 (2 ms)
 [ RUN      ] IntegerFixture.valid_7
-[       OK ] IntegerFixture.valid_7 (15 ms)
+[       OK ] IntegerFixture.valid_7 (14 ms)
 [ RUN      ] IntegerFixture.valid_8
 [       OK ] IntegerFixture.valid_8 (1 ms)
 [ RUN      ] IntegerFixture.valid_9
-[       OK ] IntegerFixture.valid_9 (2 ms)
+[       OK ] IntegerFixture.valid_9 (3 ms)
 [ RUN      ] IntegerFixture.equals_1
 [       OK ] IntegerFixture.equals_1 (5 ms)
 [ RUN      ] IntegerFixture.equals_2
@@ -64,107 +64,119 @@ Running main() from gtest_main.cc
 [ RUN      ] IntegerFixture.notequals_1
 [       OK ] IntegerFixture.notequals_1 (3 ms)
 [ RUN      ] IntegerFixture.notequals_2
-[       OK ] IntegerFixture.notequals_2 (3 ms)
+[       OK ] IntegerFixture.notequals_2 (2 ms)
 [ RUN      ] IntegerFixture.timesequal_1
-[       OK ] IntegerFixture.timesequal_1 (15 ms)
+[       OK ] IntegerFixture.timesequal_1 (14 ms)
 [ RUN      ] IntegerFixture.timesequal_2
-[       OK ] IntegerFixture.timesequal_2 (8 ms)
+[       OK ] IntegerFixture.timesequal_2 (7 ms)
 [ RUN      ] IntegerFixture.timesequal_3
 [       OK ] IntegerFixture.timesequal_3 (3 ms)
 [ RUN      ] IntegerFixture.negation_1
-[       OK ] IntegerFixture.negation_1 (11 ms)
+[       OK ] IntegerFixture.negation_1 (10 ms)
 [ RUN      ] IntegerFixture.negation_2
 [       OK ] IntegerFixture.negation_2 (3 ms)
 [ RUN      ] IntegerFixture.pow_1
-[       OK ] IntegerFixture.pow_1 (8 ms)
+[       OK ] IntegerFixture.pow_1 (7 ms)
 [ RUN      ] IntegerFixture.pow_2
 [       OK ] IntegerFixture.pow_2 (3 ms)
 [ RUN      ] IntegerFixture.pow_3
 [       OK ] IntegerFixture.pow_3 (3 ms)
 [ RUN      ] IntegerFixture.pow_4
-[       OK ] IntegerFixture.pow_4 (3 ms)
+[       OK ] IntegerFixture.pow_4 (2 ms)
 [ RUN      ] IntegerFixture.pow_5
 [       OK ] IntegerFixture.pow_5 (2 ms)
 [ RUN      ] IntegerFixture.lessthan_1
-[       OK ] IntegerFixture.lessthan_1 (5 ms)
+[       OK ] IntegerFixture.lessthan_1 (6 ms)
 [ RUN      ] IntegerFixture.lessthan_2
-[       OK ] IntegerFixture.lessthan_2 (3 ms)
+[       OK ] IntegerFixture.lessthan_2 (2 ms)
 [ RUN      ] IntegerFixture.lessthan_3
-[       OK ] IntegerFixture.lessthan_3 (3 ms)
+[       OK ] IntegerFixture.lessthan_3 (2 ms)
 [ RUN      ] IntegerFixture.lessthan_4
-[       OK ] IntegerFixture.lessthan_4 (2 ms)
+[       OK ] IntegerFixture.lessthan_4 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_1
-[       OK ] IntegerFixture.minusequals_1 (11 ms)
+[       OK ] IntegerFixture.minusequals_1 (10 ms)
 [ RUN      ] IntegerFixture.minusequals_2
-[       OK ] IntegerFixture.minusequals_2 (4 ms)
+[       OK ] IntegerFixture.minusequals_2 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_3
-[       OK ] IntegerFixture.minusequals_3 (4 ms)
+[       OK ] IntegerFixture.minusequals_3 (5 ms)
 [ RUN      ] IntegerFixture.minusequals_4
 [       OK ] IntegerFixture.minusequals_4 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_5
-[       OK ] IntegerFixture.minusequals_5 (7 ms)
+[       OK ] IntegerFixture.minusequals_5 (6 ms)
 [ RUN      ] IntegerFixture.minusequals_6
 [       OK ] IntegerFixture.minusequals_6 (8 ms)
 [ RUN      ] IntegerFixture.minusequals_7
-[       OK ] IntegerFixture.minusequals_7 (4 ms)
+[       OK ] IntegerFixture.minusequals_7 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_8
 [       OK ] IntegerFixture.minusequals_8 (5 ms)
 [ RUN      ] IntegerFixture.minusequals_9
-[       OK ] IntegerFixture.minusequals_9 (4 ms)
+[       OK ] IntegerFixture.minusequals_9 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_10
 [       OK ] IntegerFixture.minusequals_10 (3 ms)
 [ RUN      ] IntegerFixture.minusequals_11
-[       OK ] IntegerFixture.minusequals_11 (4 ms)
+[       OK ] IntegerFixture.minusequals_11 (3 ms)
 [ RUN      ] IntegerFixture.plusequals_1
-[       OK ] IntegerFixture.plusequals_1 (8 ms)
+[       OK ] IntegerFixture.plusequals_1 (7 ms)
 [ RUN      ] IntegerFixture.plusequals_2
 [       OK ] IntegerFixture.plusequals_2 (3 ms)
 [ RUN      ] IntegerFixture.plusequals_3
 [       OK ] IntegerFixture.plusequals_3 (4 ms)
 [ RUN      ] IntegerFixture.plusequals_4
-[       OK ] IntegerFixture.plusequals_4 (6 ms)
+[       OK ] IntegerFixture.plusequals_4 (5 ms)
 [ RUN      ] IntegerFixture.plusequals_5
-[       OK ] IntegerFixture.plusequals_5 (5 ms)
+[       OK ] IntegerFixture.plusequals_5 (4 ms)
 [ RUN      ] IntegerFixture.plusequals_6
-[       OK ] IntegerFixture.plusequals_6 (4 ms)
+[       OK ] IntegerFixture.plusequals_6 (3 ms)
 [ RUN      ] IntegerFixture.leftshiftequals_1
 [       OK ] IntegerFixture.leftshiftequals_1 (6 ms)
 [ RUN      ] IntegerFixture.leftshiftequals_2
-[       OK ] IntegerFixture.leftshiftequals_2 (2 ms)
+[       OK ] IntegerFixture.leftshiftequals_2 (3 ms)
 [ RUN      ] IntegerFixture.leftshiftequals_3
-[       OK ] IntegerFixture.leftshiftequals_3 (3 ms)
+[       OK ] IntegerFixture.leftshiftequals_3 (2 ms)
 [ RUN      ] IntegerFixture.rightshiftequals_1
-[       OK ] IntegerFixture.rightshiftequals_1 (8 ms)
+[       OK ] IntegerFixture.rightshiftequals_1 (6 ms)
 [ RUN      ] IntegerFixture.rightshiftequals_2
 [       OK ] IntegerFixture.rightshiftequals_2 (2 ms)
 [ RUN      ] IntegerFixture.rightshiftequals_3
 [       OK ] IntegerFixture.rightshiftequals_3 (2 ms)
-[----------] 66 tests from IntegerFixture (424 ms total)
+[ RUN      ] IntegerFixture.divise_equals_1
+[       OK ] IntegerFixture.divise_equals_1 (6 ms)
+[ RUN      ] IntegerFixture.divise_equals_2
+[       OK ] IntegerFixture.divise_equals_2 (4 ms)
+[ RUN      ] IntegerFixture.divise_equals_3
+[       OK ] IntegerFixture.divise_equals_3 (4 ms)
+[ RUN      ] IntegerFixture.mod_equals_1
+[       OK ] IntegerFixture.mod_equals_1 (5 ms)
+[ RUN      ] IntegerFixture.mod_equals_2
+[       OK ] IntegerFixture.mod_equals_2 (4 ms)
+[ RUN      ] IntegerFixture.mod_equals_3
+[       OK ] IntegerFixture.mod_equals_3 (4 ms)
+[----------] 72 tests from IntegerFixture (411 ms total)
 
 [----------] Global test environment tear-down
-[==========] 66 tests from 1 test case ran. (459 ms total)
-[  PASSED  ] 66 tests.
-==3724== 
-==3724== HEAP SUMMARY:
-==3724==     in use at exit: 0 bytes in 0 blocks
-==3724==   total heap usage: 1,638 allocs, 1,638 frees, 156,077 bytes allocated
-==3724== 
-==3724== All heap blocks were freed -- no leaks are possible
-==3724== 
-==3724== For counts of detected and suppressed errors, rerun with: -v
-==3724== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+[==========] 72 tests from 1 test case ran. (439 ms total)
+[  PASSED  ] 72 tests.
+==6431== 
+==6431== HEAP SUMMARY:
+==6431==     in use at exit: 0 bytes in 0 blocks
+==6431==   total heap usage: 1,879 allocs, 1,879 frees, 166,601 bytes allocated
+==6431== 
+==6431== All heap blocks were freed -- no leaks are possible
+==6431== 
+==6431== For counts of detected and suppressed errors, rerun with: -v
+==6431== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
 File 'TestInteger.c++'
-Lines executed:95.06% of 486
-Branches executed:65.89% of 1976
-Taken at least once:32.95% of 1976
-Calls executed:54.60% of 2447
+Lines executed:95.40% of 522
+Branches executed:66.70% of 2168
+Taken at least once:33.35% of 2168
+Calls executed:54.57% of 2657
 Creating 'TestInteger.c++.gcov'
 
 File '/usr/include/gtest/internal/gtest-internal.h'
 Lines executed:42.86% of 7
-Branches executed:49.62% of 266
-Taken at least once:24.81% of 266
-Calls executed:37.29% of 531
+Branches executed:49.66% of 290
+Taken at least once:24.83% of 290
+Calls executed:37.31% of 579
 Creating 'gtest-internal.h.gcov'
 
 File '/usr/include/c++/4.8/iostream'
@@ -193,10 +205,10 @@ Calls executed:100.00% of 8
 Creating 'stl_iterator.h.gcov'
 
 File 'Integer.h'
-Lines executed:93.75% of 272
-Branches executed:93.56% of 404
-Taken at least once:67.57% of 404
-Calls executed:84.80% of 375
+Lines executed:94.08% of 304
+Branches executed:92.44% of 450
+Taken at least once:66.00% of 450
+Calls executed:80.37% of 428
 Creating 'Integer.h.gcov'
 
 File '/usr/include/gtest/gtest-printers.h'

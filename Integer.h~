@@ -810,7 +810,8 @@ class Integer {
             *this=temp;
             
             return *this;}
-	// -----------
+
+        // -----------
         // operator /=
         // -----------
 
@@ -824,16 +825,8 @@ class Integer {
         Integer& operator /= (const Integer& rhs) {
             if (rhs._x.size()==0)
                 throw std::invalid_argument("Integer::Integer()");
-            Integer <T,C> top(*this);
-            Integer <T,C> bot (rhs);
-            bot.neg=false;
-            top.neg=false;
-            Integer <T,C> ret (0);
-            while (top>=bot){
-                top -= bot;
-                ++ret;
-            }
-            *this=ret;
+
+            // <your code>
             return *this;}
 
         // -----------
@@ -851,17 +844,7 @@ class Integer {
         Integer& operator %= (const Integer& rhs) {
             if (rhs._x.size()==0)
                 throw std::invalid_argument("Integer::Integer()");
-            Integer <T,C> top(*this);
-            Integer <T,C> bot (rhs);
-            bot.neg=false;
-            top.neg=false;
-            Integer <T,C> ret (0);
-            while (top>=bot){
-                top -= bot;
-                ++ret;
-            }
-            *this=top;
-            return *this;
+
 
             // <your code>
             return *this;}

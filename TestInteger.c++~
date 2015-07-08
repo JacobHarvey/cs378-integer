@@ -897,61 +897,6 @@ TEST(IntegerFixture, rightshiftequals_3) {
 }
 
 
-TEST(IntegerFixture, divise_equals_1){
-        using namespace std;
-        Integer <int> n = Integer<int>(23);
-        Integer <int> m = Integer<int>(23);
-        n /= m;
-        Integer <int> x = Integer<int>(1);
-        ASSERT_TRUE(x==n);
-}
-
-
-TEST(IntegerFixture, divise_equals_2){
-        using namespace std;
-        Integer <int> n = Integer<int>(46);
-        Integer <int> m = Integer<int>(23);
-        n /= m;
-        Integer <int> x = Integer<int>(2);
-        ASSERT_TRUE(x==n);
-}
-
-TEST(IntegerFixture, divise_equals_3){
-        using namespace std;
-        Integer <int> n = Integer<int>(8);
-        Integer <int> m = Integer<int>(3);
-        n /= m;
-        Integer <int> x = Integer<int>(2);
-        ASSERT_TRUE(x==n);
-}
-
-TEST(IntegerFixture, mod_equals_1){
-        using namespace std;
-        Integer <int> n = Integer<int>(8);
-        Integer <int> m = Integer<int>(3);
-        n %= m;
-        Integer <int> x = Integer<int>(2);
-        ASSERT_TRUE(x==n);
-}
-TEST(IntegerFixture, mod_equals_2){
-        using namespace std;
-        Integer <int> n = Integer<int>(8);
-        Integer <int> m = Integer<int>(2);
-        n %= m;
-        Integer <int> x = Integer<int>(0);
-        ASSERT_TRUE(x==n);
-}
-TEST(IntegerFixture, mod_equals_3){
-        using namespace std;
-        Integer <int> n = Integer<int>(3);
-        Integer <int> m = Integer<int>(3);
-        n %= m;
-        Integer <int> x = Integer<int>(0);
-        ASSERT_TRUE(x==n);
-}
-
-
-
 /*
 % ls -al /usr/include/gtest/
 ...

@@ -290,7 +290,7 @@ lvalue \&this$<$$<$ n time if $\ast$this=100, n=2, result $\ast$this==10000
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-lvalue \&this$<$$<$ n time if $\ast$this=100, n=2, result $\ast$this==1 
+lvalue \&this$>$$>$ n time if $\ast$this=100, n=2, result $\ast$this==1 
 \end{DoxyReturn}
 \hypertarget{classInteger_aae56deca12053a28469749c93c9f7343}{\index{Integer@{Integer}!pow@{pow}}
 \index{pow@{pow}!Integer@{Integer}}
@@ -337,7 +337,17 @@ absolute value
 \item[{const {\bf Integer}$<$ T, C $>$ \&}]{rhs}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [friend]}}}\label{classInteger_ad391df8dc93626907e924ff3fd9b1e2d}
-$<$your documentation$>$=\char`\"{}\char`\"{}$>$ \hypertarget{classInteger_aea18c4ff2ec0c30ed29a4010e892d385}{\index{Integer@{Integer}!operator\%@{operator\%}}
+
+\begin{DoxyParams}{Parameters}
+{\em const} & \hyperlink{classInteger}{Integer}\& lhs is $\ast$this \\
+\hline
+{\em const} & \hyperlink{classInteger}{Integer}\& rhs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+!(lhs==rhs) 
+\end{DoxyReturn}
+\hypertarget{classInteger_aea18c4ff2ec0c30ed29a4010e892d385}{\index{Integer@{Integer}!operator\%@{operator\%}}
 \index{operator\%@{operator\%}!Integer@{Integer}}
 \subsubsection[{operator\%}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename C = std\-::vector$<$\-T$>$$>$ {\bf Integer} operator\% (
 \begin{DoxyParamCaption}
@@ -522,7 +532,17 @@ a boolan value if lhs $<$= rhs determines if the \hyperlink{classInteger}{Intege
 \item[{const {\bf Integer}$<$ T, C $>$ \&}]{rhs}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [friend]}}}\label{classInteger_a01445511d8a430434af376416063d71d}
-$<$your documentation$>$=\char`\"{}\char`\"{}$>$ \hypertarget{classInteger_a0007c8d2187897b1e1675677bf432146}{\index{Integer@{Integer}!operator$>$@{operator$>$}}
+
+\begin{DoxyParams}{Parameters}
+{\em const} & \hyperlink{classInteger}{Integer}\& lhs is $\ast$this \\
+\hline
+{\em const} & \hyperlink{classInteger}{Integer}\& rhs \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+lhs==rhs 
+\end{DoxyReturn}
+\hypertarget{classInteger_a0007c8d2187897b1e1675677bf432146}{\index{Integer@{Integer}!operator$>$@{operator$>$}}
 \index{operator$>$@{operator$>$}!Integer@{Integer}}
 \subsubsection[{operator$>$}]{\setlength{\rightskip}{0pt plus 5cm}template$<$typename T, typename C = std\-::vector$<$\-T$>$$>$ bool operator$>$ (
 \begin{DoxyParamCaption}
