@@ -245,6 +245,8 @@ class Integer {
      */
     friend bool operator == (const Integer& lhs, const Integer& rhs) {
         // <your code> - editing
+	if(lhs.neg != rhs.neg)
+		return false;
 	auto b1 = lhs._x.begin();
 	auto e1 = lhs._x.end();
 	auto b2 = rhs._x.begin();
@@ -288,13 +290,13 @@ class Integer {
         // <your code>
 	if(lhs.neg && !rhs.neg)
 		return true;
-	else if (!lhs.neg && rhs.neg)
+	else if(!lhs.neg && rhs.neg)
 		return false;
 	else{
-        auto b1 = lhs._x.begin();
-        auto e1 = lhs._x.end();
-        auto b2 = rhs._x.begin();
-        auto e2 = rhs._x.end();
+        	auto b1 = lhs._x.begin();
+        	auto e1 = lhs._x.end();
+        	auto b2 = rhs._x.begin();
+        	auto e2 = rhs._x.end();
 		int l = 0;
 		int r = 0;
 		int i = 1;
@@ -309,9 +311,9 @@ class Integer {
                         i *= 10;
                         ++b2;
                 }
-		if(!lhs.neg && l < r)
+		if(l < r && !lhs.neg)
 			return true;
-		else if(lhs.neg && r < l)
+		else if(l > r && lhs.neg)
 			return true;
 		else
 			return false;	
@@ -488,12 +490,13 @@ class Integer {
      */
     friend std::ostream& operator << (std::ostream& lhs, const Integer& rhs) {
         	// <your code> - edited
+		if(rhs.neg)
+			lhs << '-';
 		auto e = rhs._x.end();
 		auto b = rhs._x.begin();
 		while(e != b){
 			--e;
-            lhs << *e;
-				
+            		lhs << *e;	
 		}
         	return lhs << std::endl;}
 
@@ -564,19 +567,20 @@ class Integer {
         Integer (int value) {
             	// <your code> - edited
 		
-        if(value == 0){
+	        if(value == 0){
 			_x.push_back(value);
+			neg = false;
 		}
 		else{
-	        neg = value<0;
-            if (value<0)
-                value*=-1;
+	        	neg = value < 0;
+            		if (value<0)
+                		value*=-1;
 			while(value != 0){
 				_x.push_back(value % 10);
 				value /= 10;
 			}
 		}
-        assert(valid());}
+       		assert(valid());}
 
         /**
          * @param std::string value, makes an Integer class with default container of vector<int>
@@ -669,7 +673,7 @@ class Integer {
          * Does basic integer addition
          */
         Integer& operator += (const Integer& rhs) {
-            // <your code>
+            
             auto b1 = _x.begin();
             auto e1 = _x.end();
             auto b2 = rhs._x.begin();
@@ -680,14 +684,12 @@ class Integer {
                 temp._x.push_back(0);
         
             plus_digits (b1, e1, b2, e2, temp._x.begin());
-            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
-            auto iter_end = temp._x.end();
             
-            if (*(--iter_end)==0 && temp._x.size()!=0){
-                temp._x.resize(--size);
+             auto iter_end = temp._x.end();
+            while (*(--iter_end)==0 && temp._x.size()>1){
+                temp._x.pop_back();
             }
-            //printf ("size is %d", _x.size()); 
-            //_x=temp;
+            
             *this=temp;
             return *this;}
 
@@ -702,66 +704,46 @@ class Integer {
          * Does basic integer subtraction
          */
         Integer& operator -= (const Integer& rhs) {
-            Integer<T, C> temp (0);
-           int size= rhs._x.size()+_x.size(); 
-           /* if(!neg && rhs.neg){
-                //rhs.neg = false;
-                *this += rhs;
-                neg = false;
-                return *this;
-            }
-            else if(neg && !rhs.neg){
-                neg = false;
-                *this += rhs;
-                neg = true;
-                return *this;
-            }
-            else if(neg && rhs.neg){
-                for (int i=0; i<size; i++)
-                     temp._x.push_back(0);
-                //neg=false;
-                //rhs.neg=false;
-                bool normal =  (*this < rhs);
-                if (normal){
-                    minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
-                }
-                else{
-                    minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
-                }
+            	Integer<T, C> temp (0);
+            	int size= rhs._x.size()+_x.size(); 
+            	for (int i=0; i<size; i++)
+                    	temp._x.push_back(0);
 
-                temp.neg = normal ? rhs.neg:neg;
 
-            }
-            else{*/
-                
-                for (int i=0; i<size; i++)
-                    temp._x.push_back(0);
+       	   	if(neg && !rhs.neg){
+			plus_digits(_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+			temp.neg = true;
+	    	}
+		else if(!neg && rhs.neg){
+			plus_digits(_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                        temp.neg = false;
+		}
+	    	else{    			
+			bool normal;
+			Integer o = *this;
+			Integer t = rhs;
+			normal =  o.abs() > t.abs();
+	
+                	if (normal){
+                    		minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+				temp.neg = neg;
+			}
+                	else{
+                    		minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
+				if(neg && rhs.neg)
+					temp.neg = false;
+				else
+					temp.neg = rhs.neg;
+			}
+            	}
 
-                
+            	auto iter_end = temp._x.end();
+            	while (*(--iter_end)==0 && temp._x.size()>1){ 
+			temp._x.pop_back();
+            	}
 		
-		bool normal = *this>rhs;
-		
-		if(_x.size() > rhs._x.size())
-			normal = true;
-		else if(_x.size() < rhs._x.size())
-			normal  = false;
-
-                if (normal){
-                    minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
-                    temp.neg = false;
-                }
-                else{
-                    minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
-                    temp.neg = true;
-                }
-            //}
-            auto iter_end = temp._x.end();
-            while (*(--iter_end)==0 && temp._x.size()>1){ 
-		temp._x.pop_back();
-            }
-
-            *this=temp;
-            return *this;}
+            	*this=temp;
+            	return *this;}
 
         // -----------
         // operator *=
@@ -779,14 +761,13 @@ class Integer {
             for (int i=0; i<size; i++)
                 temp._x.push_back(0);
             multiplies_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
-            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
+            
             auto iter_end = temp._x.end();
             
             while (*(--iter_end)==0 && temp._x.size()>1){
                 temp._x.pop_back(); 
             }
 	     
-            //_x=temp;
             temp.neg= neg ^ rhs.neg;
             *this=temp;
             
@@ -839,7 +820,18 @@ class Integer {
          * if *this=100, n=2, result *this==10000
          */
         Integer& operator <<= (int n) {
-            // <your code>
+            int size= _x.size()+n;
+            Integer <T,C> temp (0);
+            for (int i=0; i<size; i++)
+                temp._x.push_back(0);
+            shift_left_digits (_x.begin(), _x.end(), n, temp._x.begin());
+            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
+            auto iter_end = temp._x.end();
+
+            while (*(--iter_end)==0 && temp._x.size()>1){
+                temp._x.pop_back();
+            }
+	    *this = temp;
             return *this;}
 
         // ------------
@@ -848,11 +840,22 @@ class Integer {
 
         /**
          * @param int n
-         * @return lvalue &this<< n time
+         * @return lvalue &this>> n time
          * if *this=100, n=2, result *this==1
          */
         Integer& operator >>= (int n) {
-            // <your code>
+            int size= _x.size();
+            Integer <T,C> temp (0);
+            for (int i=0; i<size; i++)
+                temp._x.push_back(0);
+            shift_right_digits (_x.begin(), _x.end(), n, temp._x.begin());
+            //printf ("%d %d %d %d \n", _x[0], _x[1], _x[2], _x[3]);
+            auto iter_end = temp._x.end();
+
+            while (*(--iter_end)==0 && temp._x.size()>1){
+                temp._x.pop_back();
+            }
+            *this = temp;
             return *this;}
 
         // ---

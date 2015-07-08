@@ -673,6 +673,28 @@ TEST(IntegerFixture, lessthan_1){
         ASSERT_TRUE(m < n);
 }
 
+
+TEST(IntegerFixture, lessthan_2){
+        using namespace std;
+        Integer <int> n = Integer<int>(-23);
+        Integer <int> m = Integer<int>(-22);
+        ASSERT_TRUE(n < m);
+}
+
+TEST(IntegerFixture, lessthan_3){
+        using namespace std;
+        Integer <int> n = Integer<int>(23);
+        Integer <int> m = Integer<int>(-22);
+        ASSERT_TRUE(m < n);
+}
+
+TEST(IntegerFixture, lessthan_4){
+        using namespace std;
+        Integer <int> n = Integer<int>(-23);
+        Integer <int> m = Integer<int>(22);
+        ASSERT_TRUE(n < m);
+}
+
 TEST(IntegerFixture, minusequals_1){
         using namespace std;
         Integer <int> n = Integer<int>(23);
@@ -695,7 +717,159 @@ TEST(IntegerFixture, minusequals_3){
         Integer <int> n = Integer<int>(9000);
         Integer <int> m = Integer<int>(1);
         Integer <int> output = Integer<int>(8999);
+        n-=m;
+	ASSERT_TRUE((n) == output );
+}
+
+TEST(IntegerFixture, minusequals_4){
+        using namespace std;
+        Integer <int> n = Integer<int>(-9);
+        Integer <int> m = Integer<int>(-8);
+        Integer <int> output = Integer<int>(-1);
         ASSERT_TRUE((n -= m) == output );
+}
+
+
+TEST(IntegerFixture, minusequals_5){
+        using namespace std;
+        Integer <int> n = Integer<int>(-8);
+        Integer <int> m = Integer<int>(-9);
+        Integer <int> output = Integer<int>(1);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_6){
+        using namespace std;
+        Integer <int> n = Integer<int>(-9);
+        Integer <int> m = Integer<int>(1);
+        Integer <int> output = Integer<int>(-10);
+        n-=m;
+	ASSERT_TRUE((n) == output );
+}
+
+TEST(IntegerFixture, minusequals_7){
+        using namespace std;
+        Integer <int> n = Integer<int>(-1);
+        Integer <int> m = Integer<int>(9);
+        Integer <int> output = Integer<int>(-10);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_8){
+        using namespace std;
+        Integer <int> n = Integer<int>(234);
+        Integer <int> m = Integer<int>(-2);
+        Integer <int> output = Integer<int>(236);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_9){
+        using namespace std;
+        Integer <int> n = Integer<int>(-2);
+        Integer <int> m = Integer<int>(234);
+	Integer <int> output = Integer<int>(-236);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_10){
+        using namespace std;
+        Integer <int> n = Integer<int>(-45);
+        Integer <int> m = Integer<int>(5);
+        Integer <int> output = Integer<int>(-50);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, minusequals_11){
+        using namespace std;
+        Integer <int> n = Integer<int>(-45);
+        Integer <int> m = Integer<int>(-5);
+        Integer <int> output = Integer<int>(-40);
+        ASSERT_TRUE((n -= m) == output );
+}
+
+TEST(IntegerFixture, plusequals_1){
+        using namespace std;
+        Integer <int> n = Integer<int>(2);
+        Integer <int> m = Integer<int>(22);
+        Integer <int> output = Integer<int>(24);
+        ASSERT_TRUE((n += m) == output );
+}
+
+TEST(IntegerFixture, plusequals_2){
+        using namespace std;
+        Integer <int> n = Integer<int>(23);
+        Integer <int> m = Integer<int>(12);
+        Integer <int> output = Integer<int>(35);
+        ASSERT_TRUE((n += m) == output );
+}
+
+TEST(IntegerFixture, plusequals_3){
+        using namespace std;
+        Integer <int> n = Integer<int>(8999);
+        Integer <int> m = Integer<int>(1);
+        Integer <int> output = Integer<int>(9000);
+        ASSERT_TRUE((n += m) == output );
+}
+
+TEST(IntegerFixture, leftshiftequals_1) {
+
+        Integer <int> k = Integer<int>(1111);
+        int n = 2;
+        k <<= n;
+	Integer <int> real = Integer<int>(111100);
+        ASSERT_EQ(real, k);
+
+}
+
+TEST(IntegerFixture, leftshiftequals_2) {
+
+        Integer <int> k = Integer<int>(4);
+        int n = 6;
+        k <<= n;
+        Integer <int> real = Integer<int>(4000000);
+        ASSERT_EQ(real, k);
+
+}
+
+TEST(IntegerFixture, leftshiftequals_3) {
+
+        Integer <int> k = Integer<int>(70);
+        int n = 3;
+        k <<= n;
+        Integer <int> real = Integer<int>(70000);
+        ASSERT_EQ(real, k);
+
+}
+
+
+TEST(IntegerFixture, rightshiftequals_1) {
+
+        Integer <int> k = Integer<int>(1111);
+        int n = 2;
+        k >>= n;
+        Integer <int> real = Integer<int>(11);
+        ASSERT_EQ(real, k);
+
+}
+
+TEST(IntegerFixture, rightshiftequals_2) {
+
+        Integer <int> k = Integer<int>(5678);
+        int n = 3;
+        k >>= n;
+        Integer <int> real = Integer<int>(5);
+        ASSERT_EQ(real, k);
+
+}
+
+TEST(IntegerFixture, rightshiftequals_3) {
+
+        Integer <int> k = Integer<int>(1);
+        int n = 1;
+        k >>= n;
+        Integer <int> real = Integer<int>(0);
+        ASSERT_EQ(real, k);
+
 }
 
 
