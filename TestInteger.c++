@@ -811,6 +811,30 @@ TEST(IntegerFixture, plusequals_3){
         ASSERT_TRUE((n += m) == output );
 }
 
+TEST(IntegerFixture, plusequals_4){
+        using namespace std;
+        Integer <int> n = Integer<int>(-8999);
+        Integer <int> m = Integer<int>(1);
+        Integer <int> output = Integer<int>(-8998);
+        ASSERT_TRUE((n += m) == output );
+}
+
+TEST(IntegerFixture, plusequals_5){
+        using namespace std;
+        Integer <int> n = Integer<int>(-8);
+        Integer <int> m = Integer<int>(-1);
+        Integer <int> output = Integer<int>(-9);
+        ASSERT_TRUE((n += m) == output );
+}
+
+TEST(IntegerFixture, plusequals_6){
+        using namespace std;
+        Integer <int> n = Integer<int>(9);
+        Integer <int> m = Integer<int>(-1);
+        Integer <int> output = Integer<int>(8);
+        ASSERT_TRUE((n += m) == output );
+}
+
 TEST(IntegerFixture, leftshiftequals_1) {
 
         Integer <int> k = Integer<int>(1111);

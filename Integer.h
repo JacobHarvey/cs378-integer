@@ -674,7 +674,7 @@ class Integer {
          */
         Integer& operator += (const Integer& rhs) {
             
-            auto b1 = _x.begin();
+            /*auto b1 = _x.begin();
             auto e1 = _x.end();
             auto b2 = rhs._x.begin();
             auto e2 = rhs._x.end();
@@ -691,7 +691,45 @@ class Integer {
             }
             
             *this=temp;
-            return *this;}
+            return *this;*/
+		Integer<T, C> temp (0);
+                int size= rhs._x.size()+_x.size();
+                for (int i=0; i<size; i++)
+                        temp._x.push_back(0);
+
+
+                if(!neg && !rhs.neg){
+                        plus_digits(_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                        temp.neg = false;
+                }
+                else if(neg && rhs.neg){
+                        plus_digits(_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                        temp.neg = true;
+                }
+                else{
+                        bool normal;
+                        Integer o = *this;
+                        Integer t = rhs;
+                        normal =  o.abs() > t.abs();
+
+                        if (normal){
+                                minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
+                                temp.neg = neg;
+                        }
+                        else{
+                                minus_digits (rhs._x.begin(), rhs._x.end(), _x.begin(), _x.end(), temp._x.begin());
+                                temp.neg = neg;
+                        }
+                }
+
+                auto iter_end = temp._x.end();
+                while (*(--iter_end)==0 && temp._x.size()>1){
+                        temp._x.pop_back();
+                }
+
+                *this=temp;
+                return *this;
+	}
 
         // -----------
         // operator -=
