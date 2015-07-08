@@ -761,7 +761,10 @@ class Integer {
 			Integer o = *this;
 			Integer t = rhs;
 			normal =  o.abs() > t.abs();
-	
+            if(_x.size() > rhs._x.size())
+                normal = true;
+            if (_x.size() < rhs._x.size())
+                normal = false;
                 	if (normal){
                     		minus_digits (_x.begin(), _x.end(), rhs._x.begin(), rhs._x.end(), temp._x.begin());
 				temp.neg = neg;
